@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/colorAccent">
 
-    <TextView
+    <com.wokebryant.anythingdemo.view.WaveProgressView
+        android:id="@+id/waveProgressView"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/lf_pk_wave_empty" />
+
+    <ImageView
+        android:layout_width="39dp"
+        android:layout_height="45dp"
+        android:src="@drawable/lf_gold_box_close"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/testBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/waveProgressView"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
