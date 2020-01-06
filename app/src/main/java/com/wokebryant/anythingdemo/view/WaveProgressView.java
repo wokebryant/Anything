@@ -15,6 +15,8 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.wokebryant.anythingdemo.R;
+
 public class WaveProgressView extends View {
     private int width;
     private int height;
@@ -63,10 +65,10 @@ public class WaveProgressView extends View {
     }
 
     private void init() {
-        if(null==getBackground()){
+        if(null==getResources().getDrawable(R.drawable.lf_pk_wave_full)){
             throw new IllegalArgumentException(String.format("background is null."));
         }else{
-            backgroundBitmap = getBitmapFromDrawable(getBackground());
+            backgroundBitmap = getBitmapFromDrawable(getResources().getDrawable(R.drawable.lf_pk_wave_full));
         }
 
         mPath = new Path();
@@ -119,10 +121,10 @@ public class WaveProgressView extends View {
         mPath.lineTo(0,height);
         mPath.close();
         canvas.drawPath(mPath, mPathPaint);
-        int min = Math.min(width,height);
-        backgroundBitmap = Bitmap.createScaledBitmap(backgroundBitmap,min,min,false);
+        int min = Math.max(width,height);
+        backgroundBitmap = Bitmap.createScaledBitmap(backgroundBitmap,width,height,false);
 
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_ATOP));
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
 
         canvas.drawBitmap(backgroundBitmap,0,0,paint);
         return bmp;

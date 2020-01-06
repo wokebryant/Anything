@@ -2,14 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorAccent">
+
+    <ImageView
+        android:layout_width="53dp"
+        android:layout_height="62dp"
+        android:src="@drawable/lf_pk_wave_empty"
+        android:layout_centerInParent="true"/>
 
     <com.wokebryant.anythingdemo.view.WaveProgressView
         android:id="@+id/waveProgressView"
-        android:layout_width="62dp"
+        android:layout_width="53dp"
         android:layout_height="62dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/lf_pk_wave_empty" />
+        tools:background="@drawable/lf_pk_wave_full" />
+
+
 
     <ImageView
         android:layout_width="39dp"
