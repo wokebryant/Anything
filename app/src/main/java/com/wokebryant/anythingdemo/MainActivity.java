@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.testBtn:
-                mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
-                //mWaveProgressView.setProgress(60);
+                //mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
+                mWaveProgressView.setProgress(100);
                 break;
             default:
         }
