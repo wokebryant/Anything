@@ -17,6 +17,8 @@ public class AttentionExitDialog extends Dialog implements View.OnClickListener 
     private ImageView mAvatarIv;
     private Button mCancelBtn,mFollowBtn,mExitBtn;
 
+    private String mActorAvatarUrl;
+
     private OnAttentionExitClickListener mListener;
 
     public interface OnAttentionExitClickListener {
@@ -66,11 +68,13 @@ public class AttentionExitDialog extends Dialog implements View.OnClickListener 
     }
 
     private void setData() {
-
+        if (mActorAvatarUrl != null) {
+            //todo
+        }
     }
 
-    public void setActorInfo() {
-
+    public void setActorInfo(String actorAvatarUrl) {
+        mActorAvatarUrl = actorAvatarUrl;
     }
 
     @Override
@@ -82,11 +86,6 @@ public class AttentionExitDialog extends Dialog implements View.OnClickListener 
         } else if (v.getId() == mExitBtn.getId()) {
             mListener.onExitButtonClick();
         }
-    }
-
-    @Override
-    public void dismiss() {
-        super.dismiss();
     }
 
 }

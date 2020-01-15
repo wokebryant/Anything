@@ -15,9 +15,12 @@ import com.wokebryant.anythingdemo.R;
 
 public class AttentionGuideDialog extends Dialog implements View.OnClickListener {
 
-    private ImageView mAvatatIv;
-    private TextView mAvatarNick;
+    private ImageView mActorAvatatIv;
+    private TextView mActorNickTv;
     private Button mAttentionBtn;
+
+    private String mActorAvatarUrl;
+    private String mActorNick;
 
     private OnAttentionButtonClickListener mListener;
 
@@ -55,29 +58,30 @@ public class AttentionGuideDialog extends Dialog implements View.OnClickListener
     }
 
     private void initView() {
-        mAvatatIv = findViewById(R.id.actor_avatar_iv);
-        mAvatarNick = findViewById(R.id.actor_name_tv);
+        mActorAvatatIv = findViewById(R.id.actor_avatar_iv);
+        mActorNickTv = findViewById(R.id.actor_name_tv);
         mAttentionBtn = findViewById(R.id.actor_attention_btn);
     }
 
     private void setData() {
-
+        if (mActorAvatarUrl != null) {
+            //todo
+        }
+        if (mActorNick != null) {
+            mActorNickTv.setText(mActorNick);
+        }
     }
 
-    public void setActorInfo() {
-
+    public void setActorInfo(String actorAvatarUrl,String actorNick) {
+        mActorAvatarUrl = actorAvatarUrl;
+        mActorNick = actorNick;
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == mAttentionBtn.getId()) {
             mListener.onAttentionButtonClick();
-            dismiss();
         }
     }
 
-    @Override
-    public void dismiss() {
-        super.dismiss();
-    }
 }

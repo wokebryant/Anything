@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initView();
         mAttentionPresenter = new AttentionGuidePresenter();
-        mAttentionPresenter.initView(this,hasAttention);
+        mAttentionPresenter.initPresenter(this,hasAttention);
     }
 
     private void initView() {
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void showAttentionGuideDialog() {
+    public void showAttentionGuideDialog(String avatarUrl,String actorNick) {
         mAttentionGuideDialog = new AttentionGuideDialog(this);
         mAttentionGuideDialog.setAttentionBtnClickListener(new AttentionGuideDialog.OnAttentionButtonClickListener() {
             @Override
@@ -88,12 +88,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mAttentionPresenter.onBottomAttentionClick();
             }
         });
-        mAttentionGuideDialog.setActorInfo();
+        mAttentionGuideDialog.setActorInfo(avatarUrl,actorNick);
         mAttentionGuideDialog.show();
     }
 
     @Override
-    public void showAttentionExitDialog() {
+    public void showAttentionExitDialog(String avatarUrl) {
         mAttentionExitDialog = new AttentionExitDialog(this);
         mAttentionExitDialog.setAttentionExitClickListener(new AttentionExitDialog.OnAttentionExitClickListener() {
             @Override
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mAttentionPresenter.onExitAttentionClick();
             }
         });
-        mAttentionExitDialog.setActorInfo();
+        mAttentionExitDialog.setActorInfo(avatarUrl);
         mAttentionExitDialog.show();
     }
 
@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBottomAttentionClick() {
+        hideWatcherAttentionBtn();
         if (mAttentionGuideDialog != null && mAttentionGuideDialog.isShowing()) {
             mAttentionGuideDialog.dismiss();
         }
@@ -129,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onCenterAttentionClick() {
+        hideWatcherAttentionBtn();
         if (mAttentionExitDialog != null && mAttentionExitDialog.isShowing()) {
             mAttentionExitDialog.dismiss();
         }
@@ -136,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onChatAttentionClick() {
-        //todo
+        updateChatAttentionState();
     }
 
     @Override
@@ -148,6 +150,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void showAttentionToast() {
+        //todo
+    }
+
+    private void updateChatAttentionState() {
+        //todo
+    }
+
+    private void hideWatcherAttentionBtn() {
         //todo
     }
 }

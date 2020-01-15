@@ -2,9 +2,9 @@ package com.wokebryant.anythingdemo.presenter;
 
 public interface IAttentionGuide {
 
-        void showAttentionGuideDialog();
+        void showAttentionGuideDialog(String avatarUrl,String actorNick);
 
-        void showAttentionExitDialog();
+        void showAttentionExitDialog(String avatarUrl);
 
         void showChatAttentionBtn();
 

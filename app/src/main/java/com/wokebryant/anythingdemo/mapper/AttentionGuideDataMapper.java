@@ -17,22 +17,22 @@ public class AttentionGuideDataMapper {
         //todo
     }
 
-    //public AttentionGuideModel transformResponse(MtopResponse mtopResponse) {
-    //    if (mtopResponse == null) {
-    //        throw new IllegalArgumentException("Cannot transform a null value");
-    //    }
-    //    AttentionGuideModel attentionGuideModel = null;
-    //
-    //    final JSONObject dataObj = mtopResponse.getDataJsonObject();
-    //    if (dataObj != null) {
-    //        try{
-    //            attentionGuideModel = FastJsonTools.deserialize(dataObj.toString(),AttentionGuideModel.class);
-    //        } catch (JSONException e) {
-    //            e.printStackTrace();
-    //        }
-    //    }
-    //    return attentionGuideModel;
-    //}
+    public AttentionGuideModel transformResponse(MtopResponse mtopResponse) {
+        if (mtopResponse == null) {
+            throw new IllegalArgumentException("Cannot transform a null value");
+        }
+        AttentionGuideModel attentionGuideModel = null;
+
+        final JSONObject dataObj = mtopResponse.getDataJsonObject();
+        if (dataObj != null) {
+            try{
+                attentionGuideModel = FastJsonTools.deserialize(dataObj.toString(),AttentionGuideModel.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return attentionGuideModel;
+    }
 
 
 }
