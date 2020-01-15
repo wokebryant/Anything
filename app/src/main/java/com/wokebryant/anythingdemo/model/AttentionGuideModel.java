@@ -5,23 +5,23 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-public class AttentionGuide implements Parcelable {
+public class AttentionGuideModel implements Parcelable {
 
     public ArrayList<GuideInfo> guideArray;
 
-    protected AttentionGuide(Parcel in) {
+    protected AttentionGuideModel(Parcel in) {
         this.guideArray = in.createTypedArrayList(GuideInfo.CREATOR);
     }
 
-    public static final Creator<AttentionGuide> CREATOR = new Creator<AttentionGuide>() {
+    public static final Creator<AttentionGuideModel> CREATOR = new Creator<AttentionGuideModel>() {
         @Override
-        public AttentionGuide createFromParcel(Parcel in) {
-            return new AttentionGuide(in);
+        public AttentionGuideModel createFromParcel(Parcel in) {
+            return new AttentionGuideModel(in);
         }
 
         @Override
-        public AttentionGuide[] newArray(int size) {
-            return new AttentionGuide[size];
+        public AttentionGuideModel[] newArray(int size) {
+            return new AttentionGuideModel[size];
         }
     };
 

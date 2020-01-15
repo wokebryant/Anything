@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="84dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/lf_bg_attention_guide_dialog">
+
+    <ImageView
+        android:id="@+id/actor_avatar_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        tools:background="@color/colorAccent"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="9dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/actor_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="会爆炸的炸炸"
+            android:textSize="16dp"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/actor_desc_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="喜欢就关注主播吧～"
+            android:textSize="12dp"
+            android:textColor="#999999"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/actor_attention_btn"
+        android:layout_width="96dp"
+        android:layout_height="36dp"
+        android:layout_marginRight="16dp"
+        android:text="确认关注"
+        android:textSize="16dp"
+        android:textColor="#FFFFFF"
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@drawable/lf_bg_attention_follow_btn"/>
 
 </LinearLayout>

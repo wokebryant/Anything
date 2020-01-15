@@ -1,6 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
+    android:layout_height="236dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="240dp"
+        android:layout_height="178dp"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/lf_bg_attention_exit_dialog">
+        
+        <Button
+            android:id="@+id/attention_exit_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/lf_attention_guide_exit"/>
+
+        <TextView
+            android:id="@+id/attention_me_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="2dp"
+            android:text="关注我"
+            android:textSize="14dp"
+            android:textColor="#333333"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/attention_me_tv"
+            android:layout_centerHorizontal="true"
+            android:text="不错过每次精彩相遇"
+            android:textSize="14dp"
+            android:textColor="#333333"/>
+
+        <Button
+            android:id="@+id/follow_exit_btn"
+            android:layout_width="102dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginBottom="24dp"
+            android:layout_alignParentBottom="true"
+            android:text="关注并退出"
+            android:textSize="16dp"
+            android:textColor="#FFFFFF"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/lf_bg_attention_follow_btn"/>
+
+        <Button
+            android:id="@+id/exit_btn"
+            android:layout_width="102dp"
+            android:layout_height="36dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="24dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="直接退出"
+            android:textSize="16dp"
+            android:textColor="#FF9300"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/lf_bg_attention_exit_btn"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="164dp"
+        android:layout_height="112dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/lf_attention_guide_decoration">
+
+        <ImageView
+            android:id="@+id/actor_avatar_big_iv"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+</FrameLayout>

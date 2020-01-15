@@ -4,12 +4,33 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.wokebryant.anythingdemo.R;
 
-public class AttentionExitDialog extends Dialog {
+public class AttentionExitDialog extends Dialog implements View.OnClickListener {
+
+    private ImageView mAvatarIv;
+    private Button mCancelBtn,mFollowBtn,mExitBtn;
+
+    private OnAttentionExitClickListener mListener;
+
+    public interface OnAttentionExitClickListener {
+        void onCancelButtonClick();
+
+        void onFollowButtonClick();
+
+        void onExitButtonClick();
+    }
+
+    public void setAttentionExitClickListener(OnAttentionExitClickListener listener) {
+        mListener = listener;
+    }
+
 
     public AttentionExitDialog(Context context) {
         super(context,R.style.AttentionGuideStyle);
@@ -34,10 +55,38 @@ public class AttentionExitDialog extends Dialog {
     }
 
     private void initView() {
+        mAvatarIv = findViewById(R.id.actor_avatar_big_iv);
+        mCancelBtn = findViewById(R.id.attention_exit_btn);
+        mFollowBtn = findViewById(R.id.follow_exit_btn);
+        mExitBtn = findViewById(R.id.exit_btn);
 
+        mCancelBtn.setOnClickListener(this);
+        mFollowBtn.setOnClickListener(this);
+        mExitBtn.setOnClickListener(this);
     }
 
     private void setData() {
 
     }
+
+    public void setActorInfo() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == mCancelBtn.getId()) {
+            mListener.onCancelButtonClick();
+        } else if (v.getId() == mFollowBtn.getId()) {
+            mListener.onFollowButtonClick();
+        } else if (v.getId() == mExitBtn.getId()) {
+            mListener.onExitButtonClick();
+        }
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+    }
+
 }
