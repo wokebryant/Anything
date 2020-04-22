@@ -28,6 +28,8 @@ import com.wokebryant.anythingdemo.view.WaveProgressView;
 
 import java.util.Map;
 
+import static java.security.AccessController.getContext;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final int UPDATE_PROGRESS = 1;

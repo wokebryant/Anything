@@ -29,6 +29,8 @@ import com.wokebryant.anythingdemo.util.UIUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.security.AccessController.getContext;
+
 public class VoiceLiveChiefPanel extends BottomSheetDialogFragment implements View.OnClickListener{
 
     private static final String TAG = "VoiceLiveChiefPanel";
