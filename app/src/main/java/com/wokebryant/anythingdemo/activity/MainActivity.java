@@ -2,33 +2,46 @@ package com.wokebryant.anythingdemo.activity;
 
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.wokebryant.anythingdemo.Constant;
 import com.wokebryant.anythingdemo.R;
 import com.wokebryant.anythingdemo.dialog.AttentionExitDialog;
 import com.wokebryant.anythingdemo.dialog.AttentionGuideDialog;
-import com.wokebryant.anythingdemo.mapper.AttentionGuideDataMapper;
-import com.wokebryant.anythingdemo.presenter.AttentionGuidePresenter;
-import com.wokebryant.anythingdemo.presenter.IAttentionGuide;
+import com.wokebryant.anythingdemo.dialog.VoiceLiveChiefPanel;
+import com.wokebryant.anythingdemo.dialog.VoiceLiveCommonDialog;
+import com.wokebryant.anythingdemo.dialog.VoiceLiveFinishDialog;
+import com.wokebryant.anythingdemo.dialog.VoiceLivePlacardDialog;
+import com.wokebryant.anythingdemo.mapper.TestData;
+import com.wokebryant.anythingdemo.util.UIUtil;
+import com.wokebryant.anythingdemo.view.ProgressSendView;
 import com.wokebryant.anythingdemo.view.WaveProgressView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, IAttentionGuide {
+import java.util.Map;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final int UPDATE_PROGRESS = 1;
     private static final int MAX_PROGRESS = 100;
     private int mCurrentProgress = 0;
     private WaveProgressView mWaveProgressView;
-    private Button mButton;
+    private Button mButton,mButton2;
 
-    //关注引导
-    private AttentionGuidePresenter mAttentionPresenter;
-    private boolean hasAttention;
+    private VoiceLiveChiefPanel mChiefPanel;
+    private VoiceLiveCommonDialog mCommonDialog;
+    private VoiceLivePlacardDialog mPlacardDialog;
+    private VoiceLiveFinishDialog mLiveFinishDialog;
 
-    private AttentionGuideDialog mAttentionGuideDialog;
-    private AttentionExitDialog mAttentionExitDialog;
+    private ProgressSendView mProgressView;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -58,14 +71,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        mAttentionPresenter = new AttentionGuidePresenter();
-        mAttentionPresenter.initPresenter(this,hasAttention);
     }
 
     private void initView() {
         mWaveProgressView = findViewById(R.id.waveProgressView);
+        mProgressView = findViewById(R.id.testProgress);
         mButton = findViewById(R.id.testBtn);
+        mButton2 = findViewById(R.id.testBtn2);
         mButton.setOnClickListener(this);
+        mButton2.setOnClickListener(this);
+
+        setLayoutParams();
+
+    }
+
+    private void setLayoutParams() {
+        if (mProgressView != null) {
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mProgressView.getLayoutParams();
+            params.width = params.height = UIUtil.vp2px(this, 64);
+            mProgressView.setLayoutParams(params);
+        }
+    }
+
+    public void setLayoutParams(int width, int height) {
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mProgressView.getLayoutParams();
+        params.width = WeexUtil.vp2px(getContext(), 64);
+        params.height = WeexUtil.vp2px(getContext(), 64);
+        mProgressView.setLayoutParams(params);
+    }
+
+    @WXComponentProp(name = "style")
+    public void setStyle(Map map) {
+        if (map != null && !map.isEmpty() && mProgressView != null) {
+            int width = (int) map.get("width");
+            int height = (int) map.get("height");
+            setLayoutParams(width, height);
+            MyLog.i(TAG, "width= " + width + " height= " + height);
+        }
     }
 
     @Override
@@ -73,92 +115,81 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.testBtn:
                 //mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
-                mWaveProgressView.setProgress(100);
+//                mWaveProgressView.setProgress(100);
+                showChiefPanel();
+//                showFinishDialog();
+
                 break;
+            case R.id.testBtn2:
+//                showCommonDialog();
+//                showPlacardDialog();
+                showProgressRing();
             default:
         }
     }
 
-    @Override
-    public void showAttentionGuideDialog(String avatarUrl,String actorNick) {
-        mAttentionGuideDialog = new AttentionGuideDialog(this);
-        mAttentionGuideDialog.setAttentionBtnClickListener(new AttentionGuideDialog.OnAttentionButtonClickListener() {
+    private void showChiefPanel() {
+        if (this != null && !this.isFinishing()) {
+            try{
+                if (mChiefPanel == null) {
+                    mChiefPanel = VoiceLiveChiefPanel.newInstance();
+                }
+                mChiefPanel.setChiefInfo("1747105","","勒布朗","1802",true);
+                mChiefPanel.setIsChief(true);
+                mChiefPanel.setListData(TestData.getManagerData(),TestData.getHostData());
+                if (!mChiefPanel.isAdded()) {
+                    FragmentManager manager = getSupportFragmentManager();
+                    mChiefPanel.show(manager,"VoiceLiveChiefPanel");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void showCommonDialog() {
+        VoiceLiveCommonDialog commonDialog = new VoiceLiveCommonDialog(this, "湖人总冠军", "勒布朗", "詹姆斯", new VoiceLiveCommonDialog.OnClickListener() {
             @Override
-            public void onAttentionButtonClick() {
-                mAttentionPresenter.onBottomAttentionClick();
+            public void onClick() {
+                Toast.makeText(getBaseContext(),"确定按钮点击",Toast.LENGTH_SHORT).show();
             }
         });
-        mAttentionGuideDialog.setActorInfo(avatarUrl,actorNick);
-        mAttentionGuideDialog.show();
-    }
+//        commonDialog.show();
 
-    @Override
-    public void showAttentionExitDialog(String avatarUrl) {
-        mAttentionExitDialog = new AttentionExitDialog(this);
-        mAttentionExitDialog.setAttentionExitClickListener(new AttentionExitDialog.OnAttentionExitClickListener() {
+        VoiceLiveCommonDialog commonDialog2 = new VoiceLiveCommonDialog(this, Constant.lakersChampion, "勒布朗", "詹姆斯", new VoiceLiveCommonDialog.OnClickListener() {
             @Override
-            public void onCancelButtonClick() {
-                mAttentionPresenter.onCancelAttentionClick();
+            public void onClick() {
+                Toast.makeText(getBaseContext(), "确定按钮点击", Toast.LENGTH_SHORT).show();
             }
-
+        }, new VoiceLiveCommonDialog.OnCancelListener() {
             @Override
-            public void onFollowButtonClick() {
-                mAttentionPresenter.onCenterAttentionClick();
-            }
-
-            @Override
-            public void onExitButtonClick() {
-                mAttentionPresenter.onExitAttentionClick();
+            public void onCancel() {
+                Toast.makeText(getBaseContext(), "取消按钮点击", Toast.LENGTH_SHORT).show();
             }
         });
-        mAttentionExitDialog.setActorInfo(avatarUrl);
-        mAttentionExitDialog.show();
+        commonDialog2.show();
+        commonDialog2.setCancelBtnVisible(View.GONE);
     }
 
-    @Override
-    public void showChatAttentionBtn() {
-        //todo
+    private void showFinishDialog() {
+        VoiceLiveFinishDialog finishDialog = new VoiceLiveFinishDialog(this);
+        finishDialog.showPopWindow();
+        finishDialog.showAtTime(3000);
     }
 
-    @Override
-    public void onBottomAttentionClick() {
-        hideWatcherAttentionBtn();
-        if (mAttentionGuideDialog != null && mAttentionGuideDialog.isShowing()) {
-            mAttentionGuideDialog.dismiss();
+    private void showPlacardDialog() {
+        VoiceLivePlacardDialog placardDialog = new VoiceLivePlacardDialog(this);
+        placardDialog.setChiefRoomId(1747105);
+        placardDialog.setIsThief(true);
+        placardDialog.setPlacardContent("勒布朗",Constant.lakersChampion);
+        placardDialog.show();
+    }
+
+    private void showProgressRing() {
+        if (mProgressView != null) {
+            mProgressView.resetAndStartProgress("0");
         }
     }
 
-    @Override
-    public void onCenterAttentionClick() {
-        hideWatcherAttentionBtn();
-        if (mAttentionExitDialog != null && mAttentionExitDialog.isShowing()) {
-            mAttentionExitDialog.dismiss();
-        }
-    }
-
-    @Override
-    public void onChatAttentionClick() {
-        updateChatAttentionState();
-    }
-
-    @Override
-    public void closeAttentionDialogClick() {
-        if (mAttentionExitDialog != null && mAttentionExitDialog.isShowing()) {
-            mAttentionExitDialog.dismiss();
-        }
-    }
-
-    @Override
-    public void showAttentionToast() {
-        //todo
-    }
-
-    private void updateChatAttentionState() {
-        //todo
-    }
-
-    private void hideWatcherAttentionBtn() {
-        //todo
-    }
 }
 

@@ -52,7 +52,7 @@
             android:textSize="16dp"
             android:textColor="#FFFFFF"
             style="?android:attr/borderlessButtonStyle"
-            android:background="@drawable/lf_bg_attention_follow_btn"/>
+            android:background="@drawable/lf_bg_dialog_sure_btn"/>
 
         <Button
             android:id="@+id/exit_btn"
@@ -66,7 +66,7 @@
             android:textSize="16dp"
             android:textColor="#FF9300"
             style="?android:attr/borderlessButtonStyle"
-            android:background="@drawable/lf_bg_attention_exit_btn"/>
+            android:background="@drawable/lf_bg_voicelive_unattention_btn"/>
 
     </RelativeLayout>
 

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="267dp"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        android:background="@drawable/lf_bg_attention_exit_dialog">
+
+        <ImageView
+            android:id="@+id/chief_dialog_bg"
+            android:background="@drawable/lf_dialog_bg"
+            android:layout_width="match_parent"
+            android:layout_height="273dp"
+            android:visibility="gone"
+            tools:visibility="gone"/>
+
+        <Button
+            android:id="@+id/placard_dismiss"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="9dp"
+            android:layout_marginRight="9dp"
+            android:background="@drawable/lf_voicelive_close"
+            tools:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/chief_live_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="52dp">
+
+            <TextView
+                android:id="@+id/chief_nick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="厅长昵称"
+                android:textColor="#333333"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/attention_me_tv"
+                android:text="的直播间"
+                android:textColor="#333333"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/placard_content_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="36dp"
+            android:layout_marginRight="24dp"
+            android:layout_below="@+id/chief_live_nick"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/placard_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="欢迎来到我的直播间"
+                    android:textColor="#666666"
+                    android:textSize="14dp"
+                    android:scrollbars="none"
+                    android:gravity="center"
+                    tools:visibility="gone"/>
+
+                <EditText
+                    android:id="@+id/placard_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:cursorVisible="true"
+                    android:gravity="top"
+                    android:textSize="14dp"
+                    android:textColor="#333333"
+                    android:paddingTop="16dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingBottom="24dp"
+                    android:hint="  禁止输入违规违法文字，请输入与粉丝互动规则，例如：送XXX礼物可连麦…"
+                    android:textColorHint="#999999"
+                    android:scrollbars="none"
+                    android:background="@drawable/lf_bg_placardedit"
+                    android:textCursorDrawable="@drawable/lf_placard_input_cursor_color"
+                    tools:visibility="visible"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/count_text_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/placard_content_scroll"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="-55dp"
+            android:text="0/120"
+            android:textColor="#999999"
+            android:textSize="11dp"
+            tools:visibility="gone"/>
+
+        <View
+            android:id="@+id/spilt_line"
+            android:layout_below="@+id/placard_content_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="-24dp"
+            android:background="#F5F5F5"
+            tools:visibility="gone"/>
+
+        <Button
+            android:id="@+id/placard_send"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@null"
+            android:layout_below="@+id/spilt_line"
+            android:text="发布"
+            android:textColor="#FF8700"
+            android:textSize="16dp"
+            tools:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="116dp"
+        android:layout_height="116dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/lf_livevoice_placard_head">
+    </FrameLayout>
+
+</FrameLayout>

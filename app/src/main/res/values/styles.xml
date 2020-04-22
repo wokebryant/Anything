@@ -18,4 +18,32 @@
         <item name="android:backgroundDimAmount">0.3</item>
     </style>
 
+    <style name="VoiceLiveDialogStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.4</item>
+    </style>
+
+    <style name="VoiceLiveChiefPanelStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/ChiefBottomSheetStyle</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="ChiefBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="behavior_peekHeight">456dp</item>
+    </style>
+
+    <style name="lf_voicelive_PopupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/lf_notice_top_in</item>
+        <item name="android:windowExitAnimation">@anim/lf_notice_top_out</item>
+    </style>
+
+
+
 </resources>

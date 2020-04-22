@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="267dp"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/lf_bg_attention_exit_dialog"
+   >
+
+    <ImageView
+        android:id="@+id/dialog_dismiss"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_gravity="right"
+        android:src="@drawable/lf_voicelive_close"/>
+
+    <TextView
+        android:id="@+id/dialog_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textSize="14dp"
+        android:textColor="#666666"
+        android:gravity="center"
+        tools:text="您将挂断连麦"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="33dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/dialog_sure"
+            android:layout_width="102dp"
+            android:layout_height="36dp"
+            android:text="挂断"
+            android:textSize="16dp"
+            android:textColor="#FFFFFF"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/lf_bg_dialog_sure_btn"/>
+
+        <Button
+            android:id="@+id/dialog_cancel"
+            android:layout_width="102dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="15dp"
+            android:text="取消"
+            android:textSize="16dp"
+            android:textColor="#666666"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/lf_bg_voicelive_cancel_btn"
+            tools:visibility="visible"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

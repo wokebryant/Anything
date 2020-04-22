@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/lf_bg_attention_guide_dialog">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/chief_id_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="12dp"
+                android:textColor="#999999"
+                android:textSize="12dp"
+                android:text="ID: 123445"/>
+
+            <TextView
+                android:id="@+id/chief_report_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="12dp"
+                android:textColor="#999999"
+                android:textSize="12dp"
+                android:text="举报"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/chief_nick_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_gravity="center_horizontal"
+            android:text="厅长昵称"
+            android:textSize="18dp"
+            android:textColor="#333333"/>
+
+        <TextView
+            android:id="@+id/chief_fans_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="6dp"
+            android:text="粉丝 1747"
+            android:textColor="#666666"
+            android:textSize="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="管理员"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="#333333"/>
+
+        <FrameLayout
+            android:id="@+id/chief_no_manager_fl"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:visibility="gone"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/lf_voicelive_nohead"/>
+
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/lf_voicelive_manager_gray"/>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/chief_manager_list_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            tools:layout_height="62dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="12dp"
+            android:text="主持人"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="#333333"/>
+
+        <FrameLayout
+            android:id="@+id/chief_no_host_fl"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/lf_voicelive_nohead"/>
+
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/lf_voicecard_host_gray"/>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/chief_host_list_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="40dp"
+            tools:layout_height="62dp"
+            tools:visibility="gone">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/chief_attention_btn"
+            android:layout_width="210dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="-25dp"
+            android:layout_marginBottom="32dp"
+            android:layout_gravity="center_horizontal"
+            android:text="关注"
+            android:textSize="18dp"
+            android:textColor="#FFFFFF"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/lf_selector_btn_send_for_attention_textcolor"
+            android:visibility="visible"/>
+
+        <Space
+            android:id="@+id/space_view"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="-25dp"
+            android:layout_marginBottom="32dp"
+            tools:visibility="gone"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/chief_avatar_iv"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="3dp"
+        android:src="@drawable/lf_voicelive_nohead"
+        android:background="@drawable/lf_user_card_bg_round_image" />
+
+
+</FrameLayout>

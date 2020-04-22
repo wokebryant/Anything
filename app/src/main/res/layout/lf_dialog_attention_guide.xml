@@ -49,6 +49,6 @@
         android:textSize="16dp"
         android:textColor="#FFFFFF"
         style="?android:attr/borderlessButtonStyle"
-        android:background="@drawable/lf_bg_attention_follow_btn"/>
+        android:background="@drawable/lf_bg_dialog_sure_btn"/>
 
 </LinearLayout>
