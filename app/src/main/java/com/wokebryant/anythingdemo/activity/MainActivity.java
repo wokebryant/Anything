@@ -93,23 +93,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void setLayoutParams(int width, int height) {
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mProgressView.getLayoutParams();
-        params.width = WeexUtil.vp2px(getContext(), 64);
-        params.height = WeexUtil.vp2px(getContext(), 64);
-        mProgressView.setLayoutParams(params);
-    }
-
-    @WXComponentProp(name = "style")
-    public void setStyle(Map map) {
-        if (map != null && !map.isEmpty() && mProgressView != null) {
-            int width = (int) map.get("width");
-            int height = (int) map.get("height");
-            setLayoutParams(width, height);
-            MyLog.i(TAG, "width= " + width + " height= " + height);
-        }
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
