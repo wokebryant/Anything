@@ -1,11 +1,16 @@
 package com.wokebryant.anythingdemo.activity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +19,10 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.wokebryant.anythingdemo.Constant;
+import com.wokebryant.anythingdemo.Demo.MulitTypeRV.adapter.MulitAdpter;
+import com.wokebryant.anythingdemo.Demo.MulitTypeRV.bean.BannerBean;
+import com.wokebryant.anythingdemo.Demo.MulitTypeRV.bean.ContentBean;
+import com.wokebryant.anythingdemo.Demo.MulitTypeRV.decorate.Visitable;
 import com.wokebryant.anythingdemo.R;
 import com.wokebryant.anythingdemo.dialog.AttentionExitDialog;
 import com.wokebryant.anythingdemo.dialog.AttentionGuideDialog;
@@ -26,6 +35,8 @@ import com.wokebryant.anythingdemo.util.UIUtil;
 import com.wokebryant.anythingdemo.view.ProgressSendView;
 import com.wokebryant.anythingdemo.view.WaveProgressView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static java.security.AccessController.getContext;
@@ -44,24 +55,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private VoiceLiveFinishDialog mLiveFinishDialog;
 
     private ProgressSendView mProgressView;
+    private RecyclerView mRecycleView;
 
+    @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (msg.what == UPDATE_PROGRESS) {
-                if (mCurrentProgress != MAX_PROGRESS) {
-                    mCurrentProgress += 1;
-                    mWaveProgressView.setProgress(mCurrentProgress);
-                    sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
-                } else {
-                    mCurrentProgress = 0;
-                    mWaveProgressView.setProgress(0);
-                    mWaveProgressView.resetProgress();
-                    sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
-                    //mWaveProgressView.release();
-                }
-
+            switch (msg.what) {
+                case UPDATE_PROGRESS:
+                    if (mCurrentProgress != MAX_PROGRESS) {
+                        mCurrentProgress += 1;
+                        mWaveProgressView.setProgress(mCurrentProgress);
+                        sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
+                    } else {
+                        mCurrentProgress = 0;
+                        mWaveProgressView.setProgress(0);
+                        mWaveProgressView.resetProgress();
+                        sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
+                        //mWaveProgressView.release();
+                    }
+                    break;
             }
         }
     };
@@ -75,16 +89,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        initData();
+    }
+
     private void initView() {
         mWaveProgressView = findViewById(R.id.waveProgressView);
         mProgressView = findViewById(R.id.testProgress);
+        mRecycleView = findViewById(R.id.recycleView);
         mButton = findViewById(R.id.testBtn);
         mButton2 = findViewById(R.id.testBtn2);
         mButton.setOnClickListener(this);
         mButton2.setOnClickListener(this);
 
         setLayoutParams();
+    }
 
+    private void initData() {
+        mockRecycleViewData();
     }
 
     private void setLayoutParams() {
@@ -174,6 +198,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (mProgressView != null) {
             mProgressView.resetAndStartProgress("0");
         }
+    }
+
+    private void mockRecycleViewData() {
+        //  模拟本地数据
+        List<Visitable> beans = new ArrayList<>();
+        beans.add(new BannerBean(
+                "www.baidu.com"));
+        beans.add(new ContentBean());
+        beans.add(new BannerBean(
+                "www.jd.com"));
+        beans.add(new BannerBean(
+                "www.baidu.com"));
+        beans.add(new ContentBean());
+        beans.add(new BannerBean(
+                "www.qq.com"));
+        beans.add(new ContentBean());
+        beans.add(new BannerBean(
+                "www.sina.com"));
+        beans.add(new ContentBean());
+        beans.add(new BannerBean(
+                "www.taobao.com"));
+        beans.add(new ContentBean());
+        MulitAdpter multiRecyclerAdapter = new MulitAdpter(beans);
+        LinearLayoutManager linearLayoutManager =
+                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mRecycleView.setLayoutManager(linearLayoutManager);
+        mRecycleView.setAdapter(multiRecyclerAdapter);
     }
 
 }
