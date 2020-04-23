@@ -16,18 +16,23 @@ import com.wokebryant.anythingdemo.R;
  */
 
 public class ItemTypeFactory implements TypeFactory {
+
   //  将id作为type传入adapter
   public static final int BANNER_ITEM_LAYOUT = R.layout.item_banner_mulittype;
   public static final int CONTENT_ITEM_LAYOUT = R.layout.item_content_mulittype;
-  @Override public int type(BannerBean bannerBean) {
+
+  @Override
+  public int type(BannerBean bannerBean) {
     return BANNER_ITEM_LAYOUT;
   }
 
-  @Override public int type(ContentBean contentBean) {
+  @Override
+  public int type(ContentBean contentBean) {
     return CONTENT_ITEM_LAYOUT;
   }
 
-  @Override public BaseViewHolder createViewHolder(int type, View itemView) {
+  @Override
+  public BaseViewHolder createViewHolder(int type, View itemView) {
     switch (type) {
       case BANNER_ITEM_LAYOUT:
         return new BannerViewHolder(itemView);

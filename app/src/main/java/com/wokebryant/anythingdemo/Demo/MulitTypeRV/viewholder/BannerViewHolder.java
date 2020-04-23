@@ -20,7 +20,9 @@ public class BannerViewHolder extends BaseViewHolder {
     textView = itemView.findViewById(R.id.sdv_pictuer);
   }
 
-  @Override public void bindViewData(Object data) {
+  @Override
+  public void bindViewData(Object data) {
     textView.setText(((BannerBean)data).getUrl());
   }
+
 }

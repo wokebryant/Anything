@@ -10,10 +10,12 @@ import com.wokebryant.anythingdemo.Demo.MulitTypeRV.factory.TypeFactory;
  */
 
 public class ContentBean implements Visitable {
+
   /**
    * 工厂类返回对应itembean的类型
    */
-  @Override public int type(TypeFactory typeFactory) {
+  @Override
+  public int type(TypeFactory typeFactory) {
     return typeFactory.type(this);
   }
 }

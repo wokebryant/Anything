@@ -10,6 +10,7 @@ import com.wokebryant.anythingdemo.Demo.MulitTypeRV.factory.TypeFactory;
  */
 
 public class BannerBean implements Visitable {
+
   String url;
 
   public String getUrl() {
@@ -24,12 +25,11 @@ public class BannerBean implements Visitable {
     this.url = url;
   }
 
-
-
   /**
    * 工厂类返回对应itembean的类型
    */
-  @Override public int type(TypeFactory typeFactory) {
+  @Override
+  public int type(TypeFactory typeFactory) {
     return typeFactory.type(this);
   }
 }

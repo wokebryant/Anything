@@ -19,7 +19,8 @@ public class ContentViewHolder extends BaseViewHolder {
     textView = itemView.findViewById(R.id.sdv_content);
   }
 
-  @Override public void bindViewData(Object data) {
+  @Override
+  public void bindViewData(Object data) {
     //imageview.setImageURI(((BannerBean)data).getUrl());
   }
 }
