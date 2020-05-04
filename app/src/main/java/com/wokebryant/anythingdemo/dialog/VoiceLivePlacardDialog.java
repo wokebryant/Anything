@@ -1,16 +1,16 @@
 package com.wokebryant.anythingdemo.dialog;
 
 import android.app.Dialog;
-import android.content.AsyncQueryHandler;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -20,8 +20,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wokebryant.anythingdemo.R;
+import com.wokebryant.anythingdemo.util.UIUtil;
+
 
 public class VoiceLivePlacardDialog extends Dialog implements View.OnClickListener {
+
+    private static final String TAG = "VoiceLivePlacardDialog";
+
+    private int MIN_HEIGHT ;
+    private int MAX_HEIGHT ;
 
     private Button mDismissBtn;
     private TextView mChiefNickTv;
@@ -34,8 +41,10 @@ public class VoiceLivePlacardDialog extends Dialog implements View.OnClickListen
 
     private String mChiefNick;
     private String mPlacardContent;
-    private long mChiefRoomId;
+    private String mContentTemp;
     private boolean isChief;
+
+    public modifyPlacardListener mListener;
 
     public VoiceLivePlacardDialog(Context context) {
         super(context,R.style.VoiceLiveDialogStyle);
@@ -60,14 +69,14 @@ public class VoiceLivePlacardDialog extends Dialog implements View.OnClickListen
     }
 
     private void initView() {
-        mDismissBtn = findViewById(R.id.placard_dismiss);
-        mChiefNickTv = findViewById(R.id.chief_nick);
-        mPlacardEditEt = findViewById(R.id.placard_edit);
-        mPlacardContentTv = findViewById(R.id.placard_content);
-        mCountTextTv = findViewById(R.id.count_text_tv);
-        mPlacardUploadBtn = findViewById(R.id.placard_send);
-        mDialogBgIv = findViewById(R.id.chief_dialog_bg);
-        mSpiltLine = findViewById(R.id.spilt_line);
+        mDismissBtn = findViewById(R.id.lfcontainer_placard_dismiss);
+        mChiefNickTv = findViewById(R.id.lfcontainer_chief_nick);
+        mPlacardEditEt = findViewById(R.id.lfcontainer_placard_edit);
+        mPlacardContentTv = findViewById(R.id.lfcontainer_placard_content);
+        mCountTextTv = findViewById(R.id.lfcontainer_count_text_tv);
+        mPlacardUploadBtn = findViewById(R.id.lfcontainer_placard_send);
+        mDialogBgIv = findViewById(R.id.lfcontainer_chief_dialog_bg);
+        mSpiltLine = findViewById(R.id.lfcontainer_spilt_line);
 
         mDismissBtn.setOnClickListener(this);
         mPlacardUploadBtn.setOnClickListener(this);
@@ -93,10 +102,13 @@ public class VoiceLivePlacardDialog extends Dialog implements View.OnClickListen
         mPlacardContentTv.setMovementMethod(ScrollingMovementMethod.getInstance());
         mPlacardEditEt.setMovementMethod(ScrollingMovementMethod.getInstance());
         mPlacardEditEt.addTextChangedListener(textWatcher);
+
+        MIN_HEIGHT = UIUtil.dip2px(getContext(), 80);
+        MAX_HEIGHT = UIUtil.dip2px(getContext() , 168);
     }
 
 
-    private int mMaxLength = 120;
+    private int mMaxLength = 300;
     TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -117,8 +129,8 @@ public class VoiceLivePlacardDialog extends Dialog implements View.OnClickListen
         @Override
         public void afterTextChanged(Editable s) {
             mPlacardEditEt.setSelection(mPlacardEditEt.getText().length());
-            int countNum = s.length() >120 ? 120 : s.length();
-            mCountTextTv.setText(String.valueOf(countNum) + "/120");
+            int countNum = s.length() > 300 ? 300 : s.length();
+            mCountTextTv.setText(String.valueOf(countNum) + "/300");
         }
     };
 
@@ -137,48 +149,69 @@ public class VoiceLivePlacardDialog extends Dialog implements View.OnClickListen
     }
 
     private void setData() {
-        if (mChiefNick != null && mChiefNick.length() != 0) {
+        if (!TextUtils.isEmpty(mChiefNick)) {
             mChiefNickTv.setText(mChiefNick);
         }
-        if (mPlacardContent != null && mPlacardContent.length() != 0) {
+        if (!TextUtils.isEmpty(mPlacardContent)) {
             mPlacardContentTv.setText(mPlacardContent);
+            mPlacardEditEt.setText(mPlacardContent);
         } else {
             mPlacardContentTv.setText("欢迎来到我的直播间");
         }
+        if (!TextUtils.isEmpty(mContentTemp)) {
+            mPlacardEditEt.setText(mContentTemp);
+        }
+        setContentHeight();
+    }
+
+    private void setContentHeight() {
+        mPlacardContentTv.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mPlacardContentTv.getLayoutParams();
+                int contentHeight;
+                int contentLine = mPlacardContentTv.getLineCount();
+                if (0 < contentLine && contentLine <= 4) {
+                    contentHeight = MIN_HEIGHT;
+                } else {
+                    contentHeight = mPlacardContentTv.getMeasuredHeight() <= MAX_HEIGHT ? mPlacardContentTv.getMeasuredHeight() : MAX_HEIGHT;
+                }
+                params.height = contentHeight;
+                mPlacardContentTv.setLayoutParams(params);
+
+                mPlacardContentTv.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                Log.i(TAG, "contentLine= " + contentLine + " contentHeight= " + contentHeight);
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.placard_dismiss) {
+        if (v.getId() == R.id.lfcontainer_placard_dismiss) {
             dismiss();
-        } else if (v.getId() == R.id.placard_send) {
-            uploadPlacardContent();
+        } else if (v.getId() == R.id.lfcontainer_placard_send) {
+            String editContent = mPlacardEditEt.getText().toString();
+            mListener.updatePlacard(editContent);
         }
     }
 
-    public void setPlacardContent(String chiefNick, String placardContent) {
+    public void setPlacardContent(String chiefNick, String placardContent, String contentTemp) {
         mChiefNick = chiefNick;
         mPlacardContent = placardContent;
-    }
-
-    public void setChiefRoomId(long ChiefRoomId) {
-        mChiefRoomId = ChiefRoomId;
+        mContentTemp = contentTemp;
     }
 
     public void setIsThief(boolean isChief) {
         this.isChief = isChief;
     }
 
-    public void uploadPlacardContent() {
-        if (mChiefRoomId != 0) {
-            String editContent = mPlacardEditEt.getText().toString();
-            if (editContent != null && editContent.length() != 0) {
+    public interface modifyPlacardListener {
 
-            } else {
+        void updatePlacard(String content);
+    }
 
-            }
-            //todo
-        }
+    public void setModifyPlacardListener(modifyPlacardListener listener) {
+        mListener = listener;
     }
 
 }

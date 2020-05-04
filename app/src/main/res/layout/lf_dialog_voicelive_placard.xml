@@ -13,7 +13,7 @@
         android:background="@drawable/lf_bg_attention_exit_dialog">
 
         <ImageView
-            android:id="@+id/chief_dialog_bg"
+            android:id="@+id/lfcontainer_chief_dialog_bg"
             android:background="@drawable/lf_dialog_bg"
             android:layout_width="match_parent"
             android:layout_height="273dp"
@@ -21,7 +21,7 @@
             tools:visibility="gone"/>
 
         <Button
-            android:id="@+id/placard_dismiss"
+            android:id="@+id/lfcontainer_placard_dismiss"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
@@ -31,18 +31,19 @@
             tools:visibility="gone"/>
 
         <LinearLayout
-            android:id="@+id/chief_live_nick"
+            android:id="@+id/lfcontainer_chief_live_nick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="52dp">
 
             <TextView
-                android:id="@+id/chief_nick"
+                android:id="@+id/lfcontainer_chief_nick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="厅长昵称"
                 android:textColor="#333333"
+                android:textStyle="bold"
                 android:textSize="18dp" />
 
             <TextView
@@ -51,37 +52,40 @@
                 android:layout_toRightOf="@+id/attention_me_tv"
                 android:text="的直播间"
                 android:textColor="#333333"
+                android:textStyle="bold"
                 android:textSize="18dp" />
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:id="@+id/placard_content_scroll"
+            android:id="@+id/lfcontainer_placard_content_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="36dp"
             android:layout_marginRight="24dp"
-            android:layout_below="@+id/chief_live_nick"
+            android:layout_below="@+id/lfcontainer_chief_live_nick"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/placard_content"
+                    android:id="@+id/lfcontainer_placard_content"
                     android:layout_width="wrap_content"
-                    android:layout_height="80dp"
+                    android:layout_height="wrap_content"
                     android:text="欢迎来到我的直播间"
                     android:textColor="#666666"
                     android:textSize="14dp"
+                    android:lineSpacingExtra="4dp"
                     android:scrollbars="none"
                     android:gravity="center"
-                    tools:visibility="gone"/>
+                    tools:height="80dp"
+                    tools:visibility="visible"/>
 
                 <EditText
-                    android:id="@+id/placard_edit"
+                    android:id="@+id/lfcontainer_placard_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="120dp"
                     android:cursorVisible="true"
@@ -97,27 +101,27 @@
                     android:scrollbars="none"
                     android:background="@drawable/lf_bg_placardedit"
                     android:textCursorDrawable="@drawable/lf_placard_input_cursor_color"
-                    tools:visibility="visible"/>
+                    tools:visibility="gone"/>
 
         </LinearLayout>
 
 
         <TextView
-            android:id="@+id/count_text_tv"
+            android:id="@+id/lfcontainer_count_text_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/placard_content_scroll"
+            android:layout_below="@+id/lfcontainer_placard_content_scroll"
             android:layout_alignParentRight="true"
             android:layout_marginRight="30dp"
             android:layout_marginTop="-55dp"
-            android:text="0/120"
+            android:text="0/300"
             android:textColor="#999999"
             android:textSize="11dp"
             tools:visibility="gone"/>
 
         <View
-            android:id="@+id/spilt_line"
-            android:layout_below="@+id/placard_content_scroll"
+            android:id="@+id/lfcontainer_spilt_line"
+            android:layout_below="@+id/lfcontainer_placard_content_scroll"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="-24dp"
@@ -125,11 +129,11 @@
             tools:visibility="gone"/>
 
         <Button
-            android:id="@+id/placard_send"
+            android:id="@+id/lfcontainer_placard_send"
             android:layout_width="match_parent"
             android:layout_height="51dp"
             android:background="@null"
-            android:layout_below="@+id/spilt_line"
+            android:layout_below="@+id/lfcontainer_spilt_line"
             android:text="发布"
             android:textColor="#FF8700"
             android:textSize="16dp"

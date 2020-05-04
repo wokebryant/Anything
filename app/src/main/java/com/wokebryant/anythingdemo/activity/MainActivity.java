@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-        initData();
+//        initData();
     }
 
     private void initView() {
@@ -131,8 +131,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.testBtn2:
 //                showCommonDialog();
-//                showPlacardDialog();
-                showProgressRing();
+                showPlacardDialog();
+//                showProgressRing();
             default:
         }
     }
@@ -188,9 +188,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void showPlacardDialog() {
         VoiceLivePlacardDialog placardDialog = new VoiceLivePlacardDialog(this);
-        placardDialog.setChiefRoomId(1747105);
-        placardDialog.setIsThief(true);
-        placardDialog.setPlacardContent("勒布朗",Constant.lakersChampion);
+        placardDialog.setIsThief(false);
+        placardDialog.setPlacardContent("勒布朗", Constant.lakersChampion, Constant.lakersChampion);
         placardDialog.show();
     }
 
