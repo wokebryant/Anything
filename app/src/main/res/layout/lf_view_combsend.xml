@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/comb_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            style="@style/RingProgressLoading"
+            android:id="@+id/comb_loading_view"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="20dp"
+            android:visibility="visible"/>
+
+        <Button
+            android:id="@+id/comb_send_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+</FrameLayout>

@@ -1,5 +1,6 @@
 package com.wokebryant.anythingdemo.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -13,18 +14,28 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.wokebryant.anythingdemo.R;
+import com.wokebryant.anythingdemo.util.UIUtil;
 
 public class WaveProgressView extends View {
+
+    private static final String TAG = "WaveProgressView";
     private int width;
     private int height;
 
+    private Bitmap bmp;
+    private Bitmap bmp2;
     private Bitmap backgroundBitmap;
+    private Bitmap scaleBitmap;
+
+    private Canvas canvas2;
 
     private Path mPath;
     private Paint mPathPaint;
+    private Paint mBoxPaint;
 
     private float mWaveHeight = 10f;
     private float mWaveWidth = 60f;
@@ -37,9 +48,11 @@ public class WaveProgressView extends View {
     private float currentMidY;
 
     private float distance = 0;
-    private int RefreshGap = 10;
+    private int RefreshGap = 30;
 
     private static final int INVALIDATE = 0X777;
+
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -65,10 +78,10 @@ public class WaveProgressView extends View {
     }
 
     private void init() {
-        if(null==getResources().getDrawable(R.drawable.lf_pk_wave_full)){
+        if(null==getResources().getDrawable(R.drawable.lfcontainer_pk_wave_full)){
             throw new IllegalArgumentException(String.format("background is null."));
         }else{
-            backgroundBitmap = getBitmapFromDrawable(getResources().getDrawable(R.drawable.lf_pk_wave_full));
+            backgroundBitmap = getBitmapFromDrawable(getResources().getDrawable(R.drawable.lfcontainer_pk_wave_full));
         }
 
         mPath = new Path();
@@ -76,57 +89,78 @@ public class WaveProgressView extends View {
         mPathPaint.setAntiAlias(true);
         mPathPaint.setStyle(Paint.Style.FILL);
 
-        handler.sendEmptyMessageDelayed(INVALIDATE,100);
+        //handler.sendEmptyMessageDelayed(INVALIDATE,100);
+
+        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+    }
+
+    public void startWaveProgress(boolean isPK) {
+        if (isPK) {
+            handler.sendEmptyMessage(INVALIDATE);
+        }
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        width = View.MeasureSpec.getSize(widthMeasureSpec);
+        width = MeasureSpec.getSize(widthMeasureSpec);
         currentY = height = MeasureSpec.getSize(heightMeasureSpec);
+        Log.i(TAG, "width= " + width + " height= " + height);
+        Log.i(TAG, "dpWidth= " + UIUtil.dip2px(getContext(), 53) + " dpHeight= " + UIUtil.dip2px(getContext(), 62));
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if(backgroundBitmap!=null){
-            canvas.drawBitmap(createImage(), 0, 0, null);
+        if(backgroundBitmap != null && !backgroundBitmap.isRecycled()){
+            canvas.drawBitmap(createImage(), 0, 0, mPathPaint);
+
+            scaleBitmap = Bitmap.createScaledBitmap(backgroundBitmap,width ,height,false);
+            canvas2.drawBitmap(scaleBitmap,0,0,mBoxPaint);
+            mBoxPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+            canvas.drawBitmap(bmp2, 0, 0, mBoxPaint);
         }
     }
 
     private Bitmap createImage() {
         mPathPaint.setColor(Color.parseColor(mWaveColor));
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        Bitmap bmp = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
+        mBoxPaint = new Paint();
+        mBoxPaint.setAntiAlias(true);
+        try {
+            bmp = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
+            bmp2 = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
 
-        Canvas canvas = new Canvas(bmp);
+            Canvas canvas = new Canvas(bmp);
+            canvas2 = new Canvas(bmp2);
 
-        currentMidY = height*(maxProgress-currentProgress)/maxProgress;
-        if(currentY > currentMidY){
-            currentY = currentY - (currentY-currentMidY)/10;
+            currentMidY = height*(maxProgress-currentProgress)/maxProgress;
+            if(currentY > currentMidY){
+                currentY = currentY - (currentY-currentMidY)/10;
+            }
+            mPath.reset();
+            mPath.moveTo(0-distance,currentY);
+            int waveNum = width/((int)mWaveWidth);
+            int num = 0;
+            for(int i =0;i<waveNum;i++){
+                mPath.quadTo(mWaveWidth*(num+1)-distance,currentY-mWaveHeight,mWaveWidth*(num+2)-distance,currentY);
+                mPath.quadTo(mWaveWidth*(num+3)-distance,currentY+mWaveHeight,mWaveWidth*(num+4)-distance,currentY);
+                num+=4;
+            }
+            distance +=mWaveWidth/mWaveSpeed;
+            distance = distance%(mWaveWidth*4);
+            mPath.lineTo(width,height);
+            mPath.lineTo(0,height);
+            mPath.close();
+            canvas.drawPath(mPath, mPathPaint);
+            //scaleBitmap = Bitmap.createScaledBitmap(backgroundBitmap,width ,height,false);
+            //
+            //mBoxPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+            //
+            //canvas2.drawBitmap(scaleBitmap,0,0,mBoxPaint);
+
+        } catch (OutOfMemoryError error) {
+            error.printStackTrace();
         }
-        mPath.reset();
-        mPath.moveTo(0-distance,currentY);
-        int waveNum = width/((int)mWaveWidth);
-        int num = 0;
-        for(int i =0;i<waveNum;i++){
-            mPath.quadTo(mWaveWidth*(num+1)-distance,currentY-mWaveHeight,mWaveWidth*(num+2)-distance,currentY);
-            mPath.quadTo(mWaveWidth*(num+3)-distance,currentY+mWaveHeight,mWaveWidth*(num+4)-distance,currentY);
-            num+=4;
-        }
-        distance +=mWaveWidth/mWaveSpeed;
-        distance = distance%(mWaveWidth*4);
-        mPath.lineTo(width,height);
-        mPath.lineTo(0,height);
-        mPath.close();
-        canvas.drawPath(mPath, mPathPaint);
-        int min = Math.max(width,height);
-        backgroundBitmap = Bitmap.createScaledBitmap(backgroundBitmap,width,height,false);
-
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-
-        canvas.drawBitmap(backgroundBitmap,0,0,paint);
         return bmp;
     }
 
@@ -152,6 +186,7 @@ public class WaveProgressView extends View {
     public void setProgress(int currentProgress) {
         this.currentProgress = currentProgress;
     }
+
     public void setWaveColor(String mWaveColor){
         this.mWaveColor = mWaveColor;
     }
@@ -161,7 +196,22 @@ public class WaveProgressView extends View {
     }
 
     public void release() {
-        handler.removeCallbacksAndMessages(null);
+        if (handler != null) {
+            handler.removeCallbacksAndMessages(null);
+        }
+        if (backgroundBitmap != null && !backgroundBitmap.isRecycled()) {
+            backgroundBitmap.recycle();
+            backgroundBitmap = null;
+        }
+        if (scaleBitmap != null && !scaleBitmap.isRecycled()) {
+            scaleBitmap.recycle();
+            scaleBitmap = null;
+        }
+        if (bmp != null && !bmp.isRecycled()) {
+            bmp.recycle();
+            bmp = null;
+        }
+        //        System.gc();
     }
 
 }

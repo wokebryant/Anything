@@ -79,7 +79,8 @@ public class VoiceLiveCommonDialog extends Dialog implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setCanceledOnTouchOutside(true);
+        setCanceledOnTouchOutside(false);
+        setCancelable(false);
         setContentView(R.layout.lf_dialog_voicelive_common);
         setDialogWindow(this);
         initView();

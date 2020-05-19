@@ -44,6 +44,15 @@
         <item name="android:windowExitAnimation">@anim/lf_notice_top_out</item>
     </style>
 
+    <style name="RingProgressLoading">
+        <item name="android:indeterminateDrawable">@drawable/lf_rotate_ring_dialog</item>
+        <item name="android:indeterminateDuration">1500</item>
+        <item name="android:minWidth">18dp</item>
+        <item name="android:maxWidth">18dp</item>
+        <item name="android:minHeight">18dp</item>
+        <item name="android:maxHeight">18dp</item>
+    </style>
+
 
 
 </resources>

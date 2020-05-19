@@ -1,7 +1,6 @@
 package com.wokebryant.anythingdemo.activity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
@@ -9,12 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -24,8 +19,6 @@ import com.wokebryant.anythingdemo.Demo.MulitTypeRV.bean.BannerBean;
 import com.wokebryant.anythingdemo.Demo.MulitTypeRV.bean.ContentBean;
 import com.wokebryant.anythingdemo.Demo.MulitTypeRV.decorate.Visitable;
 import com.wokebryant.anythingdemo.R;
-import com.wokebryant.anythingdemo.dialog.AttentionExitDialog;
-import com.wokebryant.anythingdemo.dialog.AttentionGuideDialog;
 import com.wokebryant.anythingdemo.dialog.VoiceLiveChiefPanel;
 import com.wokebryant.anythingdemo.dialog.VoiceLiveCommonDialog;
 import com.wokebryant.anythingdemo.dialog.VoiceLiveFinishDialog;
@@ -37,9 +30,6 @@ import com.wokebryant.anythingdemo.view.WaveProgressView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -124,14 +114,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.testBtn:
                 //mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
-//                mWaveProgressView.setProgress(100);
-                showChiefPanel();
+                mWaveProgressView.startWaveProgress(true);
+                mWaveProgressView.setProgress(50);
+//                showChiefPanel();
 //                showFinishDialog();
 
                 break;
             case R.id.testBtn2:
-//                showCommonDialog();
-                showPlacardDialog();
+                showCommonDialog();
+//                showPlacardDialog();
 //                showProgressRing();
             default:
         }
