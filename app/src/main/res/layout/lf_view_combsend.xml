@@ -22,10 +22,11 @@
             android:layout_marginLeft="20dp"
             android:visibility="visible"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/comb_send_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/lf_bg_combsend_state_btn"/>
 
     </FrameLayout>
 

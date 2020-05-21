@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 
 import com.wokebryant.anythingdemo.R;
 
@@ -15,7 +16,7 @@ public class CombSendView extends FrameLayout implements View.OnTouchListener {
 
     //private FrameLayout mCombFloatingView;
     private CombFloatingView mCombFloatingView;
-    private Button mCombSendBtn;
+    private ImageButton mCombSendBtn;
 
     public CombSendView(Context context) {
         super(context);
