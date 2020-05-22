@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
-        android:id="@+id/comb_floating_view"
+    <ImageView
+        android:id="@+id/comb_loading_view"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:visibility="visible"
+        android:src="@drawable/lf_publish_loading"/>
+
+    <ImageButton
+        android:id="@+id/comb_send_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:background="@drawable/lf_bg_combsend_state_btn"/>
+
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ProgressBar
-            style="@style/RingProgressLoading"
-            android:id="@+id/comb_loading_view"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginLeft="20dp"
-            android:visibility="visible"/>
-
-        <ImageButton
-            android:id="@+id/comb_send_btn"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@drawable/lf_bg_combsend_state_btn"/>
-
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="连送"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
 
 </FrameLayout>

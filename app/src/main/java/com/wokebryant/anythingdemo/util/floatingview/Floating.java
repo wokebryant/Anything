@@ -38,6 +38,8 @@ public class Floating {
 
     private ViewGroup mFloatingDecorView;
 
+    private YumFloating yumFloating;
+
     public Floating(Context context){
 
 //        if (activity == null){
@@ -100,8 +102,15 @@ public class Floating {
         mFloatingDecorView.addView(targetView,lp);
         
         FloatingTransition floatingAnimator = floatingElement.floatingTransition;
-        floatingAnimator.applyFloating(new YumFloating(targetView));
-        
+        yumFloating = new YumFloating(targetView);
+        floatingAnimator.applyFloating(yumFloating);
+    }
+
+    public void stopFloating() {
+        if (yumFloating != null && yumFloating.getTargetView() != null) {
+            yumFloating.getTargetView().clearAnimation();
+            yumFloating.clear();
+        }
     }
 
     public static class FloatingDecorView extends FrameLayout {

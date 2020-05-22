@@ -1,5 +1,9 @@
 package com.wokebryant.anythingdemo.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
@@ -8,7 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -25,11 +31,15 @@ import com.wokebryant.anythingdemo.dialog.VoiceLiveFinishDialog;
 import com.wokebryant.anythingdemo.dialog.VoiceLivePlacardDialog;
 import com.wokebryant.anythingdemo.mapper.TestData;
 import com.wokebryant.anythingdemo.util.UIUtil;
+import com.wokebryant.anythingdemo.view.CombSendView;
 import com.wokebryant.anythingdemo.view.ProgressSendView;
 import com.wokebryant.anythingdemo.view.WaveProgressView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -37,7 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int MAX_PROGRESS = 100;
     private int mCurrentProgress = 0;
     private WaveProgressView mWaveProgressView;
-    private Button mButton,mButton2;
+    private CombSendView mCombSendView;
+    private Button mButton,mButton2,mButton3,mButton4;
 
     private VoiceLiveChiefPanel mChiefPanel;
     private VoiceLiveCommonDialog mCommonDialog;
@@ -87,12 +98,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
         mWaveProgressView = findViewById(R.id.waveProgressView);
+        mCombSendView = findViewById(R.id.comSendView);
         mProgressView = findViewById(R.id.testProgress);
         mRecycleView = findViewById(R.id.recycleView);
         mButton = findViewById(R.id.testBtn);
         mButton2 = findViewById(R.id.testBtn2);
+        mButton3 = findViewById(R.id.testBtn3);
+        mButton4 = findViewById(R.id.testBtn4);
         mButton.setOnClickListener(this);
         mButton2.setOnClickListener(this);
+        mButton3.setOnClickListener(this);
+        mButton4.setOnClickListener(this);
+
+        mCombSendView.setOnCombSendListener(onCombSendListener);
+        mButton3.setOnTouchListener(onTouchListener);
 
         setLayoutParams();
     }
@@ -124,6 +143,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 showCommonDialog();
 //                showPlacardDialog();
 //                showProgressRing();
+            case R.id.testBtn3:
+                //doCombSend();
+                break;
             default:
         }
     }
@@ -168,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         commonDialog2.show();
-        commonDialog2.setCancelBtnVisible(View.GONE);
+        commonDialog2.setCancelBtnVisible(GONE);
     }
 
     private void showFinishDialog() {
@@ -189,6 +211,70 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mProgressView.resetAndStartProgress("0");
         }
     }
+
+    private void doCombSend() {
+        mCombSendView.reset();
+        PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat("scaleX", 1f, 0f);
+        PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat("scaleY", 1f, 0f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mButton3, scaleX, scaleY);
+        objectAnimator.setInterpolator(new AccelerateInterpolator());
+        objectAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mCombSendView.setVisibility(VISIBLE);
+                PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat("alpha", 0, 1f);
+                ObjectAnimator.ofPropertyValuesHolder(mCombSendView, alpha).setDuration(100).start();
+            }
+        });
+        objectAnimator.setDuration(100).start();
+    }
+
+    private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    doCombSend();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    mCombSendView.touchUp();
+                    break;
+                default:
+            }
+            return true;
+        }
+    };
+
+    private CombSendView.OnCombSendListener onCombSendListener = new CombSendView.OnCombSendListener() {
+        @Override
+        public void onCombSend() {
+
+        }
+
+        @Override
+        public void onCombSendEnd() {
+            PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat("alpha", 1f, 0f);
+            ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mCombSendView, alpha);
+            objectAnimator.setInterpolator(new AccelerateInterpolator());
+            objectAnimator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    mCombSendView.setVisibility(GONE);
+                    PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat("scaleX", 0, 1f);
+                    PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat("scaleY", 0, 1f);
+                    ObjectAnimator objectAnimator1 = ObjectAnimator.ofPropertyValuesHolder(mButton3, scaleX, scaleY);
+                    objectAnimator1.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+
+                        }
+                    });
+                    objectAnimator1.setDuration(100).start();
+                }
+            });
+            objectAnimator.setDuration(100).start();
+        }
+    };
 
     private void mockRecycleViewData() {
         //  模拟本地数据

@@ -58,4 +58,38 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    <Button
+        android:id="@+id/testBtn3"
+        android:layout_width="58dp"
+        android:layout_height="32dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="赠送"
+        android:background="#3da8f5"/>
+
+    <com.wokebryant.anythingdemo.view.CombSendView
+        android:id="@+id/comSendView"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@+id/testBtn4"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+    </com.wokebryant.anythingdemo.view.CombSendView>
+
+    <Button
+        android:id="@+id/testBtn4"
+        android:layout_width="58dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="40dp"
+        android:layout_toLeftOf="@+id/testBtn3"
+        android:layout_alignParentBottom="true"
+        android:text="数量"
+        android:textColor="#FFFFFF"
+        android:background="#ec7259"/>
+
 </RelativeLayout>
