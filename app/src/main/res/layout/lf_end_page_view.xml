@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:background="#333037"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="24dp"
+        android:textSize="16dp"
+        android:textColor="#FFFFFF"
+        tools:text="直播已结束"/>
+
+    <TextView
+        android:id="@+id/end_page_nick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="7dp"
+        android:textColor="#B3CCCCCC"
+        android:textSize="11dp"
+        tools:text="雪梨有点甜"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="-4dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:background="@drawable/lf_bg_end_page_card"
+            android:orientation="vertical"
+            tools:layout_width="350dp"
+            tools:layout_height="140dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:layout_marginLeft="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:textColor="#CCCCCC"
+                    tools:text="15:00-16:00时段，观看数超过了"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:textColor="#03aaec"
+                    tools:text="67%"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:textColor="#CCCCCC"
+                    tools:text="同级别主播"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="13dp"
+                android:background="#1AF5F5F5"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/end_page_coins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:textColor="#FFFFFF"
+                        tools:text="934.6W"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textSize="11dp"
+                        android:textColor="#80FFFFFF"
+                        tools:text="星币数"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/end_page_watch_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:textColor="#FFFFFF"
+                        tools:text="9999W"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textSize="11dp"
+                        android:textColor="#80FFFFFF"
+                        tools:text="观看数"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/end_page_popularity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:textColor="#FFFFFF"
+                        tools:text="9235"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textSize="11dp"
+                        android:textColor="#80FFFFFF"
+                        tools:text="人气值"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="17dp">
+
+            <ImageView
+                android:id="@+id/end_page_avatar"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                tools:background="@color/colorAccent"/>
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="43dp"
+                android:layout_gravity="center_horizontal"
+                tools:background="@color/colorPrimary"/>
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal">
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/end_page_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:background="@color/design_default_color_primary"/>
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/end_page_replay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            tools:background="@color/design_default_color_primary"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/lf_bg_end_page_recommend">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="14.4dp"
+                tools:background="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.6dp"
+                android:textSize="14dp"
+                android:textColor="#222222"
+                tools:text="TA的短视频"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="18dp"
+            tools:visibility="gone">
+
+            <com.wokebryant.anythingdemo.view.EndShortVideoView
+                android:id="@+id/end_page_shortVideo_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_width="165dp"
+                tools:layout_height="170dp"
+                tools:background="@color/colorAccent">
+
+            </com.wokebryant.anythingdemo.view.EndShortVideoView>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <com.wokebryant.anythingdemo.view.EndShortVideoView
+                android:id="@+id/end_page_shortVideo_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_width="165dp"
+                tools:layout_height="170dp"
+                tools:background="@color/colorAccent">
+
+            </com.wokebryant.anythingdemo.view.EndShortVideoView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="17.6dp"
+                android:layout_height="11.7dp"
+                tools:background="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.6dp"
+                android:textSize="14dp"
+                android:textColor="#222222"
+                tools:text="精彩直播推荐"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="18dp">
+
+            <com.wokebryant.anythingdemo.view.EndRecommendView
+                android:id="@+id/end_page_recommend_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_width="165dp"
+                tools:layout_height="170dp"
+                tools:background="@color/colorAccent">
+
+            </com.wokebryant.anythingdemo.view.EndRecommendView>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <com.wokebryant.anythingdemo.view.EndRecommendView
+                android:id="@+id/end_page_recommend_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_width="165dp"
+                tools:layout_height="170dp"
+                tools:background="@color/colorAccent">
+
+            </com.wokebryant.anythingdemo.view.EndRecommendView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

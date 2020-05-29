@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="165dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/lf_bg_end_page_item"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/end_short_video_cover"
+        android:layout_width="match_parent"
+        android:layout_height="93dp"
+        tools:background="@color/colorAccent"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/end_short_video_cover"
+        android:layout_marginBottom="6dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/end_short_video_tag"
+            android:layout_width="10.3dp"
+            android:layout_height="9.1dp"
+            android:layout_marginLeft="9dp"
+            android:layout_gravity="center_vertical"
+            tools:background="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/end_short_video_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2.7dp"
+            android:textSize="10dp"
+            android:textColor="#FFFFFF"
+            tools:text="12.1万"/>
+
+        <ImageView
+            android:id="@+id/end_short_video_tag2"
+            android:layout_width="10.3dp"
+            android:layout_height="9.7dp"
+            android:layout_marginLeft="7.9dp"
+            android:layout_gravity="center_vertical"
+            tools:background="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/end_short_video_num2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2.8dp"
+            android:textSize="10dp"
+            android:textColor="#FFFFFF"
+            tools:text="1.2万"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/end_short_video_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="8dp"
+        android:layout_alignBottom="@+id/end_short_video_cover"
+        android:layout_alignParentRight="true"
+        android:textSize="10dp"
+        android:textColor="#FFFFFF"
+        tools:text="01:29"/>
+
+    <TextView
+        android:id="@+id/end_short_video_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_below="@+id/end_short_video_cover"
+        android:textColor="#222222"
+        android:textSize="13dp"
+        tools:text="流泪猫猫头揭面，李玉龙老师猜对啦"/>
+
+    <TextView
+        android:id="@+id/end_short_video_time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/end_short_video_title"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="9dp"
+        android:textColor="#999999"
+        android:textSize="10dp"
+        tools:text="3小时前"/>
+
+    <ImageView
+        android:id="@+id/end_short_video_more"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="9dp"
+        android:layout_below="@+id/end_short_video_title"
+        android:layout_alignParentRight="true"
+        tools:background="@color/colorPrimaryDark"/>
+
+</RelativeLayout>

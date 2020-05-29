@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,21 +10,22 @@
         android:layout_width="53dp"
         android:layout_height="62dp"
         android:src="@drawable/lf_pk_wave_empty"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 
     <com.wokebryant.anythingdemo.view.WaveProgressView
         android:id="@+id/waveProgressView"
         android:layout_width="53dp"
         android:layout_height="62dp"
         android:layout_centerInParent="true"
+        android:visibility="gone"
         tools:background="@drawable/lf_pk_wave_full" />
-
-
 
     <ImageView
         android:layout_width="39dp"
         android:layout_height="45dp"
         android:src="@drawable/lf_gold_box_close"
+        android:visibility="gone"
         android:layout_centerInParent="true"/>
 
     <Button
@@ -32,7 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/waveProgressView"
         android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/testBtn2"
@@ -40,14 +43,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/testBtn"
         android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 
     <com.wokebryant.anythingdemo.view.ProgressSendView
         android:id="@+id/testProgress"
         android:layout_above="@+id/waveProgressView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:visibility="gone">
 
     </com.wokebryant.anythingdemo.view.ProgressSendView>
 
@@ -69,8 +74,17 @@
         android:text="赠送"
         android:background="#3da8f5"/>
 
+    <com.wokebryant.anythingdemo.view.CombWaveView
+        android:id="@+id/combWaveView"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginRight="-2dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true" />
+
     <com.wokebryant.anythingdemo.view.CombSendView
-        android:id="@+id/comSendView"
+        android:id="@+id/combSendView"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginBottom="20dp"
@@ -91,5 +105,14 @@
         android:text="数量"
         android:textColor="#FFFFFF"
         android:background="#ec7259"/>
+
+    <View
+        android:id="@+id/point"
+        android:layout_above="@+id/combSendView"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="50dp"
+        android:layout_width="1dp"
+        android:layout_height="1dp"/>
 
 </RelativeLayout>

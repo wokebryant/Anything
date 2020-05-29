@@ -20,14 +20,17 @@ import com.wokebryant.anythingdemo.R;
 
 import java.lang.ref.WeakReference;
 
-public class CombSendView extends FrameLayout implements View.OnTouchListener {
+public class CombSendView extends FrameLayout {
 
     private static final String TAG = "CombSendView";
     private static final int STOP_COMB_SEND = 1;
-    private static final int INTERVAL = 2500;
+    private static final int INTERVAL = 5000; //松手后圆环旋转的时间
+
+    private int mCombNum = 0;
 
     private Context mContext;
 
+    private Button mCombSendBtn;
     private ImageView mRotateView;
     private Animation mRotateAnim;
 
@@ -67,37 +70,46 @@ public class CombSendView extends FrameLayout implements View.OnTouchListener {
         mContext = getContext();
 
         View.inflate(mContext, R.layout.lf_view_combsend, this);
+        mCombSendBtn = findViewById(R.id.comb_send_btn);
         mRotateView = findViewById(R.id.comb_loading_view);
         mRotateAnim = AnimationUtils.loadAnimation(mContext, R.anim.lf_anim_combsend_progress);
         mRotateAnim.setInterpolator(new LinearInterpolator());
+
+        mCombSendBtn.setOnTouchListener(mOnTouchListener);
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                touchDown();
-                break;
-            case MotionEvent.ACTION_UP:
-                touchUp();
-                break;
-            default:
+    private OnTouchListener mOnTouchListener = new OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    touchDown();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    touchUp();
+                    break;
+                default:
+            }
+            return false;
         }
-        return true;
-    }
+    };
+
 
     /** 按下去重置参数**/
     private void touchDown() {
         if (weakHandler != null) {
             weakHandler.removeMessages(STOP_COMB_SEND);
         }
+        onCombSendListener.onTouchDown();
     }
 
     /** 抬起来开始连送**/
     public void touchUp() {
         if (weakHandler != null && onCombSendListener != null) {
             weakHandler.sendEmptyMessageDelayed(STOP_COMB_SEND, INTERVAL);
-            onCombSendListener.onCombSend();
+            mCombNum ++;
+            onCombSendListener.onCombSend(mCombNum);
+            onCombSendListener.onTouchUp();
             startRotateAnim();
         }
     }
@@ -105,6 +117,8 @@ public class CombSendView extends FrameLayout implements View.OnTouchListener {
     private void stopCombSend() {
         if (weakHandler != null && onCombSendListener != null) {
             onCombSendListener.onCombSendEnd();
+            mCombNum = 0;
+            reset();
         }
     }
 
@@ -131,9 +145,13 @@ public class CombSendView extends FrameLayout implements View.OnTouchListener {
     }
 
     public interface OnCombSendListener {
-        void onCombSend();
+        void onCombSend(int combNum);
 
         void onCombSendEnd();
+
+        void onTouchUp();
+
+        void onTouchDown();
     }
 
     public void setOnCombSendListener(OnCombSendListener listener) {

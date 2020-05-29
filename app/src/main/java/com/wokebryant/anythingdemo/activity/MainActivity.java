@@ -5,6 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +16,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -30,8 +33,12 @@ import com.wokebryant.anythingdemo.dialog.VoiceLiveCommonDialog;
 import com.wokebryant.anythingdemo.dialog.VoiceLiveFinishDialog;
 import com.wokebryant.anythingdemo.dialog.VoiceLivePlacardDialog;
 import com.wokebryant.anythingdemo.mapper.TestData;
+import com.wokebryant.anythingdemo.util.BomShot.ParticleSystem;
 import com.wokebryant.anythingdemo.util.UIUtil;
+import com.wokebryant.anythingdemo.util.floatingview.Floating;
+import com.wokebryant.anythingdemo.view.CombFloatingView;
 import com.wokebryant.anythingdemo.view.CombSendView;
+import com.wokebryant.anythingdemo.view.CombWaveView;
 import com.wokebryant.anythingdemo.view.ProgressSendView;
 import com.wokebryant.anythingdemo.view.WaveProgressView;
 
@@ -46,8 +53,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int UPDATE_PROGRESS = 1;
     private static final int MAX_PROGRESS = 100;
     private int mCurrentProgress = 0;
+    private RelativeLayout mRootView;
     private WaveProgressView mWaveProgressView;
+    private View mPonit;
     private CombSendView mCombSendView;
+    private CombWaveView mCombWaveView;
+    private CombFloatingView mCombFloatingView;
+    private Floating mFloating;
     private Button mButton,mButton2,mButton3,mButton4;
 
     private VoiceLiveChiefPanel mChiefPanel;
@@ -97,14 +109,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
+        mRootView = findViewById(R.id.rootView);
         mWaveProgressView = findViewById(R.id.waveProgressView);
-        mCombSendView = findViewById(R.id.comSendView);
+        mPonit = findViewById(R.id.point);
+        mCombSendView = findViewById(R.id.combSendView);
+        mCombWaveView = findViewById(R.id.combWaveView);
+        mCombFloatingView = new CombFloatingView(MainActivity.this);
         mProgressView = findViewById(R.id.testProgress);
         mRecycleView = findViewById(R.id.recycleView);
         mButton = findViewById(R.id.testBtn);
         mButton2 = findViewById(R.id.testBtn2);
         mButton3 = findViewById(R.id.testBtn3);
         mButton4 = findViewById(R.id.testBtn4);
+        mFloating = new Floating(MainActivity.this);
+        mFloating.setFloatingDecorView(mRootView);
         mButton.setOnClickListener(this);
         mButton2.setOnClickListener(this);
         mButton3.setOnClickListener(this);
@@ -114,6 +132,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButton3.setOnTouchListener(onTouchListener);
 
         setLayoutParams();
+        setWaveViewStyle();
+        setFloatingViewParams();
+
+        mRootView.addView(mCombFloatingView);
     }
 
     private void initData() {
@@ -212,23 +234,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void doCombSend() {
-        mCombSendView.reset();
-        PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat("scaleX", 1f, 0f);
-        PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat("scaleY", 1f, 0f);
-        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mButton3, scaleX, scaleY);
-        objectAnimator.setInterpolator(new AccelerateInterpolator());
-        objectAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                mCombSendView.setVisibility(VISIBLE);
-                PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat("alpha", 0, 1f);
-                ObjectAnimator.ofPropertyValuesHolder(mCombSendView, alpha).setDuration(100).start();
-            }
-        });
-        objectAnimator.setDuration(100).start();
-    }
-
     private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -245,14 +250,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
+    private void doCombSend() {
+        mCombSendView.reset();
+        //mCombFloatingView.cancelAnim();
+        PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat("scaleX", 1f, 0f);
+        PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat("scaleY", 1f, 0f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mButton3, scaleX, scaleY);
+        objectAnimator.setInterpolator(new AccelerateInterpolator());
+        objectAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mCombSendView.setVisibility(VISIBLE);
+                PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat("alpha", 0, 1f);
+                ObjectAnimator.ofPropertyValuesHolder(mCombSendView, alpha).setDuration(100).start();
+            }
+        });
+        objectAnimator.setDuration(100).start();
+        mButton3.setVisibility(View.INVISIBLE);
+    }
+
     private CombSendView.OnCombSendListener onCombSendListener = new CombSendView.OnCombSendListener() {
         @Override
-        public void onCombSend() {
-
+        public void onCombSend(int combNum) {
+            if (mCombFloatingView != null) {
+                mCombFloatingView.startFloatingAnim(combNum);
+            }
         }
 
         @Override
         public void onCombSendEnd() {
+            if (mCombFloatingView != null) {
+                mCombFloatingView.removeSelf();
+            }
             PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat("alpha", 1f, 0f);
             ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mCombSendView, alpha);
             objectAnimator.setInterpolator(new AccelerateInterpolator());
@@ -273,8 +302,74 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
             objectAnimator.setDuration(100).start();
+            mButton3.setVisibility(VISIBLE);
+        }
+
+        @Override
+        public void onTouchUp() {
+            if (mCombWaveView != null) {
+                mCombWaveView.stop();
+            }
+        }
+
+        @Override
+        public void onTouchDown() {
+            if (mCombWaveView != null) {
+                mCombWaveView.start();
+            }
+            startBomShot();
+
         }
     };
+
+    private void setWaveViewStyle() {
+        if (mCombWaveView != null) {
+            mCombWaveView.setColor(Color.parseColor("#860dab"));
+            mCombWaveView.setStyle(Paint.Style.STROKE);
+            mCombWaveView.setInitialRadius(UIUtil.dip2px(MainActivity.this, 36));
+            mCombWaveView.setMaxRadius(UIUtil.dip2px(MainActivity.this, 55));
+            mCombWaveView.setInterpolator(new AccelerateInterpolator(1.0f));
+            mCombWaveView.setPaintWidth(UIUtil.dip2px(MainActivity.this, 3.0f));
+            mCombWaveView.setDuration(600);
+            mCombWaveView.setSpeed(200);
+        }
+    }
+
+    private void setFloatingViewParams() {
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        params.setMargins(0, 0, 0, UIUtil.dip2px(MainActivity.this, 100));
+        mCombFloatingView.setLayoutParams(params);
+        mCombFloatingView.bringToFront();
+    }
+
+    private void startBomShot() {
+        ParticleSystem ps = new ParticleSystem(this, 1, R.drawable.lf_combsend_heart, 1000);
+        ps.setScaleRange(0.5f, 0.7f);
+        ps.setSpeedModuleAndAngleRange(0.2f, 0.5f, 0, 360);
+        ps.setRotationSpeedRange(90, 180);
+        //ps.setAcceleration(0.00013f, 90);
+        ps.setFadeOut(400, new AccelerateInterpolator());
+        ps.oneShot(mPonit, 1);
+
+        ParticleSystem ps1 = new ParticleSystem(this, 1, R.drawable.lf_combsend_laugh, 1000);
+        ps1.setScaleRange(0.5f, 0.7f);
+        ps1.setSpeedModuleAndAngleRange(0.2f, 0.5f, 0, 360);
+        ps1.setRotationSpeedRange(90, 180);
+        //ps1.setAcceleration(0.00013f, 90);
+        ps1.setFadeOut(400, new AccelerateInterpolator());
+        ps1.oneShot(mPonit, 1);
+
+        ParticleSystem ps2 = new ParticleSystem(this, 1, R.drawable.lf_combsend_like, 1000);
+        ps2.setScaleRange(0.5f, 0.7f);
+        ps2.setSpeedModuleAndAngleRange(0.2f, 0.5f, 0, 360);
+        ps2.setRotationSpeedRange(90, 180);
+        //ps2.setAcceleration(0.00013f, 90);
+        ps2.setFadeOut(400, new AccelerateInterpolator());
+        ps2.oneShot(mPonit, 1);
+        //ps.emit(arg0, 100, 100);
+    }
 
     private void mockRecycleViewData() {
         //  模拟本地数据
