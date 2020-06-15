@@ -9,9 +9,11 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
@@ -32,6 +34,8 @@ public class CombFloatingView extends LinearLayout{
     private static final int SUPER_RICH_NUM = 60;   //豪气
 
     private static final int DISMISS_FLOATING = 0x11;
+    private boolean isChangeState;
+    private boolean isChangeStateEnd = true;
 
     private ValueAnimator mTextScaleAnimator;
     private ValueAnimator mNumScaleAnimator;
@@ -98,15 +102,18 @@ public class CombFloatingView extends LinearLayout{
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                weakHandler.sendEmptyMessageDelayed(DISMISS_FLOATING, 300);
+                if (isChangeState) {
+                    setStateChangeType();
+                }
+                weakHandler.sendEmptyMessageDelayed(DISMISS_FLOATING, 4500);
             }
         });
     }
 
     private void setNumScaleType() {
-        mNumScaleAnimator = ObjectAnimator.ofFloat(0.9f, 1.1f);
+        mNumScaleAnimator = ObjectAnimator.ofFloat(1.2f, 0.9f);
         mNumScaleAnimator.setDuration(150);
-        mNumScaleAnimator.setInterpolator(new LinearInterpolator());
+        mNumScaleAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         mNumScaleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -114,6 +121,27 @@ public class CombFloatingView extends LinearLayout{
                 mCombNumView.setScaleY((Float)animation.getAnimatedValue());
             }
         });
+    }
+
+    private void setStateChangeType() {
+        ValueAnimator changeAnimator = ObjectAnimator.ofFloat(2.0f, 0.8f, 1f);
+        changeAnimator.setDuration(300);
+        changeAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        changeAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mCombEffectView.setScaleX((Float)animation.getAnimatedValue());
+                mCombEffectView.setScaleY((Float)animation.getAnimatedValue());
+            }
+        });
+        changeAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                isChangeStateEnd = true;
+            }
+        });
+        changeAnimator.start();
     }
 
     private void setDismissStyleType() {
@@ -216,6 +244,10 @@ public class CombFloatingView extends LinearLayout{
     }
 
     public void startFloatingAnim(int combNum) {
+        Log.i("changeState", " state= " + isChangeState + " end= " + isChangeStateEnd);
+        if (isChangeState && !isChangeStateEnd) {
+            return;
+        }
         if (weakHandler != null && mCombNumView != null && mCombEffectView != null
                 && mNumScaleAnimator != null && mTextScaleAnimator != null) {
             weakHandler.removeMessages(DISMISS_FLOATING);
@@ -230,12 +262,15 @@ public class CombFloatingView extends LinearLayout{
 
     private void setFloatingParams(int combNum) {
         if (combNum == GENERAL_RICH_NUM + 1 || combNum == MEDIUM_RICH_NUM + 1 || combNum == SUPER_RICH_NUM + 1) {
-            mTextScaleAnimator.setFloatValues(1.1f, 1.7f, 1.1f);
-            mTextScaleAnimator.setDuration(600);
+            isChangeStateEnd = false;
+            isChangeState = true;
+            mTextScaleAnimator.setFloatValues(0f, 2.0f);
+            mTextScaleAnimator.setDuration(300);
             mTextScaleAnimator.setInterpolator(new DecelerateInterpolator(1.0f));
         } else {
-
-            mTextScaleAnimator.setFloatValues(0.9f, 1.1f);
+            isChangeStateEnd = false;
+            isChangeState = false;
+            mTextScaleAnimator.setFloatValues(1.0f, 1.4f, 1.0f);
             mTextScaleAnimator.setDuration(150);
             mTextScaleAnimator.setInterpolator(new LinearInterpolator());
         }

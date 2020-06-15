@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
@@ -14,11 +15,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -35,15 +41,22 @@ import com.wokebryant.anythingdemo.dialog.VoiceLivePlacardDialog;
 import com.wokebryant.anythingdemo.mapper.TestData;
 import com.wokebryant.anythingdemo.util.BomShot.ParticleSystem;
 import com.wokebryant.anythingdemo.util.UIUtil;
+import com.wokebryant.anythingdemo.util.VibrateUtil;
 import com.wokebryant.anythingdemo.util.floatingview.Floating;
+import com.wokebryant.anythingdemo.util.floatingview.FloatingBuilder;
+import com.wokebryant.anythingdemo.util.floatingview.FloatingElement;
+import com.wokebryant.anythingdemo.util.floatingview.effect.CombSendFloatingTransition;
 import com.wokebryant.anythingdemo.view.CombFloatingView;
 import com.wokebryant.anythingdemo.view.CombSendView;
 import com.wokebryant.anythingdemo.view.CombWaveView;
+import com.wokebryant.anythingdemo.view.CombGiftView;
 import com.wokebryant.anythingdemo.view.ProgressSendView;
 import com.wokebryant.anythingdemo.view.WaveProgressView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -135,8 +148,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setWaveViewStyle();
         setFloatingViewParams();
 
-        mRootView.addView(mCombFloatingView);
+        //ViewParent parent = mRootView.getParent();
+        //if (parent != null && parent instanceof ViewGroup) {
+        //    ((ViewGroup)parent).addView(mCombFloatingView);
+        //}
+
     }
+
 
     private void initData() {
         mockRecycleViewData();
@@ -162,12 +180,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.testBtn2:
-                showCommonDialog();
+                //showCommonDialog();
 //                showPlacardDialog();
 //                showProgressRing();
+                Map<String, String> map = new HashMap<>();
+                map.put("top", "279.750000");
+                map.put("left", "24");
+                map.put("bottom", "1345.250000");
+                map.put("right", "24");
+
+                int y = 0;
+                if (map.containsKey("bottom")) {
+                    y = Double.valueOf(map.get("bottom")).intValue();
+                }
+
+                String a = UIUtil.formatNum("10436366", false);
+                Log.i("Value= ", "bottom= " + a);
+                //if (this.getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+                //    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                //}
             case R.id.testBtn3:
                 //doCombSend();
                 break;
+            case R.id.testBtn4:
+                if (this.getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+                    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                }
             default:
         }
     }
@@ -275,6 +313,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (mCombFloatingView != null) {
                 mCombFloatingView.startFloatingAnim(combNum);
             }
+            if (mCombWaveView != null) {
+                mCombWaveView.start();
+            }
+
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startBomShot();
+                    startBomShot();
+                    startGiftIconFloating();
+                }
+            }, 100);
+            //startBomShot();
+            //startGiftIconFloating();
+
+            VibrateUtil.vSimple(MainActivity.this, 50);
         }
 
         @Override
@@ -314,34 +368,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onTouchDown() {
-            if (mCombWaveView != null) {
-                mCombWaveView.start();
-            }
-            startBomShot();
-
+            //if (mCombWaveView != null) {
+            //    mCombWaveView.start();
+            //}
+            //startBomShot();
+            //startGiftIconFloating();
         }
     };
 
     private void setWaveViewStyle() {
         if (mCombWaveView != null) {
-            mCombWaveView.setColor(Color.parseColor("#860dab"));
+            mCombWaveView.setColor(Color.parseColor("#66860dab"));
             mCombWaveView.setStyle(Paint.Style.STROKE);
-            mCombWaveView.setInitialRadius(UIUtil.dip2px(MainActivity.this, 36));
-            mCombWaveView.setMaxRadius(UIUtil.dip2px(MainActivity.this, 55));
+            mCombWaveView.setInitialRadius(UIUtil.dip2px(MainActivity.this, 37));
+            mCombWaveView.setMaxRadius(UIUtil.dip2px(MainActivity.this, 54));
             mCombWaveView.setInterpolator(new AccelerateInterpolator(1.0f));
             mCombWaveView.setPaintWidth(UIUtil.dip2px(MainActivity.this, 3.0f));
-            mCombWaveView.setDuration(600);
-            mCombWaveView.setSpeed(200);
+            mCombWaveView.setDuration(450);
+            mCombWaveView.setSpeed(150);
         }
     }
 
     private void setFloatingViewParams() {
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        params.setMargins(0, 0, 0, UIUtil.dip2px(MainActivity.this, 100));
+        FrameLayout decorView = (FrameLayout)this.getWindow().getDecorView();
+
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        //params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        //params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        //params.setMargins(0, 0, 0, UIUtil.dip2px(MainActivity.this, 100));
         mCombFloatingView.setLayoutParams(params);
         mCombFloatingView.bringToFront();
+
+        decorView.addView(mCombFloatingView);
     }
 
     private void startBomShot() {
@@ -369,6 +427,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ps2.setFadeOut(400, new AccelerateInterpolator());
         ps2.oneShot(mPonit, 1);
         //ps.emit(arg0, 100, 100);
+    }
+
+    private void startGiftIconFloating() {
+        CombGiftView floatingView = new CombGiftView(MainActivity.this);
+
+        FloatingElement floatingElement = new FloatingBuilder()
+            .anchorView(mPonit)
+            .targetView(floatingView)
+            .floatingTransition(new CombSendFloatingTransition(MainActivity.this))
+            .build();
+
+        mFloating.startFloating(floatingElement);
+
+        //Animation animation = AnimationUtils.loadAnimation(this, R.anim.dago_pgc_gift_item_selected_anim);
+        //floatingView.startAnimation(animation);
+
     }
 
     private void mockRecycleViewData() {

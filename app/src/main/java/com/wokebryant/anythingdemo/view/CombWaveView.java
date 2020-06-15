@@ -154,7 +154,7 @@ public class CombWaveView extends View {
 
         int getAlpha() {
             float percent = (getCurrentRadius() - mInitialRadius) / (mMaxRadius - mInitialRadius);
-            return (int) (255 - mInterpolator.getInterpolation(percent) * 255);
+            return (int) (255 - mInterpolator.getInterpolation(5 * percent) * 255);
         }
 
         float getCurrentRadius() {

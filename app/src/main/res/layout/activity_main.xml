@@ -44,7 +44,7 @@
         android:layout_below="@+id/testBtn"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <com.wokebryant.anythingdemo.view.ProgressSendView
         android:id="@+id/testProgress"
@@ -65,53 +65,55 @@
 
     <Button
         android:id="@+id/testBtn3"
-        android:layout_width="58dp"
+        android:layout_width="66dp"
         android:layout_height="32dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="14dp"
         android:layout_marginBottom="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="赠送"
-        android:background="#3da8f5"/>
+        android:background="#3da8f5"
+        tools:visibility="visible"/>
 
     <com.wokebryant.anythingdemo.view.CombWaveView
         android:id="@+id/combWaveView"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginBottom="2dp"
-        android:layout_marginRight="-2dp"
+        android:layout_marginRight="-3dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true" />
 
-    <com.wokebryant.anythingdemo.view.CombSendView
-        android:id="@+id/combSendView"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="20dp"
-        android:layout_toRightOf="@+id/testBtn4"
-        android:layout_alignParentBottom="true"
-        android:visibility="gone"
-        tools:visibility="visible">
-
-    </com.wokebryant.anythingdemo.view.CombSendView>
-
     <Button
         android:id="@+id/testBtn4"
-        android:layout_width="58dp"
+        android:layout_width="66dp"
         android:layout_height="32dp"
         android:layout_marginBottom="40dp"
         android:layout_toLeftOf="@+id/testBtn3"
         android:layout_alignParentBottom="true"
         android:text="数量"
         android:textColor="#FFFFFF"
-        android:background="#ec7259"/>
+        android:background="#ec7259"
+        android:stateListAnimator="@null"/>
+
+    <com.wokebryant.anythingdemo.view.CombSendView
+        android:id="@+id/combSendView"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignRight="@+id/testBtn3"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+    </com.wokebryant.anythingdemo.view.CombSendView>
 
     <View
         android:id="@+id/point"
         android:layout_above="@+id/combSendView"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginBottom="70dp"
         android:layout_width="1dp"
         android:layout_height="1dp"/>
 
