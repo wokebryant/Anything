@@ -54,5 +54,4 @@ public abstract  class BaseFloatingPathTransition  implements FloatingPathTransi
     }
     
     
-    
 }

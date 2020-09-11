@@ -438,6 +438,12 @@ public class ParticleSystem {
 		return setFadeOut(duration, new LinearInterpolator());
 	}
 
+	public ParticleSystem setFadeOut(float startAlpha, long milisecondsBeforeEnd, Interpolator interpolator) {
+		int alpha = Math.round(255 * startAlpha);
+		mModifiers.add(new AlphaModifier(alpha, 0, mTimeToLive-milisecondsBeforeEnd, mTimeToLive, interpolator));
+		return this;
+	}
+
 	/**
 	 * Starts emitting particles from a specific view. If at some point the number goes over the amount of particles availabe on create
 	 * no new particles will be created

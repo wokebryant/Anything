@@ -1,7 +1,13 @@
 package com.wokebryant.anythingdemo.util;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -104,4 +110,28 @@ public class UIUtil {
         }
         return sb.toString();
     }
+
+    public static Drawable zoomImage(Context context, int resId, int w, int h){
+        Resources res = context.getResources();
+        Bitmap oldBmp = BitmapFactory.decodeResource(res, resId);
+        Bitmap newBmp = Bitmap.createScaledBitmap(oldBmp,w, h, true);
+        Drawable drawable = new BitmapDrawable(res, newBmp);
+        return drawable;
+    }
+
+    public static void getMemoryInfo(ActivityManager activityManager) {
+        if (activityManager != null) {
+            //最大分配内存
+            int memory = activityManager.getMemoryClass();
+            //最大分配内存获取方法2
+            float maxMemory = (float) (Runtime.getRuntime().maxMemory() * 1.0/ (1024 * 1024));
+            //当前分配的总内存
+            float totalMemory = (float) (Runtime.getRuntime().totalMemory() * 1.0/ (1024 * 1024));
+            //剩余内存
+            float freeMemory = (float) (Runtime.getRuntime().freeMemory() * 1.0/ (1024 * 1024));
+
+            Log.i("内存信息 ", "memory: " + maxMemory + "m" + " realMemory: " + totalMemory + "m" + " freeMemory " + freeMemory + "m");
+        }
+    }
+
 }

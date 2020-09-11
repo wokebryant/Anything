@@ -18,8 +18,7 @@
         android:layout_width="53dp"
         android:layout_height="62dp"
         android:layout_centerInParent="true"
-        android:visibility="gone"
-        tools:background="@drawable/lf_pk_wave_full" />
+        android:visibility="visible" />
 
     <ImageView
         android:layout_width="39dp"
@@ -35,7 +34,7 @@
         android:layout_below="@+id/waveProgressView"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <Button
         android:id="@+id/testBtn2"
@@ -95,6 +94,15 @@
         android:textColor="#FFFFFF"
         android:background="#ec7259"
         android:stateListAnimator="@null"/>
+
+    <View
+        android:id="@+id/point2"
+        android:layout_above="@+id/combSendView"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="-10dp"
+        android:layout_width="1dp"
+        android:layout_height="1dp"/>
 
     <com.wokebryant.anythingdemo.view.CombSendView
         android:id="@+id/combSendView"

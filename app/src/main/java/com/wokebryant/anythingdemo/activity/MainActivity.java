@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -53,10 +54,12 @@ import com.wokebryant.anythingdemo.view.CombGiftView;
 import com.wokebryant.anythingdemo.view.ProgressSendView;
 import com.wokebryant.anythingdemo.view.WaveProgressView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -68,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int mCurrentProgress = 0;
     private RelativeLayout mRootView;
     private WaveProgressView mWaveProgressView;
-    private View mPonit;
+    private View mPonit, mPoint2;
     private CombSendView mCombSendView;
     private CombWaveView mCombWaveView;
     private CombFloatingView mCombFloatingView;
@@ -125,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mRootView = findViewById(R.id.rootView);
         mWaveProgressView = findViewById(R.id.waveProgressView);
         mPonit = findViewById(R.id.point);
+        mPoint2 = findViewById(R.id.point2);
         mCombSendView = findViewById(R.id.combSendView);
         mCombWaveView = findViewById(R.id.combWaveView);
         mCombFloatingView = new CombFloatingView(MainActivity.this);
@@ -195,7 +199,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 String a = UIUtil.formatNum("10436366", false);
-                Log.i("Value= ", "bottom= " + a);
+
+                DecimalFormat df = new DecimalFormat("#0.00");
+                double ratio = (double)7 / 8;
+                String combRatio = df.format(ratio);
+                Log.i("Value= ", "bottom= " + a + " ratio= " + combRatio);
                 //if (this.getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                 //    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                 //}
@@ -321,7 +329,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void run() {
                     startBomShot();
-                    startBomShot();
+                    //startBomShot();
                     startGiftIconFloating();
                 }
             }, 100);
@@ -364,6 +372,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (mCombWaveView != null) {
                 mCombWaveView.stop();
             }
+
+            ActivityManager activityManager = (ActivityManager)getSystemService(ACTIVITY_SERVICE);
+            UIUtil.getMemoryInfo(activityManager);
         }
 
         @Override
@@ -403,30 +414,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void startBomShot() {
-        ParticleSystem ps = new ParticleSystem(this, 1, R.drawable.lf_combsend_heart, 1000);
-        ps.setScaleRange(0.5f, 0.7f);
-        ps.setSpeedModuleAndAngleRange(0.2f, 0.5f, 0, 360);
+        ParticleSystem heartPs = createBomShot(R.drawable.lf_combsend_heart, 200, 200, 500);
+        ParticleSystem laughPs = createBomShot(R.drawable.lf_combsend_laugh, 200, 200, 500);
+        ParticleSystem likePs = createBomShot(R.drawable.lf_combsend_like, 200, 200, 550);
+
+        if (heartPs != null) {
+            heartPs.oneShot(mPoint2, 2);
+        }
+
+        if (laughPs != null) {
+            laughPs.oneShot(mPoint2, 2);
+        }
+
+        if (likePs != null) {
+            likePs.oneShot(mPoint2, 2);
+        }
+    }
+
+    private ParticleSystem createBomShot(int resId, int width, int height, int liveTime) {
+        ParticleSystem ps = new ParticleSystem(this, 2,
+            UIUtil.zoomImage(this, resId, width, height), liveTime);
+        ps.setScaleRange(0.4f, 0.7f);
+        ps.setSpeedModuleAndAngleRange(0.7f, 1.0f, -100, -150);
         ps.setRotationSpeedRange(90, 180);
-        //ps.setAcceleration(0.00013f, 90);
-        ps.setFadeOut(400, new AccelerateInterpolator());
-        ps.oneShot(mPonit, 1);
+        ps.setAcceleration(0.003f, 80);
+        ps.setFadeOut(getRandomAlpha(), 400, new AccelerateInterpolator());
+        return ps;
+    }
 
-        ParticleSystem ps1 = new ParticleSystem(this, 1, R.drawable.lf_combsend_laugh, 1000);
-        ps1.setScaleRange(0.5f, 0.7f);
-        ps1.setSpeedModuleAndAngleRange(0.2f, 0.5f, 0, 360);
-        ps1.setRotationSpeedRange(90, 180);
-        //ps1.setAcceleration(0.00013f, 90);
-        ps1.setFadeOut(400, new AccelerateInterpolator());
-        ps1.oneShot(mPonit, 1);
-
-        ParticleSystem ps2 = new ParticleSystem(this, 1, R.drawable.lf_combsend_like, 1000);
-        ps2.setScaleRange(0.5f, 0.7f);
-        ps2.setSpeedModuleAndAngleRange(0.2f, 0.5f, 0, 360);
-        ps2.setRotationSpeedRange(90, 180);
-        //ps2.setAcceleration(0.00013f, 90);
-        ps2.setFadeOut(400, new AccelerateInterpolator());
-        ps2.oneShot(mPonit, 1);
-        //ps.emit(arg0, 100, 100);
+    private float getRandomAlpha() {
+        Random random = new Random();
+        return (0.4f) * random.nextFloat() + 0.4f;
     }
 
     private void startGiftIconFloating() {
