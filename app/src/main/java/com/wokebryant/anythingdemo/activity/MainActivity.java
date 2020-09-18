@@ -190,6 +190,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.testBtn2:
+                showChiefPanel();
                 //showCommonDialog();
 //                showPlacardDialog();
 //                showProgressRing();
@@ -283,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void gotoSettingActivity() {
-        SettingActivity.launch(MainActivity.this, false);
+        SettingActivity.launch(MainActivity.this, true);
     }
 
     private void showProgressRing() {

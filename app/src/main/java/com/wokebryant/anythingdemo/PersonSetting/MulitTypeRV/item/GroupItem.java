@@ -32,6 +32,6 @@ public class GroupItem extends BaseSettingItem<GroupItem> {
 
     @Override
     public String getItemSubType() {
-        return null;
+        return groupName;
     }
 }

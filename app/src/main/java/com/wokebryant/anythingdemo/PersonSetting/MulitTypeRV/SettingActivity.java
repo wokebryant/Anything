@@ -85,6 +85,7 @@ public class SettingActivity extends Activity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mMultiAdapter = new MultiAdapter(getAllItemData(), isSelfPage);
         mMultiAdapter.setOnItemClickListener(onItemClickListener);
+        mSettingRv.setLayoutManager(layoutManager);
         mSettingRv.setAdapter(mMultiAdapter);
     }
 
@@ -144,6 +145,7 @@ public class SettingActivity extends Activity {
             CommonItem drinkItem = getCommonItem(SettingConstant.person_setting_whether_drink, "否");
             CommonItem liveTogether = getCommonItem(SettingConstant.person_setting_cohabitation_before_marriage, "不接受");
 
+            mDataList.add(baseInfoItem);
             mDataList.add(sexItem);
             mDataList.add(ageItem);
             mDataList.add(constellationItem);
@@ -248,6 +250,8 @@ public class SettingActivity extends Activity {
             } else if (SettingConstant.person_setting_whether_drink.equals(subType)) {
                 showToast(subType);
             } else if (SettingConstant.person_setting_cohabitation_before_marriage.equals(subType)) {
+                showToast(subType);
+            } else if (SettingConstant.person_setting_chat_toll_notice.equals(subType)) {
                 showToast(subType);
             }
 

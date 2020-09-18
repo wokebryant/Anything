@@ -37,7 +37,7 @@
         android:src="@drawable/lf_icon_list_arrow"
         android:layout_gravity="center_vertical|right"/>
 
-    <view
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_gravity="bottom"
