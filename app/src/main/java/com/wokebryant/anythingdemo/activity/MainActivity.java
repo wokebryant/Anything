@@ -11,7 +11,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,20 +22,17 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.wokebryant.anythingdemo.Audio.SoundRecorderFragment;
 import com.wokebryant.anythingdemo.Constant;
-import com.wokebryant.anythingdemo.Demo.MulitTypeRV.adapter.MulitAdpter;
-import com.wokebryant.anythingdemo.Demo.MulitTypeRV.bean.BannerBean;
-import com.wokebryant.anythingdemo.Demo.MulitTypeRV.bean.ContentBean;
-import com.wokebryant.anythingdemo.Demo.MulitTypeRV.decorate.Visitable;
+import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.SettingActivity;
+import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.adapter.MultiAdapter;
+import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.BaseSettingItem;
 import com.wokebryant.anythingdemo.R;
 import com.wokebryant.anythingdemo.dialog.VoiceLiveChiefPanel;
 import com.wokebryant.anythingdemo.dialog.VoiceLiveCommonDialog;
@@ -70,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int MAX_PROGRESS = 100;
     private int mCurrentProgress = 0;
     private RelativeLayout mRootView;
+    private FrameLayout mFragmentContainer;
+    private SoundRecorderFragment mRecorderFragment;
     private WaveProgressView mWaveProgressView;
     private View mPonit, mPoint2;
     private CombSendView mCombSendView;
@@ -84,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private VoiceLiveFinishDialog mLiveFinishDialog;
 
     private ProgressSendView mProgressView;
-    private RecyclerView mRecycleView;
 
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
@@ -104,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
                         //mWaveProgressView.release();
                     }
+                    break;
+                default:
                     break;
             }
         }
@@ -126,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
         mRootView = findViewById(R.id.rootView);
+        mFragmentContainer = findViewById(R.id.fragment_container);
         mWaveProgressView = findViewById(R.id.waveProgressView);
         mPonit = findViewById(R.id.point);
         mPoint2 = findViewById(R.id.point2);
@@ -133,7 +136,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCombWaveView = findViewById(R.id.combWaveView);
         mCombFloatingView = new CombFloatingView(MainActivity.this);
         mProgressView = findViewById(R.id.testProgress);
-        mRecycleView = findViewById(R.id.recycleView);
         mButton = findViewById(R.id.testBtn);
         mButton2 = findViewById(R.id.testBtn2);
         mButton3 = findViewById(R.id.testBtn3);
@@ -159,9 +161,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
-    private void initData() {
-        mockRecycleViewData();
+    private void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = this.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     private void setLayoutParams() {
@@ -177,10 +181,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.testBtn:
                 //mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
-                mWaveProgressView.startWaveProgress(true);
-                mWaveProgressView.setProgress(50);
+                //mWaveProgressView.startWaveProgress(true);
+                //mWaveProgressView.setProgress(50);
 //                showChiefPanel();
 //                showFinishDialog();
+
+                gotoSettingActivity();
 
                 break;
             case R.id.testBtn2:
@@ -214,7 +220,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (this.getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
                     this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 }
+                break;
             default:
+                break;
         }
     }
 
@@ -272,6 +280,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         placardDialog.setIsThief(false);
         placardDialog.setPlacardContent("勒布朗", Constant.lakersChampion, Constant.lakersChampion);
         placardDialog.show();
+    }
+
+    private void gotoSettingActivity() {
+        SettingActivity.launch(MainActivity.this, false);
     }
 
     private void showProgressRing() {
@@ -461,33 +473,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Animation animation = AnimationUtils.loadAnimation(this, R.anim.dago_pgc_gift_item_selected_anim);
         //floatingView.startAnimation(animation);
 
-    }
-
-    private void mockRecycleViewData() {
-        //  模拟本地数据
-        List<Visitable> beans = new ArrayList<>();
-        beans.add(new BannerBean(
-                "www.baidu.com"));
-        beans.add(new ContentBean());
-        beans.add(new BannerBean(
-                "www.jd.com"));
-        beans.add(new BannerBean(
-                "www.baidu.com"));
-        beans.add(new ContentBean());
-        beans.add(new BannerBean(
-                "www.qq.com"));
-        beans.add(new ContentBean());
-        beans.add(new BannerBean(
-                "www.sina.com"));
-        beans.add(new ContentBean());
-        beans.add(new BannerBean(
-                "www.taobao.com"));
-        beans.add(new ContentBean());
-        MulitAdpter multiRecyclerAdapter = new MulitAdpter(beans);
-        LinearLayoutManager linearLayoutManager =
-                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mRecycleView.setLayoutManager(linearLayoutManager);
-        mRecycleView.setAdapter(multiRecyclerAdapter);
     }
 
 }

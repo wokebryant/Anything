@@ -34,6 +34,7 @@
         android:layout_below="@+id/waveProgressView"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
+        android:text="跳转设置页面"
         android:visibility="visible"/>
 
     <Button
@@ -55,12 +56,6 @@
 
     </com.wokebryant.anythingdemo.view.ProgressSendView>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycleView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </android.support.v7.widget.RecyclerView>
 
     <Button
         android:id="@+id/testBtn3"
@@ -124,5 +119,12 @@
         android:layout_marginBottom="70dp"
         android:layout_width="1dp"
         android:layout_height="1dp"/>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
 </RelativeLayout>

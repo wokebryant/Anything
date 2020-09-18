@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/person_setting_common_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        tools:text="昵称"/>
+
+    <TextView
+        android:id="@+id/person_setting_common_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="40dp"
+        tools:text="你吼那么大声干嘛"/>
+
+    <ImageView
+        android:id="@+id/person_setting_common_tag"
+        android:layout_width="30dp"
+        android:layout_height="15dp"
+        android:layout_marginRight="40dp"
+        android:layout_gravity="center_vertical|right"
+        android:visibility="gone"
+        android:src="@color/colorPrimary"/>
+
+    <ImageView
+        android:id="@+id/person_setting_common_arrow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/lf_icon_list_arrow"
+        android:layout_gravity="center_vertical|right"/>
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorPrimary"/>
+
+</FrameLayout>
