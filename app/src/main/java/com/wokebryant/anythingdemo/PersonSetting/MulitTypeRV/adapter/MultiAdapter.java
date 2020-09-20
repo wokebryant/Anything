@@ -20,12 +20,12 @@ import java.util.List;
 public class MultiAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
   private TypeFactory typeFactory;
-  private List<BaseSettingItem> mItems;
+  private List<? extends BaseSettingItem> mItems;
   private OnItemClickListener mOnItemClickListener;
   private boolean isSelfPage;
 
 
-  public MultiAdapter(List<BaseSettingItem> mData, boolean isSelfPage) {
+  public MultiAdapter(List<? extends BaseSettingItem> mData, boolean isSelfPage) {
     typeFactory = new ItemTypeFactory();
     mItems = mData;
     this.isSelfPage = isSelfPage;
@@ -34,7 +34,7 @@ public class MultiAdapter extends RecyclerView.Adapter<BaseViewHolder> {
   @Override
   public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent,false);
-    return typeFactory.createViewHolder(viewType, isSelfPage, view);
+    return typeFactory.createViewHolder(parent.getContext(), viewType, isSelfPage, view);
   }
 
   @Override
@@ -42,7 +42,7 @@ public class MultiAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        mOnItemClickListener.onItemClick(mItems.get(position).getItemSubType());
+        mOnItemClickListener.onItemClick(mItems.get(position).getItemSubType(), position);
       }
     });
     holder.bindViewData(mItems.get(position));
@@ -64,6 +64,6 @@ public class MultiAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
   public interface OnItemClickListener{
 
-    void onItemClick(String subType);
+    void onItemClick(String subType, int position);
   }
 }

@@ -3,12 +3,13 @@ package com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.decorate.Visitable;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.factory.TypeFactory;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * @author wb-lj589732
  */
-public class CommonItem extends BaseSettingItem<CommonItem> {
+public class CommonItem extends BaseSettingItem<CommonItem> implements Serializable {
 
     public String subject;
     public String desc;

@@ -3,9 +3,10 @@ package com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.decorate.Visitable;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.factory.TypeFactory;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class TagItem extends BaseSettingItem<TagItem> {
+public class TagItem extends BaseSettingItem<TagItem> implements Serializable {
 
     public String tagUrl;
     public String desc;

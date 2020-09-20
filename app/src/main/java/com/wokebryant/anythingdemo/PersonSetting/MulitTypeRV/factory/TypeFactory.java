@@ -1,10 +1,12 @@
 package com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.factory;
 
+import android.content.Context;
 import android.view.View;
 
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.CommonItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.GroupItem;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.AvatarItem;
+import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoItem;
+import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoWallItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.RecorderItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.TagItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder.BaseViewHolder;
@@ -21,13 +23,15 @@ public interface TypeFactory {
 
   int type(CommonItem commonItem);
 
-  int type(AvatarItem headItem);
+  int type(PhotoWallItem headItem);
+
+  int type(PhotoItem photoItem);
 
   int type(TagItem tagItem);
 
   int type(GroupItem groupItem);
 
-  BaseViewHolder createViewHolder(int type, boolean isSelfPage, View itemView);
+  BaseViewHolder createViewHolder(Context context, int type, boolean isSelfPage, View itemView);
 
 }
 

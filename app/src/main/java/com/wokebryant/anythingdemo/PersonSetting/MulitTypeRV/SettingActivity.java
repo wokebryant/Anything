@@ -5,11 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,9 +31,11 @@ import java.util.List;
 /**
  * @author wb-lj589732
  */
-public class SettingActivity extends Activity {
+public class SettingActivity extends AppCompatActivity {
 
+    private PhotoPreviewFragment mPhotoPreviewFragment;
     private SettingItemSelectDialog mSelectDialog;
+    private FrameLayout mFragmentContainer;
     private RecyclerView mSettingRv;
     private ImageView mBackIv;
     private TextView mTitleTv;
@@ -47,6 +53,16 @@ public class SettingActivity extends Activity {
         activity.startActivity(intent);
     }
 
+    public void launchFragment(boolean isAvatar) {
+        if (mPhotoPreviewFragment == null) {
+            mPhotoPreviewFragment = PhotoPreviewFragment.newInstance(isAvatar);
+        }
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.setting_container, mPhotoPreviewFragment);
+        transaction.commitAllowingStateLoss();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +77,7 @@ public class SettingActivity extends Activity {
         mSaveBtn = findViewById(R.id.setting_save_btn);
         mTitleTv = findViewById(R.id.setting_title_tv);
         mSettingRv = findViewById(R.id.setting_content_rv);
+        mFragmentContainer = findViewById(R.id.setting_container);
 
         if (isSelfPage) {
             mSaveBtn.setVisibility(View.VISIBLE);
@@ -89,7 +106,7 @@ public class SettingActivity extends Activity {
         mSettingRv.setAdapter(mMultiAdapter);
     }
 
-    private List<BaseSettingItem> getAllItemData() {
+    private List<? extends BaseSettingItem> getAllItemData() {
         SettingModel model = requestModelData();
         mDataList = new ArrayList<>();
         if (isSelfPage) {
@@ -201,7 +218,7 @@ public class SettingActivity extends Activity {
 
     private MultiAdapter.OnItemClickListener onItemClickListener = new MultiAdapter.OnItemClickListener() {
         @Override
-        public void onItemClick(String subType) {
+        public void onItemClick(String subType, int position) {
             if (!isSelfPage) {
                 return;
             }
