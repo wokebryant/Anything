@@ -16,6 +16,7 @@ import java.util.TimerTask;
 /**
  * 录音Service
  *
+ * @author wb-lj589732
  */
 
 public class SoundRecorderService extends Service {

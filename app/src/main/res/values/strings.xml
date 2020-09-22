@@ -11,35 +11,8 @@
     <string name="person_setting_save">保存</string>
     <string name="person_setting_tip">完善资料，可大大提高被撩的几率哦～</string>
     <string name="person_setting_add_recorder">添加语音</string>
-    <string name="person_setting_account_info">账号信息</string>
-    <string name="person_setting_nick">昵称</string>
-    <string name="person_setting_id">来疯ID</string>
-    <string name="person_setting_real_person_auth">真人认证</string>
-    <string name="person_setting_verified">实名认证</string>>
-    <string name="person_setting_sign">个性签名</string>
-    <string name="person_setting_sign_tip">请添加你的个性签名</string>
-    <string name="person_setting_tag">我的标签</string>
-    <string name="person_setting_base_info">基础资料</string>
-    <string name="person_setting_sex">性别</string>
-    <string name="person_setting_age">年龄</string>
-    <string name="person_setting_constellation">星座</string>
-    <string name="person_setting_height">身高</string>
-    <string name="person_setting_weight">体重</string>
-    <string name="person_setting_local">所在地</string>
-    <string name="person_setting_home">家乡</string>
-    <string name="person_setting_education">学历</string>
-    <string name="person_setting_job">从事职业</string>
-    <string name="person_setting_annual_income">年收入</string>
-    <string name="person_setting_friend_info">交友信息</string>
-    <string name="person_setting_emotional_state">情感状态</string>
-    <string name="person_setting_whether_buy_house">是否购房</string>
-    <string name="person_setting_whether_bug_car">是否购车</string>
-    <string name="person_setting_live_state">居住情况</string>
-    <string name="person_setting_accept_appointment">接受约会</string>
-    <string name="person_setting_whether_smoke">是否抽烟</string>
-    <string name="person_setting_whether_drink">是否喝酒</string>
-    <string name="person_setting_cohabitation_before_marriage">婚前同居</string>
-    <string name="person_setting_friend_set">交友设置</string>
-    <string name="person_setting_chat_toll_notice">聊天收费通知</string>
+    <string name="default_recorder_content">我藏不住秘密,也藏不住忧伤,\n正如我藏不住爱你的喜悦,
+        \n藏不住分离时的彷徨\n我就是这样坦然,你舍得伤,就伤。</string>
+    <string name="recorder_tip">请开始你的表演，演唱或朗读</string>
 
 </resources>

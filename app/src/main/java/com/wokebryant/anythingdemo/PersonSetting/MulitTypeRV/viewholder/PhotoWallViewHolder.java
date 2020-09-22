@@ -13,6 +13,10 @@ import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.adapter.MultiAdapte
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoWallItem;
 import com.wokebryant.anythingdemo.R;
 
+/**
+ * @author wb-lj589732
+ * 照片墙
+ */
 public class PhotoWallViewHolder extends BaseViewHolder<PhotoWallItem> {
 
     private LinearLayout tipView;
@@ -31,7 +35,7 @@ public class PhotoWallViewHolder extends BaseViewHolder<PhotoWallItem> {
     }
 
     @Override
-    public void bindViewData(PhotoWallItem item) {
+    public void bindViewData(PhotoWallItem item,  int position) {
         if (item != null) {
             progressView.setText(item.progress);
             bindPhotoWallData(item);
@@ -43,7 +47,7 @@ public class PhotoWallViewHolder extends BaseViewHolder<PhotoWallItem> {
             photoWallAdapter = new MultiAdapter(item.photoList, true);
             GridLayoutManager manager = new GridLayoutManager(context, 4);
             photoWallView.setLayoutManager(manager);
-            photoWallView.addItemDecoration(new GridSpacingItemDecoration(4, 10, false));
+            photoWallView.addItemDecoration(new GridSpacingItemDecoration(4, 15, false));
             photoWallView.setAdapter(photoWallAdapter);
         } else {
             photoWallAdapter.notifyDataSetChanged();
@@ -57,9 +61,9 @@ public class PhotoWallViewHolder extends BaseViewHolder<PhotoWallItem> {
             if (context instanceof SettingActivity) {
                 SettingActivity activity = (SettingActivity) context;
                 if (0 == position) {
-                    activity.launchFragment(true);
+                    activity.launchFragment(true, position);
                 } else {
-                    activity.launchFragment(false);
+                    activity.launchFragment(false, position);
                 }
             }
         }

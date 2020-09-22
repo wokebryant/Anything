@@ -3,7 +3,15 @@ package com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV;
 import com.wokebryant.anythingdemo.R;
 
 
+/**
+ * @author wb-lj589732
+ */
 public class SettingConstant {
+
+    public static final String TEST_RECORDER_URL = "xxx";
+    public static final String FROM_PERSON_SETTING = "from_person_setting";
+    public static final String FROM_PERSON_SETTING_EDIT = "from_person_setting_edit";
+    public static final String FROM_RECORDER_DIALOG = "from_recorder_dialog";
 
     public static final String recorder = "recorder";
     public static final String avatar = "avatar";
@@ -37,42 +45,5 @@ public class SettingConstant {
     public static final String person_setting_cohabitation_before_marriage = "婚前同居";
     public static final String person_setting_friend_set = "交友设置";
     public static final String person_setting_chat_toll_notice = "聊天收费通知";
-
-    public static String[] getSettingFiledArray() {
-        String[] array = new String[]{};
-
-        array[0] = person_setting_account_info;
-        array[1] = R.string.person_setting_nick + "";
-        array[2] = R.string.person_setting_id + "";
-        array[3] = R.string.person_setting_real_person_auth + "";
-        array[4] = R.string.person_setting_verified + "";
-        array[5] = R.string.person_setting_sign + "";
-        array[6] = R.string.person_setting_tag + "";
-        array[7] = R.string.person_setting_base_info + "";
-        array[8] = R.string.person_setting_sex + "";
-        array[9] = R.string.person_setting_age + "";
-        array[10] = R.string.person_setting_constellation + "";
-        array[11] = R.string.person_setting_height + "";
-        array[12] = R.string.person_setting_weight + "";
-        array[13] = R.string.person_setting_local + "";
-        array[14] = R.string.person_setting_home + "";
-        array[15] = R.string.person_setting_education + "";
-        array[16] = R.string.person_setting_job + "";
-        array[17] = R.string.person_setting_annual_income + "";
-        array[18] = R.string.person_setting_friend_info + "";
-        array[19] = R.string.person_setting_emotional_state + "";
-        array[20] = R.string.person_setting_whether_buy_house + "";
-        array[21] = R.string.person_setting_whether_bug_car + "";
-        array[22] = R.string.person_setting_live_state + "";
-        array[23] = R.string.person_setting_accept_appointment + "";
-        array[24] = R.string.person_setting_whether_smoke + "";
-        array[25] = R.string.person_setting_whether_drink + "";
-        array[26] = R.string.person_setting_cohabitation_before_marriage + "";
-        array[27] = R.string.person_setting_friend_set + "";
-        array[28] = R.string.person_setting_chat_toll_notice + "";
-
-        return array;
-    }
-
 
 }

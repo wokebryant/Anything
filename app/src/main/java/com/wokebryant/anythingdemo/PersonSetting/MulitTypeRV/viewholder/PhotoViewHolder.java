@@ -1,0 +1,36 @@
+package com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder;
+
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoItem;
+import com.wokebryant.anythingdemo.R;
+
+/**
+ * @author wb-lj589732
+ * 照片墙item
+ */
+public class PhotoViewHolder extends BaseViewHolder<PhotoItem>{
+
+    private TextView avatarView;
+    private ImageView photoView;
+
+    public PhotoViewHolder(View itemView) {
+        super(itemView);
+        avatarView = itemView.findViewById(R.id.person_setting_avatar);
+        photoView = itemView.findViewById(R.id.person_setting_photo);
+    }
+
+    @Override
+    public void bindViewData(PhotoItem item,  int position) {
+        if (item != null && item.photoUrl != null) {
+            if (position == 0) {
+                avatarView.setVisibility(View.VISIBLE);
+            } else {
+                avatarView.setVisibility(View.GONE);
+            }
+            photoView.setImageResource(R.color.colorPrimary);
+        }
+    }
+}

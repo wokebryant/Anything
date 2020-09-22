@@ -9,6 +9,7 @@ import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoWallItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.RecorderItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.TagItem;
+import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder.PhotoViewHolder;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder.PhotoWallViewHolder;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder.CommonViewHolder;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder.RecorderViewHolder;
@@ -64,11 +65,13 @@ public class ItemTypeFactory implements TypeFactory {
   public BaseViewHolder createViewHolder(Context context, int type, boolean isSelfPage, View itemView) {
     switch (type) {
       case RECORD_ITEM_LAYOUT:
-        return new RecorderViewHolder(itemView);
+        return new RecorderViewHolder(context, itemView);
       case COMMON_ITEM_LAYOUT:
         return new CommonViewHolder(itemView, isSelfPage);
       case PHOTO_WALL_ITEM_LAYOUT:
         return new PhotoWallViewHolder(context, itemView);
+      case PHOTO_ITEM_LAYOUT:
+        return new PhotoViewHolder(itemView);
       case TAG_ITEM_LAYOUT:
         return new TagViewHolder(itemView);
       case GROUP_ITEM_LAYOUT:

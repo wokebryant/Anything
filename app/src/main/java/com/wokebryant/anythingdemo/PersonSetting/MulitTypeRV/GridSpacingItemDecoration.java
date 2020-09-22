@@ -8,6 +8,7 @@ import android.view.View;
 /**
  * 重写RecyclerView.ItemDecoration方法
  * 一个动态设置item个数,间距的工具类
+ * @author wb-lj589732
  */
 public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 

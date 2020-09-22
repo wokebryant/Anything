@@ -6,12 +6,15 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author wb-lj589732
+ */
 public class PhotoItem extends BaseSettingItem<PhotoItem> implements Serializable {
 
-    public List<String> photoWall;
+    public String photoUrl;
 
-    public void setPhotoWall(List<String> photoWall) {
-        this.photoWall = photoWall;
+    public PhotoItem(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     @Override

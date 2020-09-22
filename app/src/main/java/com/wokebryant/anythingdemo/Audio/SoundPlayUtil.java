@@ -14,6 +14,9 @@ import java.util.concurrent.TimeUnit;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * @author wb-lj589732
+ */
 public class SoundPlayUtil {
 
     private Context mContext;
@@ -73,6 +76,9 @@ public class SoundPlayUtil {
 
     public void setPlayUrl(String soundUrl) {
         mSoundUrl = soundUrl;
+        if (mSoundUrl == null) {
+            return;
+        }
         try {
             mSoundPlayer.setDataSource(mSoundUrl);
             mSoundPlayer.prepare();
@@ -121,6 +127,10 @@ public class SoundPlayUtil {
                 stopPlayAnim();
             } else {
                 playSound();
+            }
+
+            if (mSoundUrl == null) {
+                mSoundPlayView.showRecorderDialog();
             }
         }
     }
@@ -176,6 +186,12 @@ public class SoundPlayUtil {
         long seconds = TimeUnit.MILLISECONDS.toSeconds(millSecond)
             - TimeUnit.MINUTES.toSeconds(minutes);
         return String.format("%02d:%02d", minutes,seconds);
+    }
+
+    public void deleteRecorder() {
+        if (mSoundPlayView != null) {
+            mSoundPlayView.deleteView();
+        }
     }
 
     public void release() {

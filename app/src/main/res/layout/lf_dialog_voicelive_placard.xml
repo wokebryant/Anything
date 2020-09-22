@@ -101,7 +101,7 @@
                     android:scrollbars="none"
                     android:background="@drawable/lf_bg_placardedit"
                     android:textCursorDrawable="@drawable/lf_placard_input_cursor_color"
-                    tools:visibility="gone"/>
+                    tools:visibility="visible"/>
 
         </LinearLayout>
 

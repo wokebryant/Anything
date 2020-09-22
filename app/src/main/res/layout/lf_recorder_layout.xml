@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/lf_bg_attention_exit_dialog">
+
+        <ImageView
+            android:id="@+id/recorder_close_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/lf_voicelive_close"/>
+
+        <FrameLayout
+            android:id="@+id/recorder_content_fl"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/lf_bg_placardedit"
+            android:layout_below="@+id/recorder_close_iv">
+
+            <TextView
+                android:id="@+id/recorder_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/default_recorder_content"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/recorder_change_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+            android:text="换一换"
+            android:layout_below="@+id/recorder_content_fl"/>
+
+        <TextView
+            android:id="@+id/recorder_tip_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/recorder_change_content_tv"
+            android:text="@string/recorder_tip"/>
+
+        <ImageView
+            android:id="@+id/recorder_effect_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recorder_change_content_tv"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/recorder_control_iv"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/lf_bg_combsend_state_btn"
+            android:layout_below="@+id/recorder_tip_tv"/>
+
+        <TextView
+            android:id="@+id/recorder_duration_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/recorder_control_iv" />
+
+    </RelativeLayout>
+
+
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="3dp"
+        android:src="@drawable/lf_voicelive_nohead"
+        android:background="@drawable/lf_user_card_bg_round_image" />
+
+</FrameLayout>

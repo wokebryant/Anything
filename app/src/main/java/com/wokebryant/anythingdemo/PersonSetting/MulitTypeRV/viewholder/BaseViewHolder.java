@@ -19,11 +19,6 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder{
         viewList = new SparseArray<>();
     }
 
-    /**
-     * 获取当前item的view
-     * @param resId
-     * @return
-     */
     public View getView(int resId) {
         View view = viewList.get(resId);
         if (view == null){
@@ -33,8 +28,5 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder{
         return view;
     }
 
-    /**
-     *绑定itemview 的数据
-     */
-    public abstract void bindViewData(T data);
+    public abstract void bindViewData(T data, int position);
 }

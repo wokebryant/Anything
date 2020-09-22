@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_width="80dp"
-    tools:layout_height="80dp"
+    android:layout_width="85dp"
+    android:layout_height="85dp"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/person_setting_default"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:src="@drawable/lf_recorder_add"/>
 
     <ImageView
         android:id="@+id/person_setting_photo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        tools:background="@color/colorPrimary"/>
+
 
     <TextView
         android:id="@+id/person_setting_avatar"
@@ -20,7 +27,7 @@
         android:gravity="center"
         android:layout_gravity="right"
         android:textSize="10dp"
-        tools:text="头像"
-        tools:background="@color/design_default_color_primary"/>
+        android:text="头像"
+        android:background="@color/design_default_color_primary"/>
 
 </FrameLayout>

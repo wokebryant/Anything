@@ -13,10 +13,8 @@ import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder.BaseView
 
 
 /**
- * Created by beifeng on 2017/2/17.
- * type 工厂类 用来返回不同的itmetpe
+ * @author wb-lj589732
  */
-
 public interface TypeFactory {
 
   int type(RecorderItem recorderBean);

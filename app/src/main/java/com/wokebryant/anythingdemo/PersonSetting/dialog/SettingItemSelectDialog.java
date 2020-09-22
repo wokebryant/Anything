@@ -1,4 +1,4 @@
-package com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV;
+package com.wokebryant.anythingdemo.PersonSetting.dialog;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialogFragment;
@@ -8,7 +8,7 @@ import android.support.design.widget.BottomSheetDialogFragment;
  * 通用设置页面item选择弹窗
  */
 
-public class SettingItemSelectDialog extends BottomSheetDialogFragment {
+public class SettingItemSelectDialog extends BaseBottomSheetDialog {
 
     public static BottomSheetDialogFragment newInstance(Object o) {
         SettingItemSelectDialog dialog = new SettingItemSelectDialog();

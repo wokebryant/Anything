@@ -29,7 +29,7 @@ public class CommonViewHolder extends BaseViewHolder<CommonItem> {
     }
 
     @Override
-    public void bindViewData(CommonItem data) {
+    public void bindViewData(CommonItem data, int position) {
         mSubView.setText(data.subject);
         mDescView.setText(data.desc);
         if (data.tagUrl != null) {

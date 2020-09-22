@@ -11,8 +11,13 @@ import java.util.Map;
  */
 public class RecorderItem extends BaseSettingItem<RecorderItem> implements Serializable {
 
+    public String recorderUrl;
+    public String recorderDuration;
 
-
+    public RecorderItem(String recorderUrl, String recorderDuration) {
+        this.recorderUrl = recorderUrl;
+        this.recorderDuration = recorderDuration;
+    }
 
     @Override
     public int type(TypeFactory typeFactory) {
@@ -21,7 +26,6 @@ public class RecorderItem extends BaseSettingItem<RecorderItem> implements Seria
 
     @Override
     public RecorderItem parsingItemData(Map map) {
-
         return null;
     }
 

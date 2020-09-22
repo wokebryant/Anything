@@ -13,12 +13,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.wokebryant.anythingdemo.R;
 
+/**
+ * @author wb-lj589732
+ * 照片预览页面
+ */
 public class PhotoPreviewFragment extends Fragment {
 
     private Activity mActivity;
+    private ImageView mBackIv;
+    private ImageView mMoreIv;
+    private ImageView mPreviewIv;
+
     private boolean isAvatarPreview;
 
     @Override
@@ -48,8 +57,32 @@ public class PhotoPreviewFragment extends Fragment {
     }
 
     private void initView(View view) {
+        mBackIv = view.findViewById(R.id.photo_preview_back_iv);
+        mMoreIv = view.findViewById(R.id.photo_preview_more_iv);
+        mPreviewIv = view.findViewById(R.id.photo_preview_pic_iv);
 
+        mBackIv.setOnClickListener(onClickListener);
+        mMoreIv.setOnClickListener(onClickListener);
+        mPreviewIv.setOnClickListener(onClickListener);
     }
+
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.photo_preview_back_iv) {
+                if (mActivity instanceof SettingActivity && !mActivity.isFinishing()) {
+                    ((SettingActivity)mActivity).closePreviewFragment();
+                }
+
+            } else if (v.getId() == R.id.photo_preview_more_iv) {
+
+            }
+        }
+    };
+
+
+
+
 
 
 

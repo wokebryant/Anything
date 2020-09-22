@@ -24,6 +24,9 @@ import com.wokebryant.anythingdemo.R;
 
 import java.io.File;
 
+/**
+ * @author wb-lj589732
+ */
 public class SoundRecorderFragment extends Fragment implements ISoundPlayer{
 
     private static final int REQUEST_RECORD_PERMISSION = 101;
@@ -172,6 +175,16 @@ public class SoundRecorderFragment extends Fragment implements ISoundPlayer{
         if (duration != null) {
             mRecorderTimeTv.setText(duration);
         }
+    }
+
+    @Override
+    public void showRecorderDialog() {
+
+    }
+
+    @Override
+    public void deleteView() {
+
     }
 
     private interface OnRecorderStateChangeListener {

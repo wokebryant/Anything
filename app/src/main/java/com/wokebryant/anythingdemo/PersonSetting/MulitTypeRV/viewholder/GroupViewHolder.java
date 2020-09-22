@@ -11,6 +11,7 @@ import com.wokebryant.anythingdemo.R;
 
 /**
  * @author wb-lj589732
+ * 分组标题
  */
 public class GroupViewHolder extends BaseViewHolder<GroupItem> {
 
@@ -26,7 +27,7 @@ public class GroupViewHolder extends BaseViewHolder<GroupItem> {
   }
 
   @Override
-  public void bindViewData(GroupItem item) {
+  public void bindViewData(GroupItem item, int position) {
     subView.setText(item.groupName);
     if (item.clickable && isSelfPage) {
       arrowView.setVisibility(View.VISIBLE);

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="8dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dynamics_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textColor="#999999"
+        android:textSize="11dp"
+        tools:text="2018-09-13  19:35"/>
+
+    <TextView
+        android:id="@+id/dynamics_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:layout_marginTop="2dp"
+        android:textColor="#333333"
+        android:textSize="14dp"
+        tools:text="夏天真是充满恋爱的季节呢，天天吃狗粮！！"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/dynamics_photo_rv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp">
+
+        <ImageView
+            android:id="@+id/dynamics_share_iv"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/lf_dynamics_share"/>
+
+        <ImageView
+            android:id="@+id/dynamics_comment_iv"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/dynamics_praise_iv"
+            android:layout_marginRight="43dp"
+            android:src="@drawable/lf_dynamics_comment"/>
+
+        <TextView
+            android:id="@+id/dynamics_comment_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:includeFontPadding="false"
+            android:layout_alignLeft="@+id/dynamics_comment_iv"
+            android:layout_marginLeft="20dp"
+            android:textColor="#666666"
+            android:textSize="14dp"
+            tools:text="12"/>
+
+        <ImageView
+            android:id="@+id/dynamics_praise_iv"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_toLeftOf="@+id/dynamics_praise_tv"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp"
+            android:src="@drawable/lf_dynamics_praise"/>
+
+        <TextView
+            android:id="@+id/dynamics_praise_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="#666666"
+            android:textSize="14dp"
+            tools:text="2351"/>
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

@@ -7,6 +7,10 @@ import android.widget.TextView;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.TagItem;
 import com.wokebryant.anythingdemo.R;
 
+/**
+ * @author wb-lj589732
+ * 标签
+ */
 public class TagViewHolder extends BaseViewHolder<TagItem> {
 
     private ImageView tagView;
@@ -19,7 +23,7 @@ public class TagViewHolder extends BaseViewHolder<TagItem> {
     }
 
     @Override
-    public void bindViewData(TagItem data) {
+    public void bindViewData(TagItem data, int position) {
         tagView.setImageResource(R.drawable.lf_combsend_heart);
         descView.setText(data.desc);
     }
