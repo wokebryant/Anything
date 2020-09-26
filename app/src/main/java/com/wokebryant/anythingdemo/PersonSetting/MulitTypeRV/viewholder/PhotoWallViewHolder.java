@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.wokebryant.anythingdemo.PersonSetting.Activity.PersonalSettingActivity;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.GridSpacingItemDecoration;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.SettingActivity;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.adapter.MultiAdapter;
+import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoWallItem;
 import com.wokebryant.anythingdemo.R;
+
+import java.util.List;
 
 /**
  * @author wb-lj589732
@@ -22,9 +25,11 @@ public class PhotoWallViewHolder extends BaseViewHolder<PhotoWallItem> {
     private LinearLayout tipView;
     private TextView progressView;
     private RecyclerView photoWallView;
+    private LinearLayout saveView;
 
     private Context context;
     private MultiAdapter photoWallAdapter;
+    private List<PhotoItem> photoItemList;
 
     public PhotoWallViewHolder(Context context, View itemView) {
         super(itemView);
@@ -32,12 +37,14 @@ public class PhotoWallViewHolder extends BaseViewHolder<PhotoWallItem> {
         tipView = itemView.findViewById(R.id.person_setting_photo_wall_tip);
         progressView = itemView.findViewById(R.id.person_setting_photo_wall_progress);
         photoWallView = itemView.findViewById(R.id.person_setting_photo_wall);
+        saveView = itemView.findViewById(R.id.person_setting_photo_wall_save);
     }
 
     @Override
-    public void bindViewData(PhotoWallItem item,  int position) {
+    public void bindViewData(PhotoWallItem item, int size, int position) {
         if (item != null) {
             progressView.setText(item.progress);
+            photoItemList = item.photoList;
             bindPhotoWallData(item);
         }
     }
@@ -52,19 +59,33 @@ public class PhotoWallViewHolder extends BaseViewHolder<PhotoWallItem> {
         } else {
             photoWallAdapter.notifyDataSetChanged();
         }
+        saveView.setOnClickListener(onClickListener);
         photoWallAdapter.setOnItemClickListener(mOnItemClickListener);
     }
 
     private MultiAdapter.OnItemClickListener mOnItemClickListener = new MultiAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(String subType, int position) {
-            if (context instanceof SettingActivity) {
-                SettingActivity activity = (SettingActivity) context;
-                if (0 == position) {
-                    activity.launchFragment(true, position);
-                } else {
-                    activity.launchFragment(false, position);
+            if (context instanceof PersonalSettingActivity) {
+                PersonalSettingActivity activity = (PersonalSettingActivity) context;
+                if (0 != position) {
+                    activity.launchPhotoActivity(getCurrentPhotoUrl(position), position);
                 }
+            }
+        }
+    };
+
+    private String getCurrentPhotoUrl(int position) {
+        String url = photoItemList.get(position).photoUrl;
+        return url;
+    }
+
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (context instanceof PersonalSettingActivity) {
+                PersonalSettingActivity activity = (PersonalSettingActivity) context;
+                activity.savePhotoSettingData();
             }
         }
     };

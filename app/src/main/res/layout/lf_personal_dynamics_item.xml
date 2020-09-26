@@ -28,6 +28,12 @@
         android:textSize="14dp"
         tools:text="夏天真是充满恋爱的季节呢，天天吃狗粮！！"/>
 
+    <ImageView
+        android:id="@+id/dynamics_single_photo_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/dynamics_photo_rv"
         android:layout_width="wrap_content"

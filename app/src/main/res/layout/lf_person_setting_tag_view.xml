@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tag_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:text="古灵精怪"
+        android:textColor="#333333"
+        android:textSize="12dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_below="@+id/tag_delete_iv"
+        android:layout_marginTop="-12dp"
+        android:background="@drawable/lf_bg_tag"/>
+
+    <ImageView
+        android:id="@+id/tag_delete_iv"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginLeft="-18dp"
+        android:layout_toRightOf="@+id/tag_content_tv"
+        android:src="@drawable/lf_setting_tag_delete"
+        android:visibility="visible"/>
+</RelativeLayout>

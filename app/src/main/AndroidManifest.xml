@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".Application.BaseApplication"
@@ -20,9 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ViewFlipperActivity" />
-        <activity android:name=".PersonSetting.MulitTypeRV.SettingActivity"/>
+        <activity android:name=".PersonSetting.Activity.PersonalSettingActivity"/>
+        <activity android:name=".PersonSetting.Activity.ClipImageActivity"/>
+        <activity android:name=".PersonSetting.Activity.ChatSettingActivity"/>
+        <service android:name=".PersonSetting.Audio.SoundRecorderService"/>
 
-        <service android:name=".Audio.SoundRecorderService"/>
     </application>
 
 </manifest>

@@ -4,14 +4,13 @@
     android:layout_height="60dp"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.wokebryant.anythingdemo.Audio.SoundPlayerView
+    <com.wokebryant.anythingdemo.PersonSetting.Audio.SoundPlayerView
         android:id="@+id/person_setting_recorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp">
+        android:layout_marginTop="20dp">
 
-    </com.wokebryant.anythingdemo.Audio.SoundPlayerView>
+    </com.wokebryant.anythingdemo.PersonSetting.Audio.SoundPlayerView>
 
 
 

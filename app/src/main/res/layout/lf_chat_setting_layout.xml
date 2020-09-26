@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:id="@+id/setting_back_iv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="12dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/lf_setting_back"/>
+
+        <TextView
+            android:id="@+id/setting_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:text="聊天设置"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chat_setting_info"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="35dp">
+
+        <ImageView
+            android:id="@+id/chat_setting_avatar"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:src="@drawable/lf_voicelive_nohead"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/chat_setting_avatar"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/chat_setting_nick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#333333"
+                android:textSize="16dp"
+                tools:text="佳佳"/>
+
+            <TextView
+                android:id="@+id/chat_setting_base_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textSize="14dp"
+                android:textColor="#999999"
+                tools:text="24岁 北京 4km"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lf_setting_arrow"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="21dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/chat_setting_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置聊天置顶"
+                android:textColor="#333333"
+                android:textSize="16dp"/>
+
+            <ImageView
+                android:id="@+id/chat_setting_top_switch"
+                android:layout_width="36dp"
+                android:layout_height="22dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/lf_chat_setting_top_off"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/chat_setting_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置聊天背景"
+                android:textColor="#333333"
+                android:textSize="16dp"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/lf_setting_arrow" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/chat_setting_recording"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清空聊天记录"
+                android:textColor="#333333"
+                android:textSize="16dp"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/lf_setting_arrow" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/chat_setting_pull_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拉黑"
+                android:textColor="#333333"
+                android:textSize="16dp"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/lf_setting_arrow" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/chat_setting_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="举报"
+                android:textColor="#333333"
+                android:textSize="16dp"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/lf_setting_arrow" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

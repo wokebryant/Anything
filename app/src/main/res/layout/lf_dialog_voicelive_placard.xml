@@ -99,7 +99,7 @@
                     android:hint="  禁止输入违规违法文字，请输入与粉丝互动规则，例如：送XXX礼物可连麦…"
                     android:textColorHint="#999999"
                     android:scrollbars="none"
-                    android:background="@drawable/lf_bg_placardedit"
+                    android:background="@drawable/lf_bg_recorder_content"
                     android:textCursorDrawable="@drawable/lf_placard_input_cursor_color"
                     tools:visibility="visible"/>
 

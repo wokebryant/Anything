@@ -27,4 +27,14 @@
         <attr name="pr_show_anim" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="ClipViewLayout">
+        <attr name="clipType" format="enum">
+            <enum name="horizontal" value="1" />
+            <enum name="vertical" value="2" />
+            <enum name="square" value="3" />
+        </attr>
+        <attr name="horizontalPadding" format="dimension" />
+        <attr name="clipBorderWidth" format="dimension" />
+    </declare-styleable>
+
 </resources>

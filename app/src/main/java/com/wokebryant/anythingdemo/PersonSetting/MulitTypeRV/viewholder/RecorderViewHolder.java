@@ -5,11 +5,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wokebryant.anythingdemo.Audio.SoundPlayerView;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.SettingActivity;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.SettingConstant;
+import com.wokebryant.anythingdemo.PersonSetting.Audio.SoundPlayerView;
+import com.wokebryant.anythingdemo.PersonSetting.SettingConstant;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.RecorderItem;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.TagItem;
 import com.wokebryant.anythingdemo.R;
 
 
@@ -32,7 +30,7 @@ public class RecorderViewHolder extends BaseViewHolder<RecorderItem> {
   }
 
   @Override
-  public void bindViewData(RecorderItem item, int position) {
+  public void bindViewData(RecorderItem item,  int size, int position) {
     if (item != null && item.recorderUrl != null) {
       soundPlayerView.setPositionFrom(SettingConstant.FROM_PERSON_SETTING_EDIT);
       soundPlayerView.setPlayUrl(item.recorderUrl);

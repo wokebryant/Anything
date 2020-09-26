@@ -176,7 +176,7 @@
         android:layout_gravity="center_horizontal"
         android:padding="3dp"
         android:src="@drawable/lf_voicelive_nohead"
-        android:background="@drawable/lf_user_card_bg_round_image" />
+        android:background="@drawable/lf_bg_round_image" />
 
 
 </FrameLayout>

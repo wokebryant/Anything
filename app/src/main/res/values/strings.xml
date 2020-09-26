@@ -12,7 +12,23 @@
     <string name="person_setting_tip">完善资料，可大大提高被撩的几率哦～</string>
     <string name="person_setting_add_recorder">添加语音</string>
     <string name="default_recorder_content">我藏不住秘密,也藏不住忧伤,\n正如我藏不住爱你的喜悦,
-        \n藏不住分离时的彷徨\n我就是这样坦然,你舍得伤,就伤。</string>
+        \n藏不住分离时的彷徨\n我就是这样坦然,\n你舍得伤,就伤。</string>
     <string name="recorder_tip">请开始你的表演，演唱或朗读</string>
+    <string name="person_setting_not_certified">未认证</string>>
+    <string name="person_setting_please_add">请添加</string>
+
+    <string name="cancel">取消</string>
+    <string name="title">请选择时间</string>
+    <string name="confirm">确定</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+
+    <string name="select_date">选择日期</string>
+    <string name="current_date">当前日期</string>
+    <string name="select_time">选择时间</string>
+    <string name="current_time">当前时间</string>
 
 </resources>

@@ -27,7 +27,7 @@ public class GroupViewHolder extends BaseViewHolder<GroupItem> {
   }
 
   @Override
-  public void bindViewData(GroupItem item, int position) {
+  public void bindViewData(GroupItem item, int size, int position) {
     subView.setText(item.groupName);
     if (item.clickable && isSelfPage) {
       arrowView.setVisibility(View.VISIBLE);

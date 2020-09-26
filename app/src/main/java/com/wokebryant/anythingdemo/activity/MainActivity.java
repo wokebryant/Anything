@@ -16,8 +16,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,11 +26,8 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.wokebryant.anythingdemo.Audio.SoundRecorderFragment;
 import com.wokebryant.anythingdemo.Constant;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.SettingActivity;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.adapter.MultiAdapter;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.BaseSettingItem;
+import com.wokebryant.anythingdemo.PersonSetting.Activity.PersonalSettingActivity;
 import com.wokebryant.anythingdemo.R;
 import com.wokebryant.anythingdemo.dialog.VoiceLiveChiefPanel;
 import com.wokebryant.anythingdemo.dialog.VoiceLiveCommonDialog;
@@ -54,9 +49,7 @@ import com.wokebryant.anythingdemo.view.ProgressSendView;
 import com.wokebryant.anythingdemo.view.WaveProgressView;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -70,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int mCurrentProgress = 0;
     private RelativeLayout mRootView;
     private FrameLayout mFragmentContainer;
-    private SoundRecorderFragment mRecorderFragment;
     private WaveProgressView mWaveProgressView;
     private View mPonit, mPoint2;
     private CombSendView mCombSendView;
@@ -284,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void gotoSettingActivity() {
-        SettingActivity.launch(MainActivity.this, true);
+        PersonalSettingActivity.launch(MainActivity.this, true);
     }
 
     private void showProgressRing() {
@@ -419,7 +411,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         //params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         //params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        //params.setMargins(0, 0, 0, UIUtil.dip2px(MainActivity.this, 100));
+        //params.setMargins(0, 0, 0, UIUtil.dip2px(DatePickerActivity.this, 100));
         mCombFloatingView.setLayoutParams(params);
         mCombFloatingView.bringToFront();
 

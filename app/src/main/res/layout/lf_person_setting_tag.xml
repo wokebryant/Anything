@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:id="@+id/setting_back_iv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="12dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/lf_setting_back"/>
+
+        <TextView
+            android:id="@+id/setting_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:text="我的标签"/>
+
+        <TextView
+            android:id="@+id/setting_title_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="#222222"
+            android:textSize="16dp"
+            android:text="保存"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/setting_selected_tag_rv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="9dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/lf_bg_tag_separate"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#666666"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="13dp"
+        android:textSize="14dp"
+        android:text="请选择"/>
+
+
+
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/setting_tag_list_view"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:max_select="4">
+
+    </com.zhy.view.flowlayout.TagFlowLayout>
+
+
+
+
+</LinearLayout>

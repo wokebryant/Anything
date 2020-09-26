@@ -7,39 +7,52 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginBottom="14dp"
         android:background="@drawable/lf_bg_attention_exit_dialog">
 
         <ImageView
             android:id="@+id/recorder_close_iv"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/lf_voicelive_close"/>
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="14dp"
+            android:src="@drawable/lf_setting_close_black"/>
+
+        <TextView
+            android:id="@+id/recorder_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#333333"
+            android:textSize="12dp"
+            android:text="为您推荐个人语音签名~快来录音吧！"/>
 
         <FrameLayout
             android:id="@+id/recorder_content_fl"
             android:layout_width="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/lf_bg_placardedit"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/lf_bg_recorder_content"
             android:layout_below="@+id/recorder_close_iv">
 
             <TextView
                 android:id="@+id/recorder_content_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
                 android:layout_gravity="center_vertical"
+                android:lineSpacingExtra="8dp"
+                android:textSize="12dp"
+                android:textColor="#333333"
                 android:text="@string/default_recorder_content"/>
 
         </FrameLayout>
@@ -50,6 +63,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
+            android:drawableLeft="@drawable/lf_setting_refresh"
+            android:drawablePadding="5dp"
+            android:textColor="#FF4D64"
+            android:textSize="12dp"
             android:text="换一换"
             android:layout_below="@+id/recorder_content_fl"/>
 
@@ -57,45 +74,65 @@
             android:id="@+id/recorder_tip_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="23dp"
             android:layout_centerHorizontal="true"
+            android:textSize="12dp"
+            android:textColor="#666666"
             android:layout_below="@+id/recorder_change_content_tv"
-            android:text="@string/recorder_tip"/>
+            android:text="@string/recorder_tip"
+            tools:visibility="gone"/>
 
         <ImageView
             android:id="@+id/recorder_effect_iv"
+            android:layout_width="86dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="14dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/recorder_change_content_tv"
+            android:src="@drawable/lf_setting_recorder_wave"
+            android:visibility="gone"/>
+
+        <com.wokebryant.anythingdemo.PersonSetting.Audio.SoundPlayerView
+            android:id="@+id/recorder_strip_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_below="@+id/recorder_change_content_tv"
-            android:visibility="gone"/>
+            android:layout_marginTop="15dp"
+            android:visibility="gone">
+
+        </com.wokebryant.anythingdemo.PersonSetting.Audio.SoundPlayerView>
 
         <ImageView
             android:id="@+id/recorder_control_iv"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/lf_bg_combsend_state_btn"
-            android:layout_below="@+id/recorder_tip_tv"/>
+            android:src="@drawable/lf_setting_recorder_start"
+            android:layout_below="@+id/recorder_change_content_tv"/>
 
-        <TextView
+        <Chronometer
             android:id="@+id/recorder_duration_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/recorder_control_iv" />
+            android:layout_marginBottom="21dp"
+            android:layout_below="@+id/recorder_control_iv"
+            android:textColor="#666666"
+            android:textSize="12dp"
+            android:text="00:19"
+            android:visibility="invisible"/>
 
     </RelativeLayout>
 
-
-
     <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
         android:layout_gravity="center_horizontal"
-        android:padding="3dp"
-        android:src="@drawable/lf_voicelive_nohead"
-        android:background="@drawable/lf_user_card_bg_round_image" />
+        android:padding="15dp"
+        android:src="@drawable/lf_recorder_voice_icon_purple"
+        android:background="@drawable/lf_bg_round_image" />
 
 </FrameLayout>

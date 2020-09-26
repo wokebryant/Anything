@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/setting_back_iv"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="12dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/lf_setting_back"/>
+
+    <TextView
+        android:id="@+id/setting_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:textSize="18dp"
+        android:textColor="#333333"
+        android:textStyle="bold"
+        android:text="我的资料"/>
+
+    <TextView
+        android:id="@+id/setting_title_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textColor="#222222"
+        android:textSize="16dp"
+        tools:text="保存"/>
+
+</RelativeLayout>

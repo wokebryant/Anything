@@ -12,16 +12,21 @@
         android:layout_height="15dp"
         android:layout_marginLeft="5dp"
         android:layout_centerVertical="true"
-        android:src="@drawable/lf_recorder_speaker_icon"/>
+        android:src="@drawable/lf_recorder_voice_icon_white"/>
 
-    <ImageView
+    <TextView
         android:id="@+id/person_setting_recorder_add"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:layout_marginLeft="3dp"
         android:layout_toRightOf="@+id/person_setting_recorder_icon"
-        android:src="@drawable/lf_recorder_add"
-        tools:visibility="gone"/>
+        android:textSize="12dp"
+        android:text="+"
+        android:textColor="#FFFFFF"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/person_setting_recorder_state"
@@ -32,20 +37,27 @@
         android:textColor="#ffffff"
         android:includeFontPadding="false"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="7dp"
-        tools:text="9s"/>
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="10dp"
+        android:text="9s"/>
 
-    <ImageView
+    <FrameLayout
         android:id="@+id/person_setting_recorder_delete"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginLeft="7dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="-5dp"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/person_setting_recorder_state"
-        android:src="@color/colorPrimaryDark"
-        android:visibility="visible"/>
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:src="@drawable/lf_setting_close_white" />
+
+    </FrameLayout>
 
 
 </RelativeLayout>

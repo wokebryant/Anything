@@ -42,10 +42,12 @@ public class MultiAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        mOnItemClickListener.onItemClick(mItems.get(position).getItemSubType(), position);
+        if (mOnItemClickListener != null) {
+          mOnItemClickListener.onItemClick(mItems.get(position).getItemSubType(), position);
+        }
       }
     });
-    holder.bindViewData(mItems.get(position), position);
+    holder.bindViewData(mItems.get(position), mItems.size(), position);
   }
 
   @Override

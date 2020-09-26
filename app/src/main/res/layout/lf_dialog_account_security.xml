@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/lf_background_account_security_dialog">
+
+    <ImageView
+        android:background="@drawable/lf_dialog_bg"
+        android:layout_width="match_parent"
+        android:layout_height="190dp" />
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:gravity="center"
+        android:text="标题"
+        android:textColor="#333333"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/textContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="21dp"
+        android:gravity="center"
+        android:layout_below="@+id/textTitle"
+        android:text="内\n容"
+        android:textColor="#333333"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/viceContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="副标题"
+        android:textSize="11dp"
+        android:layout_below="@+id/textContent"
+        android:textColor="#999999"
+        android:gravity="center"
+        android:visibility="invisible"/>
+
+    <View
+        android:id="@+id/viewSplit"
+        android:layout_below="@+id/viceContent"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="#F5F5F5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/viewSplit"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="取消"
+            android:textColor="#424448"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btnSure"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="确定"
+            android:textColor="#FF8700"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

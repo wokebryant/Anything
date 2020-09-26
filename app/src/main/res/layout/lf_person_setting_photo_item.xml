@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="85dp"
-    android:layout_height="85dp"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <ImageView
-        android:id="@+id/person_setting_default"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-        android:src="@drawable/lf_recorder_add"/>
+    android:layout_width="80dp"
+    android:layout_height="80dp">
 
     <ImageView
         android:id="@+id/person_setting_photo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:background="@color/colorPrimary"/>
+        android:background="@drawable/lf_bg_setting_photo"/>
+
+    <ImageView
+        android:id="@+id/person_setting_default"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/lf_setting_add"/>
 
 
     <TextView
         android:id="@+id/person_setting_avatar"
-        android:layout_width="25dp"
+        android:layout_width="33dp"
         android:layout_height="15dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
         android:gravity="center"
         android:layout_gravity="right"
+        android:textColor="#FFFFFF"
         android:textSize="10dp"
         android:text="头像"
-        android:background="@color/design_default_color_primary"/>
+        android:background="@drawable/lf_bg_setting_avatar_tag"/>
 
 </FrameLayout>

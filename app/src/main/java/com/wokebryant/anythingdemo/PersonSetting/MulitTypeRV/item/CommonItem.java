@@ -14,6 +14,7 @@ public class CommonItem extends BaseSettingItem<CommonItem> implements Serializa
     public String subject;
     public String desc;
     public String tagUrl;
+    public String type; //当前item的标识
     public boolean clickable = true; //默认可点击
 
 
@@ -28,6 +29,10 @@ public class CommonItem extends BaseSettingItem<CommonItem> implements Serializa
 
     public void setTagUrl(String tagUrl) {
         this.tagUrl = tagUrl;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

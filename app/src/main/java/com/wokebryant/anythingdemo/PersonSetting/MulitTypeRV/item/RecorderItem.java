@@ -1,6 +1,6 @@
 package com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item;
 
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.SettingConstant;
+import com.wokebryant.anythingdemo.PersonSetting.SettingConstant;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.factory.TypeFactory;
 
 import java.io.Serializable;
