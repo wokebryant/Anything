@@ -59,7 +59,9 @@ public class RecorderDialog extends BaseBottomSheetDialog{
     private int tipListPosition;
     private int recorderState;
     private String mPlayUrl;
+    private String mOssPlayUrl = "Url";
 
+    private OnSaveRecorderListener mListener;
     private Intent recorderIntent;
 
 
@@ -156,9 +158,6 @@ public class RecorderDialog extends BaseBottomSheetDialog{
             startRecorder();
         } else if (ING_RECORDING == recorderState) {
             endRecording();
-            if (mHandler != null) {
-                mHandler.postDelayed(stopRecorderRunnable,200);
-            }
         } else if (ENDING_RECORDING == recorderState) {
             uploadPlayUrlToServer();
             recorderState = PREPARE_RECORDING;
@@ -174,6 +173,7 @@ public class RecorderDialog extends BaseBottomSheetDialog{
             mEffectIv.setVisibility(View.GONE);
             mChronometer.setVisibility(View.INVISIBLE);
             mSoundPlayView.setVisibility(View.VISIBLE);
+
             mControlIv.setImageResource(R.drawable.lf_setting_recorder_sure);
         }
     };
@@ -219,6 +219,9 @@ public class RecorderDialog extends BaseBottomSheetDialog{
         }
         getActivity().stopService(recorderIntent);
         getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        if (mHandler != null) {
+            mHandler.postDelayed(stopRecorderRunnable,200);
+        }
     }
 
     private Chronometer.OnChronometerTickListener onChronometerTickListener = new Chronometer
@@ -257,6 +260,11 @@ public class RecorderDialog extends BaseBottomSheetDialog{
         if (mPlayUrl != null) {
             //TODO 上传录音
         }
+
+        if (mOssPlayUrl != null && mListener != null) {
+            mListener.onSave(mPlayUrl);
+            dismissAllowingStateLoss();
+        }
     }
 
     private void getRecordingTipContent() {
@@ -271,6 +279,15 @@ public class RecorderDialog extends BaseBottomSheetDialog{
 
             }
         });
+    }
+
+    public interface OnSaveRecorderListener{
+
+        void onSave(String playUrl);
+    }
+
+    public void setOnSaveRecorderListener(OnSaveRecorderListener listener) {
+        mListener = listener;
     }
 
 

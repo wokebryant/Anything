@@ -33,13 +33,13 @@ import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.BaseSettingIte
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.CommonItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoWallItem;
+import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.RecorderItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.TagInActivityItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.TagInFragmentItem;
-import com.wokebryant.anythingdemo.PersonSetting.NormalUpdateModel;
+import com.wokebryant.anythingdemo.PersonSetting.SettingUpdateModel;
 import com.wokebryant.anythingdemo.PersonSetting.SettingConstant;
 import com.wokebryant.anythingdemo.PersonSetting.SettingDataHolder;
 import com.wokebryant.anythingdemo.PersonSetting.SettingDataMapper;
-import com.wokebryant.anythingdemo.PersonSetting.PhotoUpdateModel;
 import com.wokebryant.anythingdemo.PersonSetting.dialog.RecorderDialog;
 import com.wokebryant.anythingdemo.R;
 import com.wokebryant.anythingdemo.util.ImageCrop.ClipView;
@@ -235,16 +235,35 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
                 launchFragment();
                 //其它
             } else {
+                if (SettingConstant.person_setting_account_info.equals(subType)
+                        || SettingConstant.person_setting_sign.equals(subType)
+                        || SettingConstant.person_setting_tag.equals(subType)
+                        || SettingConstant.person_setting_base_info.equals(subType)) {
+                    return;
+                }
                 showSelectDialog(position);
             }
         }
     };
 
+    /**
+     * 打开录音弹窗
+     */
     public void showRecorderDialog () {
-        showToast("展示录音弹窗");
         try {
             if (mRecorderDialog == null) {
                 mRecorderDialog = RecorderDialog.newInstance();
+                mRecorderDialog.setOnSaveRecorderListener(new RecorderDialog.OnSaveRecorderListener() {
+                    @Override
+                    public void onSave(String playUrl) {
+                        if (mDataList != null && mMultiAdapter != null) {
+                            RecorderItem item = new RecorderItem(playUrl, "3s");
+                            mDataList.set(1, item);
+                            mMultiAdapter.notifyDataSetChanged();
+                            updateUnReviewInfoToServer("voice", playUrl);
+                        }
+                    }
+                });
             }
             if (!mRecorderDialog.isAdded()) {
                 FragmentManager manager = getSupportFragmentManager();
@@ -255,6 +274,17 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
         }
     }
 
+    /**
+     * 删除录音
+     */
+    public void deleteRecorder() {
+        updateUnReviewInfoToServer("voice", null);
+    }
+
+    /**
+     * 打开通用信息选择器
+     * @param position
+     */
     private void showSelectDialog ( final int position){
         final List<String> selectedList = SettingDataHolder.mockSelectedItemList();
         if (isDateSelected(position)) {
@@ -279,13 +309,19 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
             mSelectedItemPicker.setCanShowAnim(false);
             mSelectedItemPicker.show(DateFormatUtils.long2Str(endTimestamp, false));
         } else {
+            final String currentString = "人事";
             mSelectedItemPicker = new CustomSelectedPicker(this, new CustomSelectedPicker.StringCallback() {
                 @Override
                 public void onItemSelected(String selected) {
+                    //为null代表没有滑动选择器
                     if (selected != null) {
                         updateViewAfterSelected(position, selected);
                     } else {
-                        updateViewAfterSelected(position, selectedList.get(selectedList.size() / 2));
+                        if (currentString == null) {
+                            updateViewAfterSelected(position, selectedList.get(selectedList.size() / 2));
+                        } else {
+                            updateViewAfterSelected(position, currentString);
+                        }
                     }
                 }
             });
@@ -293,7 +329,7 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
             mSelectedItemPicker.setScrollLoop(false);
             //仅设置一个选择器
             mSelectedItemPicker.setOnePickerView(true);
-            mSelectedItemPicker.show(selectedList, getSelectedPosition("", selectedList));
+            mSelectedItemPicker.show(selectedList, getSelectedPosition(currentString, selectedList));
         }
     }
 
@@ -363,8 +399,8 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
      * 设置选择弹窗打开时当前item的显示位置
      * @return
      */
-    private int getSelectedPosition (String currentString, List < String > dataList){
-        int position = mDataList.size() / 2;
+    private int getSelectedPosition (String currentString, List <String> dataList){
+        int position = dataList.size() / 2;
         for (String s : dataList) {
             if (currentString.equals(s)) {
                 position = dataList.indexOf(s);
@@ -405,6 +441,8 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
 
             mDataList.set(10, inActivityItem);
             mMultiAdapter.notifyDataSetChanged();
+
+            updateUnReviewInfoToServer("tag", SettingDataHolder.transformTagItemToString(itemList));
         }
     }
 
@@ -536,8 +574,8 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
      */
     public void savePhotoSettingData () {
         if (mOssPhotoList != null && mOssPhotoList.isEmpty()) {
-            List<PhotoUpdateModel> list = new ArrayList<>();
-            PhotoUpdateModel model = new PhotoUpdateModel();
+            List<SettingUpdateModel> list = new ArrayList<>();
+            SettingUpdateModel model = new SettingUpdateModel();
             model.setPropName("photoAlbum");
             model.setPropValue(mOssPhotoList);
             list.add(model);
@@ -551,9 +589,9 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
      * @param name
      * @param value
      */
-    public void updateUnReviewInfoToServer(String name, String value) {
-        List<NormalUpdateModel> list = new ArrayList<>();
-        NormalUpdateModel model = new NormalUpdateModel();
+    public <T> void updateUnReviewInfoToServer(String name, T value) {
+        List<SettingUpdateModel> list = new ArrayList<>();
+        SettingUpdateModel model = new SettingUpdateModel();
         model.setPropName(name);
         model.setPropValue(value);
         list.add(model);

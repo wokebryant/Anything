@@ -124,16 +124,16 @@ public class SoundPlayUtil {
     }
 
     public void controlPlay() {
+        if (mSoundUrl == null) {
+            mSoundPlayView.showRecorderDialog();
+            return;
+        }
         if (mSoundPlayer != null) {
             if (mSoundPlayer.isPlaying()) {
                 mSoundPlayer.pause();
                 stopPlayAnim();
             } else {
                 playSound();
-            }
-
-            if (mSoundUrl == null) {
-                mSoundPlayView.showRecorderDialog();
             }
         }
     }
@@ -180,7 +180,7 @@ public class SoundPlayUtil {
             int sec = mRecorderDuration / 1000;
             int m = sec / 60;
             int s = sec % 60;
-            return m + ":" + s;
+            return String.valueOf(s) + "s";
         }
     }
 

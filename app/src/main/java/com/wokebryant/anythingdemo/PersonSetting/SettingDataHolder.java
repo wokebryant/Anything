@@ -36,7 +36,7 @@ public class SettingDataHolder {
             mDataList.add(photoWallItem);
 
             //录音
-            RecorderItem recorderItem = new RecorderItem(SettingConstant.TEST_RECORDER_URL, "9s");
+            RecorderItem recorderItem = new RecorderItem(null, "");
             mDataList.add(recorderItem);
             //账号信息
             GroupItem accountItem = getGroupItem(SettingConstant.person_setting_account_info);
@@ -139,6 +139,7 @@ public class SettingDataHolder {
         mDataList.add("警察");
         mDataList.add("医生");
         mDataList.add("学生");
+        mDataList.add("人事");
         mDataList.add("教师");
         mDataList.add("工程师");
         mDataList.add("程序员");

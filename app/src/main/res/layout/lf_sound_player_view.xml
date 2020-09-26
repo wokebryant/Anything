@@ -26,7 +26,7 @@
         android:textSize="12dp"
         android:text="+"
         android:textColor="#FFFFFF"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <TextView
         android:id="@+id/person_setting_recorder_state"
@@ -39,7 +39,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="10dp"
-        android:text="9s"/>
+        android:text="添加语音"/>
 
     <FrameLayout
         android:id="@+id/person_setting_recorder_delete"
@@ -49,7 +49,7 @@
         android:layout_marginLeft="-5dp"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/person_setting_recorder_state"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="10dp"

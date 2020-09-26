@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.wokebryant.anythingdemo.PersonSetting.Activity.PersonalSettingActivity;
 import com.wokebryant.anythingdemo.PersonSetting.Audio.SoundPlayerView;
 import com.wokebryant.anythingdemo.PersonSetting.SettingConstant;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.RecorderItem;
@@ -19,9 +20,6 @@ public class RecorderViewHolder extends BaseViewHolder<RecorderItem> {
 
   private Context context;
   private SoundPlayerView soundPlayerView;
-  private ImageView addView;
-  private TextView stateView;
-  private ImageView deleteView;
 
   public RecorderViewHolder(Context context, View itemView) {
     super(itemView);
@@ -34,6 +32,15 @@ public class RecorderViewHolder extends BaseViewHolder<RecorderItem> {
     if (item != null && item.recorderUrl != null) {
       soundPlayerView.setPositionFrom(SettingConstant.FROM_PERSON_SETTING_EDIT);
       soundPlayerView.setPlayUrl(item.recorderUrl);
+      soundPlayerView.setOnDeleteRecorderListener(new SoundPlayerView.OnDeleteRecorderListener() {
+        @Override
+        public void onDelete() {
+          if (context instanceof PersonalSettingActivity) {
+            PersonalSettingActivity activity = (PersonalSettingActivity) context;
+            activity.deleteRecorder();
+          }
+        }
+      });
     }
   }
 

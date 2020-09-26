@@ -67,6 +67,15 @@ public class SoundPlayerView extends RelativeLayout implements ISoundPlayer{
 
     public void setPlayUrl(String playUrl) {
         mPlayUrl = playUrl;
+        if (mPlayUrl != null && mSoundPlayUtil != null) {
+            mSoundPlayUtil.setPlayUrl(mPlayUrl);
+            mAddView.setVisibility(GONE);
+            mDeleteView.setVisibility(VISIBLE);
+        } else {
+            mAddView.setVisibility(VISIBLE);
+            mStateTv.setText(R.string.person_setting_add_recorder);
+            mDeleteView.setVisibility(GONE);
+        }
     }
 
     /**
@@ -74,7 +83,6 @@ public class SoundPlayerView extends RelativeLayout implements ISoundPlayer{
      */
     private void startPlayer() {
         if (mSoundPlayUtil != null) {
-            mSoundPlayUtil.setPlayUrl(mPlayUrl);
             mSoundPlayUtil.playSound();
         }
     }
@@ -83,6 +91,10 @@ public class SoundPlayerView extends RelativeLayout implements ISoundPlayer{
         String playUrl = null;
         if (mSoundPlayUtil != null) {
             playUrl = mSoundPlayUtil.setLocalPlayData();
+            if (playUrl != null) {
+                mAddView.setVisibility(GONE);
+                mDeleteView.setVisibility(VISIBLE);
+            }
         }
         return playUrl;
     }
@@ -116,6 +128,8 @@ public class SoundPlayerView extends RelativeLayout implements ISoundPlayer{
             mAddView.setVisibility(VISIBLE);
             mStateTv.setText(R.string.person_setting_add_recorder);
             mDeleteView.setVisibility(GONE);
+            mSoundPlayUtil.resetPlayUrl(null);
+            listener.onDelete();
         } else if (SettingConstant.FROM_RECORDER_DIALOG.equals(from)){
             setVisibility(GONE);
             listener.onDelete();

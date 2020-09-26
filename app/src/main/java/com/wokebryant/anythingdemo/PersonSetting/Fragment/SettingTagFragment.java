@@ -305,6 +305,7 @@ public class SettingTagFragment extends Fragment {
                     @Override
                     public void onClick() {
                         mCallBack.onSave(mSelectedTagList);
+                        exitPage();
                     }
                 }, new LFDialog.OnCancelListener() {
                 @Override

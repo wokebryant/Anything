@@ -9,8 +9,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -92,9 +94,9 @@ public class ClipImageActivity extends AppCompatActivity implements View.OnClick
             mClipViewLayout.setFullHorizontalPadding();
         }
 
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)mClipViewLayout.getLayoutParams();
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)mClipViewLayout.getLayoutParams();
         if (params != null) {
-            params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+            params.gravity = Gravity.CENTER_HORIZONTAL;
             if (cropType == ClipView.TYPE_FULL) {
                 params.setMargins(0, 0, 0, 0);
                 mClipViewLayout.setLayoutParams(params);
