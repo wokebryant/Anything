@@ -27,6 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.wokebryant.anythingdemo.Constant;
+import com.wokebryant.anythingdemo.DynamicsItem.activity.PersonalDynamicsActivity;
 import com.wokebryant.anythingdemo.PersonSetting.Activity.PersonalSettingActivity;
 import com.wokebryant.anythingdemo.R;
 import com.wokebryant.anythingdemo.dialog.VoiceLiveChiefPanel;
@@ -182,7 +183,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.testBtn2:
-                showChiefPanel();
+                gotoDynamicsActivity();
+//                showChiefPanel();
                 //showCommonDialog();
 //                showPlacardDialog();
 //                showProgressRing();
@@ -277,6 +279,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void gotoSettingActivity() {
         PersonalSettingActivity.launch(MainActivity.this, true);
+    }
+
+    private void gotoDynamicsActivity() {
+        PersonalDynamicsActivity.launch(MainActivity.this);
     }
 
     private void showProgressRing() {

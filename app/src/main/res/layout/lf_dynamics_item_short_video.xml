@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="208dp"
+    android:layout_height="350dp"
+    tools:layout_width="208dp"
+    tools:layout_height="350dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/lf_dynamics_short_video_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ABA6A9"/>
+
+    <ImageView
+        android:id="@+id/lf_dynamics_short_video_play"
+        android:layout_width="27dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:src="#FFFFFF"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="9dp"
+        android:layout_marginBottom="9dp">
+
+        <ImageView
+            android:id="@+id/lf_dynamics_short_video_duration_icon"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/lf_dynamics_replay_duration"/>
+
+        <TextView
+            android:id="@+id/lf_dynamics_short_video_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/lf_dynamics_short_video_duration_icon"
+            android:layout_marginLeft="3dp"
+            android:layout_centerVertical="true"
+            android:textColor="#FFFFFF"
+            android:textSize="11dp"
+            tools:text="02:02:53"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/lf_dynamics_short_video_num"
+            android:layout_marginRight="1dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/lf_dynamics_online_num"/>
+
+        <TextView
+            android:id="@+id/lf_dynamics_short_video_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="9dp"
+            android:layout_alignParentRight="true"
+            android:textColor="#FFFFFF"
+            android:textSize="11dp"
+            tools:text="12W"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

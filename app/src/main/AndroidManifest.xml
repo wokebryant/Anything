@@ -24,6 +24,7 @@
         <activity android:name=".PersonSetting.Activity.PersonalSettingActivity"/>
         <activity android:name=".PersonSetting.Activity.ClipImageActivity"/>
         <activity android:name=".PersonSetting.Activity.ChatSettingActivity"/>
+        <activity android:name=".DynamicsItem.activity.PersonalDynamicsActivity"/>
         <service android:name=".PersonSetting.Audio.SoundRecorderService"/>
 
     </application>

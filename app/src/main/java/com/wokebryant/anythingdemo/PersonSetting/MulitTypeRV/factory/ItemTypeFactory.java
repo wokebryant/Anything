@@ -4,15 +4,12 @@ import android.content.Context;
 import android.view.View;
 
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.CommonItem;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.DynamicsItem;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.DynamicsListIItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.GroupItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.PhotoWallItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.RecorderItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.TagInActivityItem;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.item.TagInFragmentItem;
-import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder.DynamicsItemViewHolder;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder.PhotoViewHolder;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder.PhotoWallViewHolder;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.viewholder.CommonViewHolder;
@@ -35,8 +32,6 @@ public class ItemTypeFactory implements TypeFactory {
   public static final int GROUP_ITEM_LAYOUT = R.layout.lf_person_setting_group_item;
   public static final int TAG_IN_FRAGMENT_ITEM_LAYOUT = R.layout.lf_person_setting_tag_view;
   public static final int TAG_IN_ACTIVITY_ITEM_LAYOUT = R.layout.lf_person_setting_tag_item;
-  public static final int DYNAMICS_ITEM_LIST_LAYOUT = R.layout.lf_personal_dynamics_item;
-  public static final int DYNAMICS_ITEM_LAYOUT = R.layout.lf_dynamics_item_view;
 
 
   @Override
@@ -74,15 +69,6 @@ public class ItemTypeFactory implements TypeFactory {
     return GROUP_ITEM_LAYOUT;
   }
 
-  @Override
-  public int type(DynamicsListIItem dynamicsListIItem) {
-    return 0;
-  }
-
-  @Override
-  public int type(DynamicsItem dynamicsItem) {
-    return 0;
-  }
 
 
   @Override
@@ -102,8 +88,6 @@ public class ItemTypeFactory implements TypeFactory {
         return new TagInActivityViewHolder(context, itemView);
       case GROUP_ITEM_LAYOUT:
         return new GroupViewHolder(itemView, isSelfPage);
-      case DYNAMICS_ITEM_LAYOUT:
-        return new DynamicsItemViewHolder(context, itemView);
       default:
         return null;
     }
