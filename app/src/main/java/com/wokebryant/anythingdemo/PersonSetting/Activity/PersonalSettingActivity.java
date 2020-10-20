@@ -288,7 +288,7 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
     private void showSelectDialog ( final int position){
         final List<String> selectedList = SettingDataHolder.mockSelectedItemList();
         if (isDateSelected(position)) {
-            long beginTimestamp = DateFormatUtils.str2Long("1980-01-01", false);
+            long beginTimestamp = DateFormatUtils.str2Long("1900-01-01", false);
             final long endTimestamp = System.currentTimeMillis();
             mSelectedItemPicker = new CustomSelectedPicker(this, new CustomSelectedPicker.Callback() {
                 @Override

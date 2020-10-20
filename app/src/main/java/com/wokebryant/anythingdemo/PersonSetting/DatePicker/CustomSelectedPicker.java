@@ -113,7 +113,7 @@ public class CustomSelectedPicker implements View.OnClickListener, PickerView.On
      * @param endTimestamp   毫秒级时间戳
      */
     public CustomSelectedPicker(Context context, Callback callback, long beginTimestamp, long endTimestamp) {
-        if (context == null || callback == null || beginTimestamp <= 0 || beginTimestamp >= endTimestamp) {
+        if (context == null || callback == null /*|| beginTimestamp <= 0 || beginTimestamp >= endTimestamp*/) {
             mCanDialogShow = false;
             return;
         }

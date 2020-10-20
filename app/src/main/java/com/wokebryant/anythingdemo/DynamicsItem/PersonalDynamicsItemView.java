@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wokebryant.anythingdemo.DynamicsItem.adapter.DynamicsItemAdapter;
+import com.wokebryant.anythingdemo.DynamicsItem.decorate.DynamicsItemClickCallBack;
 import com.wokebryant.anythingdemo.DynamicsItem.item.BaseDynamicsItem;
 import com.wokebryant.anythingdemo.DynamicsItem.item.DynamicsPhotoItem;
 import com.wokebryant.anythingdemo.DynamicsItem.item.DynamicsShortVideoItem;
@@ -48,6 +49,9 @@ public class PersonalDynamicsItemView extends LinearLayout {
 
     private DynamicsItemModel mDynamicsItemModel;
 
+    private GridSpacingItemDecoration mItemDecoration;
+    private DynamicsItemClickCallBack dynamicsItemClickCallBack;
+
 
 
     public PersonalDynamicsItemView(Context context) {
@@ -82,6 +86,7 @@ public class PersonalDynamicsItemView extends LinearLayout {
         mPraiseImageView.setOnClickListener(onClickListener);
         mPraiseTextView.setOnClickListener(onClickListener);
         mTeaseView.setOnClickListener(onClickListener);
+        this.setOnClickListener(onClickListener);
     }
 
     public void setData(DynamicsItemModel model) {
@@ -106,6 +111,7 @@ public class PersonalDynamicsItemView extends LinearLayout {
             mAdapter.setOnItemClickListener(onItemClickListener);
             mMediaView.setLayoutManager(getGridLayoutManager(photoList.size()));
             if (photoList.size() != 1) {
+                mMediaView.removeItemDecoration(mItemDecoration);
                 mMediaView.addItemDecoration(getSpaceItemDecoration(photoList.size()));
             }
             mMediaView.setAdapter(mAdapter);
@@ -138,6 +144,11 @@ public class PersonalDynamicsItemView extends LinearLayout {
         return shortVideoItemList;
     }
 
+    /**
+     * 设置图片布局
+     * @param size
+     * @return
+     */
     private GridLayoutManager getGridLayoutManager(int size) {
         GridLayoutManager manager;
         if (1 == size) {
@@ -150,21 +161,29 @@ public class PersonalDynamicsItemView extends LinearLayout {
         return manager;
     }
 
+    /**
+     * 获取图片间隔
+     * @param size
+     * @return
+     */
     private GridSpacingItemDecoration getSpaceItemDecoration(int size) {
-        GridSpacingItemDecoration itemDecoration;
         if (size == 2 || size == 4) {
-            itemDecoration = new GridSpacingItemDecoration(2, 10, false);
+            mItemDecoration = new GridSpacingItemDecoration(2, 10, false);
         } else {
-            itemDecoration = new GridSpacingItemDecoration(3, 10, false);
+            mItemDecoration = new GridSpacingItemDecoration(3, 10, false);
         }
-        return itemDecoration;
+        return mItemDecoration;
     }
 
     private DynamicsItemAdapter.OnItemClickListener onItemClickListener = new DynamicsItemAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(String mediaType, int position) {
             if (BaseDynamicsItem.TYPE_SHORT_VIDEO.equals(mediaType)) {
+                playShortVideo();
                 Toast.makeText(getContext(), "点击播放短视频", Toast.LENGTH_SHORT).show();
+            } else if (BaseDynamicsItem.TYPE_REPLAY.equals(mediaType)) {
+                playReplay();
+                Toast.makeText(getContext(), "点击播放回放", Toast.LENGTH_SHORT).show();
             } else if (BaseDynamicsItem.TYPE_PHOTO.equals(mediaType)) {
                 Toast.makeText(getContext(), "这是第" + position + "张图片", Toast.LENGTH_SHORT).show();
             }
@@ -174,30 +193,79 @@ public class PersonalDynamicsItemView extends LinearLayout {
     private View.OnClickListener onClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (v.getId() == R.id.lf_dynamics_avatar) {
-                shareDynamics();
-            } else if (v.getId() == R.id.lf_dynamics_comment) {
-
-            }else if (v.getId() == R.id.lf_dynamics_praise_iv || v.getId() == R.id.lf_dynamics_praise_tv) {
+            if (v.getId() == R.id.lf_dynamics_comment) {
                 commentDynamics();
-            } else if (v.getId() == R.id.dynamics_tease) {
+            }else if (v.getId() == R.id.lf_dynamics_praise_iv || v.getId() == R.id.lf_dynamics_praise_tv) {
                 praiseDynamics();
+            } else if (v.getId() == R.id.dynamics_tease) {
+                teaseDynamics();
+            } else {
+                enterDynamicsDetails();
             }
         }
     };
 
-    private void shareDynamics() {
-
+    /**
+     * 进入详情页
+     */
+    private void enterDynamicsDetails() {
+        Toast.makeText(getContext(), "进入详情页", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * 播放回放
+     */
+    private void playReplay() {
+        if (dynamicsItemClickCallBack != null) {
+            dynamicsItemClickCallBack.onReplayClick("");
+        }
+    }
+
+    /**
+     * 播放短视频
+     *
+     */
+    private void playShortVideo() {
+        if (dynamicsItemClickCallBack != null) {
+            dynamicsItemClickCallBack.onShortVideoClick("");
+        }
+    }
+
+
+    /**
+     * 评论
+     */
     private void commentDynamics() {
-
+        if (dynamicsItemClickCallBack != null) {
+            dynamicsItemClickCallBack.onCommentClick();
+        }
     }
 
+    /**
+     * 点赞
+     */
     private void praiseDynamics() {
-
+        if (dynamicsItemClickCallBack != null) {
+            dynamicsItemClickCallBack.onPraiseClick();
+        }
     }
 
+    /**
+     * 撩一撩
+     */
+    private void teaseDynamics() {
+        if (dynamicsItemClickCallBack != null) {
+            dynamicsItemClickCallBack.onTeaseClick();
+        }
+    }
+
+    /**
+     * 设置Item点击回调
+     * @param callBack
+     */
+    public void setDynamicsItemClickCallBack(DynamicsItemClickCallBack callBack) {
+        dynamicsItemClickCallBack = callBack;
+    }
 
 
 }

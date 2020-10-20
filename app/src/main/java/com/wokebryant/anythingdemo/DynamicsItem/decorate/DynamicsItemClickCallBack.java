@@ -1,12 +1,12 @@
 package com.wokebryant.anythingdemo.DynamicsItem.decorate;
 
-public interface DynamicsItemCallBack {
+public interface DynamicsItemClickCallBack {
 
     void onDetailClick();
 
-    void onShortVideoClick(String url);
+    void onShortVideoClick(String playUrl);
 
-    void onReplayClick();
+    void onReplayClick(String playUrl);
 
     void onPhotoListClick(int position);
 

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wokebryant.anythingdemo.DynamicsItem.PersonalDynamicsItemView;
+import com.wokebryant.anythingdemo.DynamicsItem.decorate.DynamicsItemClickCallBack;
 import com.wokebryant.anythingdemo.DynamicsItem.model.DynamicsItemModel;
 import com.wokebryant.anythingdemo.R;
 
@@ -35,6 +36,7 @@ public class DynamicsAdapter extends RecyclerView.Adapter<DynamicsAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.mDynamicsItemView.setData(mDataList.get(i));
+        viewHolder.mDynamicsItemView.setDynamicsItemClickCallBack(callBack);
     }
 
     @Override
@@ -60,4 +62,41 @@ public class DynamicsAdapter extends RecyclerView.Adapter<DynamicsAdapter.ViewHo
 
         void onItemClick(int position);
     }
+
+    public static DynamicsItemClickCallBack callBack = new DynamicsItemClickCallBack() {
+        @Override
+        public void onDetailClick() {
+
+        }
+
+        @Override
+        public void onShortVideoClick(String playUrl) {
+
+        }
+
+        @Override
+        public void onReplayClick(String playUrl) {
+
+        }
+
+        @Override
+        public void onPhotoListClick(int position) {
+
+        }
+
+        @Override
+        public void onCommentClick() {
+
+        }
+
+        @Override
+        public void onPraiseClick() {
+
+        }
+
+        @Override
+        public void onTeaseClick() {
+
+        }
+    };
 }
