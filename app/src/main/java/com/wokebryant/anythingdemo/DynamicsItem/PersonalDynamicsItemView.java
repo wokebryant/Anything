@@ -18,6 +18,7 @@ import com.wokebryant.anythingdemo.DynamicsItem.item.DynamicsPhotoItem;
 import com.wokebryant.anythingdemo.DynamicsItem.item.DynamicsShortVideoItem;
 import com.wokebryant.anythingdemo.DynamicsItem.model.DynamicsItemModel;
 import com.wokebryant.anythingdemo.DynamicsItem.model.DynamicsShortVideoModel;
+import com.wokebryant.anythingdemo.DynamicsItem.viewholder.DynamicsShortVideoViewHolder;
 import com.wokebryant.anythingdemo.PersonSetting.MulitTypeRV.GridSpacingItemDecoration;
 import com.wokebryant.anythingdemo.R;
 
@@ -265,6 +266,47 @@ public class PersonalDynamicsItemView extends LinearLayout {
      */
     public void setDynamicsItemClickCallBack(DynamicsItemClickCallBack callBack) {
         dynamicsItemClickCallBack = callBack;
+    }
+
+    /**
+     * 自动播放小视频
+     */
+    public void autoPlayVideo() {
+        if (mMediaView != null) {
+            RecyclerView.ViewHolder viewHolder = mMediaView.findViewHolderForAdapterPosition(0);
+            if (viewHolder instanceof DynamicsShortVideoViewHolder) {
+                DynamicsShortVideoViewHolder shortVideoViewHolder = (DynamicsShortVideoViewHolder)viewHolder;
+                shortVideoViewHolder.setActive(null, 0);
+            }
+        }
+    }
+
+    /**
+     * 停止播放小视频
+     */
+    public void stopPlayVideo() {
+        if (mMediaView != null) {
+            RecyclerView.ViewHolder viewHolder = mMediaView.findViewHolderForAdapterPosition(0);
+            if (viewHolder instanceof DynamicsShortVideoViewHolder) {
+                DynamicsShortVideoViewHolder shortVideoViewHolder = (DynamicsShortVideoViewHolder)viewHolder;
+                shortVideoViewHolder.deactivate(null, 0);
+            }
+        }
+    }
+
+    /**
+     * 获取短视频播放器
+     */
+    public ImageView getShortVideoPlayerView() {
+        ImageView imageView = null;
+        if (mMediaView != null) {
+            RecyclerView.ViewHolder viewHolder = mMediaView.findViewHolderForAdapterPosition(0);
+            if (viewHolder instanceof DynamicsShortVideoViewHolder) {
+                DynamicsShortVideoViewHolder shortVideoViewHolder = (DynamicsShortVideoViewHolder)viewHolder;
+                imageView = shortVideoViewHolder.mShortVideoBg;
+            }
+        }
+        return imageView;
     }
 
 

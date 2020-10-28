@@ -37,6 +37,7 @@ public class DynamicsAdapter extends RecyclerView.Adapter<DynamicsAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.mDynamicsItemView.setData(mDataList.get(i));
         viewHolder.mDynamicsItemView.setDynamicsItemClickCallBack(callBack);
+        viewHolder.itemView.setTag(mDataList.get(i));
     }
 
     @Override

@@ -36,6 +36,7 @@ import com.wokebryant.anythingdemo.dialog.VoiceLiveFinishDialog;
 import com.wokebryant.anythingdemo.dialog.VoiceLivePlacardDialog;
 import com.wokebryant.anythingdemo.mapper.TestData;
 import com.wokebryant.anythingdemo.util.BomShot.ParticleSystem;
+import com.wokebryant.anythingdemo.util.StatusBarUtil;
 import com.wokebryant.anythingdemo.util.UIUtil;
 import com.wokebryant.anythingdemo.util.VibrateUtil;
 import com.wokebryant.anythingdemo.util.floatingview.Floating;
@@ -111,6 +112,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        StatusBarUtil.setTranslucentStatus(this);
+        StatusBarUtil.setRootViewFitsSystemWindows(this, true);
+        StatusBarUtil.StatusBarLightMode(this);
     }
 
     @Override

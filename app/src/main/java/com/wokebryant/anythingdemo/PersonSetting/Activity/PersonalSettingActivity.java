@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -44,6 +45,7 @@ import com.wokebryant.anythingdemo.PersonSetting.dialog.RecorderDialog;
 import com.wokebryant.anythingdemo.R;
 import com.wokebryant.anythingdemo.util.ImageCrop.ClipView;
 import com.wokebryant.anythingdemo.util.ImageCrop.FileUtil;
+import com.wokebryant.anythingdemo.util.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -168,6 +170,10 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
         isSelfPage = getIntent().getBooleanExtra("isSelfPage", false);
         initView();
         setData();
+        StatusBarUtil.setTranslucentStatus(this);
+        //StatusBarUtil.setColor(this,Color.WHITE);
+        StatusBarUtil.setRootViewFitsSystemWindows(this, true);
+        StatusBarUtil.StatusBarLightMode(this);
     }
 
     private void initView() {

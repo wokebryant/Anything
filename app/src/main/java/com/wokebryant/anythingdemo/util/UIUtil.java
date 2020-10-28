@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +40,23 @@ public class UIUtil {
         wm.getDefaultDisplay().getMetrics(metric);
         int width = metric.widthPixels;
         return width;
+    }
+
+    public static int getScreenHeight(Context context) {
+        DisplayMetrics metric = new DisplayMetrics();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(metric);
+        int height = metric.heightPixels;
+        return height;
+    }
+
+    /**
+     * 获取顶部status bar高度
+     */
+    public static int getStatusBarHeight(Context context) {
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        return resources.getDimensionPixelSize(resourceId);
     }
 
     //weex尺寸转换px
@@ -133,5 +151,9 @@ public class UIUtil {
             Log.i("内存信息 ", "memory: " + maxMemory + "m" + " realMemory: " + totalMemory + "m" + " freeMemory " + freeMemory + "m");
         }
     }
+
+
+
+
 
 }

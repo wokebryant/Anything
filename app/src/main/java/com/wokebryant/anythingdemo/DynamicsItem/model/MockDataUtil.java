@@ -12,10 +12,10 @@ public class MockDataUtil {
 
         List<DynamicsItemModel> itemModelList = new ArrayList<>();
         itemModelList.add(getDynamicsItemModel(0, true));
-        itemModelList.add(getDynamicsItemModel(1, false));
+        itemModelList.add(getDynamicsItemModel(1, true));
         itemModelList.add(getDynamicsItemModel(1, false));
         itemModelList.add(getDynamicsItemModel(2, false));
-        itemModelList.add(getDynamicsItemModel(3, false));
+        itemModelList.add(getDynamicsItemModel(3, true));
         itemModelList.add(getDynamicsItemModel(4, false));
         itemModelList.add(getDynamicsItemModel(5, false));
         itemModelList.add(getDynamicsItemModel(6, false));
