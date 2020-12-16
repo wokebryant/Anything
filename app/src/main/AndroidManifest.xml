@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ViewFlipperActivity" />
-        <activity android:name=".personsetting.Activity.PersonalSettingActivity"/>
-        <activity android:name=".personsetting.Activity.ClipImageActivity"/>
-        <activity android:name=".personsetting.Activity.ChatSettingActivity"/>
-        <activity android:name=".dynamicsitem.activity.PersonalDynamicsActivity"/>
-        <service android:name=".personsetting.Audio.SoundRecorderService"/>
+        <activity android:name=".laifeng.personsetting.Activity.PersonalSettingActivity"/>
+        <activity android:name=".laifeng.personsetting.Activity.ClipImageActivity"/>
+        <activity android:name=".laifeng.personsetting.Activity.ChatSettingActivity"/>
+        <activity android:name=".laifeng.dynamicsitem.activity.PersonalDynamicsActivity"/>
+        <service android:name=".laifeng.personsetting.Audio.SoundRecorderService"/>
 
     </application>
 

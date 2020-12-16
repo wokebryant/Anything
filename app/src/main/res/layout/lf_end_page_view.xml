@@ -244,7 +244,7 @@
             android:layout_marginRight="18dp"
             tools:visibility="gone">
 
-            <com.wokebryant.anythingdemo.view.EndShortVideoView
+            <com.wokebryant.anythingdemo.widget.view.EndShortVideoView
                 android:id="@+id/end_page_shortVideo_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -252,14 +252,14 @@
                 tools:layout_height="170dp"
                 tools:background="@color/colorAccent">
 
-            </com.wokebryant.anythingdemo.view.EndShortVideoView>
+            </com.wokebryant.anythingdemo.widget.view.EndShortVideoView>
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <com.wokebryant.anythingdemo.view.EndShortVideoView
+            <com.wokebryant.anythingdemo.widget.view.EndShortVideoView
                 android:id="@+id/end_page_shortVideo_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -267,7 +267,7 @@
                 tools:layout_height="170dp"
                 tools:background="@color/colorAccent">
 
-            </com.wokebryant.anythingdemo.view.EndShortVideoView>
+            </com.wokebryant.anythingdemo.widget.view.EndShortVideoView>
 
 
         </LinearLayout>
@@ -301,7 +301,7 @@
             android:layout_marginTop="18dp"
             android:layout_marginRight="18dp">
 
-            <com.wokebryant.anythingdemo.view.EndRecommendView
+            <com.wokebryant.anythingdemo.widget.view.EndRecommendView
                 android:id="@+id/end_page_recommend_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -309,14 +309,14 @@
                 tools:layout_height="170dp"
                 tools:background="@color/colorAccent">
 
-            </com.wokebryant.anythingdemo.view.EndRecommendView>
+            </com.wokebryant.anythingdemo.widget.view.EndRecommendView>
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <com.wokebryant.anythingdemo.view.EndRecommendView
+            <com.wokebryant.anythingdemo.widget.view.EndRecommendView
                 android:id="@+id/end_page_recommend_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -324,7 +324,7 @@
                 tools:layout_height="170dp"
                 tools:background="@color/colorAccent">
 
-            </com.wokebryant.anythingdemo.view.EndRecommendView>
+            </com.wokebryant.anythingdemo.widget.view.EndRecommendView>
 
         </LinearLayout>
 

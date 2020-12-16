@@ -92,7 +92,7 @@
             android:src="@drawable/lf_setting_recorder_wave"
             android:visibility="gone"/>
 
-        <com.wokebryant.anythingdemo.personsetting.Audio.SoundPlayerView
+        <com.wokebryant.anythingdemo.laifeng.personsetting.Audio.SoundPlayerView
             android:id="@+id/recorder_strip_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
             android:layout_marginTop="15dp"
             android:visibility="gone">
 
-        </com.wokebryant.anythingdemo.personsetting.Audio.SoundPlayerView>
+        </com.wokebryant.anythingdemo.laifeng.personsetting.Audio.SoundPlayerView>
 
         <ImageView
             android:id="@+id/recorder_control_iv"

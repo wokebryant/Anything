@@ -14,7 +14,7 @@
         android:layout_centerInParent="true"
         android:visibility="gone"/>
 
-    <com.wokebryant.anythingdemo.view.WaveProgressView
+    <com.wokebryant.anythingdemo.widget.view.WaveProgressView
         android:id="@+id/waveProgressView"
         android:layout_width="53dp"
         android:layout_height="62dp"
@@ -53,7 +53,7 @@
         android:text="测试按钮"
         android:visibility="visible"/>
 
-    <com.wokebryant.anythingdemo.view.ProgressSendView
+    <com.wokebryant.anythingdemo.widget.view.ProgressSendView
         android:id="@+id/testProgress"
         android:layout_above="@+id/waveProgressView"
         android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:visibility="gone">
 
-    </com.wokebryant.anythingdemo.view.ProgressSendView>
+    </com.wokebryant.anythingdemo.widget.view.ProgressSendView>
 
 
     <Button
@@ -76,7 +76,7 @@
         android:background="#3da8f5"
         tools:visibility="visible"/>
 
-    <com.wokebryant.anythingdemo.view.CombWaveView
+    <com.wokebryant.anythingdemo.widget.view.CombWaveView
         android:id="@+id/combWaveView"
         android:layout_width="110dp"
         android:layout_height="110dp"
@@ -106,7 +106,7 @@
         android:layout_width="1dp"
         android:layout_height="1dp"/>
 
-    <com.wokebryant.anythingdemo.view.CombSendView
+    <com.wokebryant.anythingdemo.widget.view.CombSendView
         android:id="@+id/combSendView"
         android:layout_width="72dp"
         android:layout_height="72dp"
@@ -116,7 +116,7 @@
         android:visibility="gone"
         tools:visibility="visible">
 
-    </com.wokebryant.anythingdemo.view.CombSendView>
+    </com.wokebryant.anythingdemo.widget.view.CombSendView>
 
     <View
         android:id="@+id/point"
@@ -167,7 +167,7 @@
 
     </android.support.v7.widget.CardView>
 
-    <com.wokebryant.anythingdemo.view.MFViewFlipper
+    <com.wokebryant.anythingdemo.widget.view.MFViewFlipper
         android:layout_width="match_parent"
         android:layout_marginTop="45dp"
         android:layout_height="36dp"
