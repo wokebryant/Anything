@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.wokebryant.anythingdemo.DynamicsItem.PersonalDynamicsItemView
+    <com.wokebryant.anythingdemo.dynamicsitem.PersonalDynamicsItemView
         android:id="@+id/lf_dynamics_item_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-    </com.wokebryant.anythingdemo.DynamicsItem.PersonalDynamicsItemView>
+    </com.wokebryant.anythingdemo.dynamicsitem.PersonalDynamicsItemView>
 
 </FrameLayout>

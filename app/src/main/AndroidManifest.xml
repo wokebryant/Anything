@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
-        android:name=".Application.BaseApplication"
+        android:name=".application.BaseApplication"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ViewFlipperActivity" />
-        <activity android:name=".PersonSetting.Activity.PersonalSettingActivity"/>
-        <activity android:name=".PersonSetting.Activity.ClipImageActivity"/>
-        <activity android:name=".PersonSetting.Activity.ChatSettingActivity"/>
-        <activity android:name=".DynamicsItem.activity.PersonalDynamicsActivity"/>
-        <service android:name=".PersonSetting.Audio.SoundRecorderService"/>
+        <activity android:name=".personsetting.Activity.PersonalSettingActivity"/>
+        <activity android:name=".personsetting.Activity.ClipImageActivity"/>
+        <activity android:name=".personsetting.Activity.ChatSettingActivity"/>
+        <activity android:name=".dynamicsitem.activity.PersonalDynamicsActivity"/>
+        <service android:name=".personsetting.Audio.SoundRecorderService"/>
 
     </application>
 

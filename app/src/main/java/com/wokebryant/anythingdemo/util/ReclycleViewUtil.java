@@ -6,16 +6,12 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.wokebryant.anythingdemo.DynamicsItem.adapter.DynamicsAdapter;
-import com.wokebryant.anythingdemo.DynamicsItem.item.BaseDynamicsItem;
-import com.wokebryant.anythingdemo.DynamicsItem.item.DynamicsShortVideoItem;
-import com.wokebryant.anythingdemo.DynamicsItem.model.DynamicsItemModel;
-import com.wokebryant.anythingdemo.DynamicsItem.viewholder.DynamicsShortVideoViewHolder;
+import com.wokebryant.anythingdemo.dynamicsitem.adapter.DynamicsAdapter;
+import com.wokebryant.anythingdemo.dynamicsitem.model.DynamicsItemModel;
 
 public class ReclycleViewUtil {
 

@@ -8,7 +8,7 @@ import android.support.design.widget.BottomSheetDialogFragment;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.wokebryant.anythingdemo.PersonSetting.dialog.BaseBottomSheetDialog;
+import com.wokebryant.anythingdemo.personsetting.dialog.BaseBottomSheetDialog;
 import com.wokebryant.anythingdemo.R;
 
 /**

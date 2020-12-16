@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.wokebryant.anythingdemo.PersonSetting.dialog.BaseBottomSheetDialog;
+import com.wokebryant.anythingdemo.personsetting.dialog.BaseBottomSheetDialog;
 import com.wokebryant.anythingdemo.R;
 
 /**

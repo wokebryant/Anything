@@ -1,8 +1,6 @@
 package com.wokebryant.anythingdemo.view;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.wokebryant.anythingdemo.R;
+import com.wokebryant.anythingdemo.interfaces.FlipperCallBack;
 
 /**
  * @author wb-lj589732

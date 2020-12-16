@@ -1,18 +1,16 @@
 package com.wokebryant.anythingdemo.view;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.animation.AnimationUtils;
 import android.widget.ViewFlipper;
 
 import com.wokebryant.anythingdemo.R;
+import com.wokebryant.anythingdemo.interfaces.FlipperCallBack;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author wb-lj589732
