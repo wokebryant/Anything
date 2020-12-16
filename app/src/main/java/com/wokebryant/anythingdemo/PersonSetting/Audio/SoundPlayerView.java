@@ -118,7 +118,8 @@ public class SoundPlayerView extends RelativeLayout implements ISoundPlayer{
     public void showRecorderDialog() {
         if (mContext instanceof PersonalSettingActivity) {
             PersonalSettingActivity activity = (PersonalSettingActivity) mContext;
-            activity.showRecorderDialog();
+            //
+            activity.showRealPersonDialog();
         }
     }
 

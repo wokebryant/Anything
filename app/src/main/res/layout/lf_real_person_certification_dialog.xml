@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@drawable/lf_bg_attention_exit_dialog">
+
+        <TextView
+            android:id="@+id/lf_real_person_nick_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:textColor="#333333"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="雪梨唱歌有点甜"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="#333333"
+            android:textSize="14dp"
+            android:text="用本人照片，真人认证后可获更多异性关注哦~"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="42dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_toLeftOf="@+id/real_person_sample_center_ll">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@color/gray"/>
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="14dp"
+                        android:layout_gravity="end|bottom"
+                        android:src="@color/gray"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12dp"
+                    android:text="999+人喜欢"
+                    android:textColor="#FF3B9B"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/real_person_sample_center_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@color/gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12dp"
+                    android:text="10人喜欢"
+                    android:textColor="#999999"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="42dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_toRightOf="@+id/real_person_sample_center_ll">>
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@color/gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12dp"
+                    android:text="1人喜欢"
+                    android:textColor="#999999"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/real_man_sure_ll"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="28.6dp"
+            android:layout_marginRight="28.6dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginBottom="61dp"
+            android:background="@color/gray"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="去真人认证"
+                android:textColor="#FFFFFF"
+                android:textSize="18dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/real_person_avatar_iv"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="3dp"
+        android:background="@color/gray"
+        android:src="@color/main_bg"/>
+
+    <ImageView
+        android:layout_width="47dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="65dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@color/gray"/>
+
+</FrameLayout>
+

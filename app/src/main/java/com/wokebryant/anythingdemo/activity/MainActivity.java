@@ -23,7 +23,9 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wokebryant.anythingdemo.Constant;
@@ -36,7 +38,9 @@ import com.wokebryant.anythingdemo.dialog.VoiceLiveFinishDialog;
 import com.wokebryant.anythingdemo.dialog.VoiceLivePlacardDialog;
 import com.wokebryant.anythingdemo.mapper.TestData;
 import com.wokebryant.anythingdemo.util.BomShot.ParticleSystem;
+import com.wokebryant.anythingdemo.util.RealPersonAnimationManager;
 import com.wokebryant.anythingdemo.util.StatusBarUtil;
+import com.wokebryant.anythingdemo.util.StatusBarUtilNew;
 import com.wokebryant.anythingdemo.util.UIUtil;
 import com.wokebryant.anythingdemo.util.VibrateUtil;
 import com.wokebryant.anythingdemo.util.floatingview.Floating;
@@ -80,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ProgressSendView mProgressView;
 
+    private ImageView mOutView;
+    private ImageView mInnerView;
+
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @Override
@@ -112,9 +119,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        StatusBarUtil.setTranslucentStatus(this);
-        StatusBarUtil.setRootViewFitsSystemWindows(this, true);
-        StatusBarUtil.StatusBarLightMode(this);
+        StatusBarUtilNew.setStatusBar(this, false, false);
+        StatusBarUtilNew.setRootViewFitsSystemWindows(this, false);
     }
 
     @Override
@@ -123,7 +129,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        initData();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startRealPresonOutAnim();
+    }
+
     private void initView() {
+        //TextView textView = findViewById(R.id.person_setting_certification_tv);
+        //textView.getPaint().setAntiAlias(true);
+        //textView.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+
+
         mRootView = findViewById(R.id.rootView);
         mFragmentContainer = findViewById(R.id.fragment_container);
         mWaveProgressView = findViewById(R.id.waveProgressView);
@@ -137,6 +155,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButton2 = findViewById(R.id.testBtn2);
         mButton3 = findViewById(R.id.testBtn3);
         mButton4 = findViewById(R.id.testBtn4);
+        mOutView = findViewById(R.id.real_person_aperture_iv);
+        mInnerView = findViewById(R.id.real_person_cover_iv);
         mFloating = new Floating(MainActivity.this);
         mFloating.setFloatingDecorView(mRootView);
         mButton.setOnClickListener(this);
@@ -216,9 +236,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //doCombSend();
                 break;
             case R.id.testBtn4:
-                if (this.getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-                    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                }
+                //if (this.getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+                //    this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                //}
+                RealPersonAnimationManager.getInstance().showInsideApertureAnim(mInnerView);
                 break;
             default:
                 break;
@@ -476,6 +497,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Animation animation = AnimationUtils.loadAnimation(this, R.anim.dago_pgc_gift_item_selected_anim);
         //floatingView.startAnimation(animation);
 
+    }
+
+    private void startRealPresonOutAnim() {
+        RealPersonAnimationManager.getInstance().showOutApertureAnim(mOutView);
     }
 
 }

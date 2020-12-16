@@ -4,7 +4,7 @@
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#141620"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
@@ -45,7 +45,7 @@
         android:layout_below="@+id/testBtn"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:visibility="visible"/>
+        android:visibility="gone"/>
 
     <com.wokebryant.anythingdemo.view.ProgressSendView
         android:id="@+id/testProgress"
@@ -160,5 +160,42 @@
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
+    <com.wokebryant.anythingdemo.view.MFViewFlipper
+        android:layout_width="match_parent"
+        android:layout_marginTop="45dp"
+        android:layout_height="36dp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/real_person_aperture_iv"
+        android:layout_width="325dp"
+        android:layout_height="325dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/lf_real_person_aperture"/>
+
+    <ImageView
+        android:layout_width="265dp"
+        android:layout_height="265dp"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/real_person_cover_iv"
+        android:layout_width="265dp"
+        android:layout_height="265dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:src="@drawable/lf_real_person_anim"/>
+
+    <TextView
+        android:id="@+id/person_setting_certification_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:layout_alignParentRight="true"
+        android:text="去认证"
+        android:autoLink="all"
+        android:textColor="#FF3D9F"
+        android:textSize="14dp"/>
 
 </RelativeLayout>

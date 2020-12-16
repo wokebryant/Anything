@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -43,6 +44,9 @@ import com.wokebryant.anythingdemo.PersonSetting.SettingDataHolder;
 import com.wokebryant.anythingdemo.PersonSetting.SettingDataMapper;
 import com.wokebryant.anythingdemo.PersonSetting.dialog.RecorderDialog;
 import com.wokebryant.anythingdemo.R;
+import com.wokebryant.anythingdemo.dialog.RealManCertificationDialog;
+import com.wokebryant.anythingdemo.dialog.RealPersonBottomDialog;
+import com.wokebryant.anythingdemo.util.BrightnessTools;
 import com.wokebryant.anythingdemo.util.ImageCrop.ClipView;
 import com.wokebryant.anythingdemo.util.ImageCrop.FileUtil;
 import com.wokebryant.anythingdemo.util.StatusBarUtil;
@@ -50,6 +54,7 @@ import com.wokebryant.anythingdemo.util.StatusBarUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.wokebryant.anythingdemo.PersonSetting.Activity.ClipImageActivity.PHONE;
 import static com.wokebryant.anythingdemo.PersonSetting.Activity.ClipImageActivity.REQ_CLIP_AVATAR;
 
 /**
@@ -135,7 +140,7 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
         if (PhotoItem.defaultUrl.equals(mOriginUrl)) {
             gotoClipActivity(mOriginUrl);
         } else {
-            gotoSelectCover(ClipImageActivity.PHONE);
+            gotoSelectCover(PHONE);
         }
     }
 
@@ -171,7 +176,6 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
         initView();
         setData();
         StatusBarUtil.setTranslucentStatus(this);
-        //StatusBarUtil.setColor(this,Color.WHITE);
         StatusBarUtil.setRootViewFitsSystemWindows(this, true);
         StatusBarUtil.StatusBarLightMode(this);
     }
@@ -280,6 +284,50 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
         }
     }
 
+    public RealManCertificationDialog mRealManDialog;
+
+    /**
+     * 真人认证弹窗
+     */
+    public void showRealManDialog() {
+        try{
+            if (mRealManDialog == null) {
+                mRealManDialog = RealManCertificationDialog.newInstance();
+                mRealManDialog.setOnDialogClickListener(new RealManCertificationDialog.OnDialogClickListener() {
+                    @Override
+                    public void onGotoAlbum() {
+                        //backToImageSelectActivity(PHONE);
+                    }
+                });
+            }
+            if (!mRealManDialog.isAdded()) {
+                FragmentManager manager = getSupportFragmentManager();
+                mRealManDialog.show(manager, "RealManCertificationDialog");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public  void showRealPersonDialog() {
+        try {
+            RealPersonBottomDialog mRealPersonDialog;
+            mRealPersonDialog = RealPersonBottomDialog.newInstance(""
+                , "哈哈");
+            mRealPersonDialog.setOnDialogClickListener(new RealPersonBottomDialog.OnDialogClickListener() {
+                @Override
+                public void onGotoCertification() {
+                }
+            });
+            if (!mRealPersonDialog.isAdded()) {
+                FragmentManager manager = getSupportFragmentManager();
+                mRealPersonDialog.show(manager, "RealPersonBottomDialog");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 删除录音
      */
@@ -313,7 +361,7 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
             mSelectedItemPicker.setScrollLoop(false);
             // 不允许滚动动画
             mSelectedItemPicker.setCanShowAnim(false);
-            mSelectedItemPicker.show(DateFormatUtils.long2Str(endTimestamp, false));
+            mSelectedItemPicker.show("2010-08-08");
         } else {
             final String currentString = "人事";
             mSelectedItemPicker = new CustomSelectedPicker(this, new CustomSelectedPicker.StringCallback() {
@@ -466,7 +514,7 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
             int position = photoWallPosition;
             if (backTag != null) {
                 //进入照片选择
-                if (backTag.equals(ClipImageActivity.PHONE) || backTag.equals(ClipImageActivity.CAMERA)) {
+                if (backTag.equals(PHONE) || backTag.equals(ClipImageActivity.CAMERA)) {
                     gotoSelectCover(backTag);
                     return;
                     //删除照片
@@ -616,6 +664,40 @@ public class PersonalSettingActivity extends AppCompatActivity implements ICallB
 
         }
     };
+
+    private int preview_bright;
+    private static final int MAX_BRIGHT = 255;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setScreenMaxBright();
+    }
+
+    /**
+     *  设置屏幕最高亮度
+     */
+    private void setScreenMaxBright() {
+        if (BrightnessTools.isAutoBrightness(getContentResolver())) {
+            BrightnessTools.stopAutoBrightness(this);
+        }
+        preview_bright = BrightnessTools.getScreenBrightness(this);
+        if (MAX_BRIGHT > preview_bright) {
+            BrightnessTools.setBrightness(this, MAX_BRIGHT);
+        }
+    }
+
+    /**
+     *  重置亮度
+     */
+    private void resetScreenBright() {
+        if (BrightnessTools.isAutoBrightness(getContentResolver())) {
+            BrightnessTools.startAutoBrightness(this);
+        }
+        if (preview_bright != 0) {
+            BrightnessTools.setBrightness(this, preview_bright);
+        }
+    }
 
     @Override
     protected void onDestroy () {

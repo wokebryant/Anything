@@ -3,6 +3,7 @@ package com.wokebryant.anythingdemo.util;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.ColorInt;
@@ -81,7 +82,7 @@ public class StatusBarUtil {
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(option);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.WHITE);
+            window.setStatusBarColor(Color.TRANSPARENT);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = activity.getWindow();
             WindowManager.LayoutParams attributes = window.getAttributes();
@@ -90,6 +91,37 @@ public class StatusBarUtil {
             window.setAttributes(attributes);
         }
     }
+
+    /**
+     * 自定义状态栏颜色
+     * @param activity
+     * @param color
+     */
+    @TargetApi(19)
+    public static void setCustomizeColorStatus(Activity activity, int color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = activity.getWindow();
+            View decorView = window.getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(color);
+        }
+    }
+
+    /**
+     * 获取背景色
+     * @return
+     */
+    //public static int getBackGroundColor(Activity activity, Bitmap bitmap) {
+        //int[] pixels = Bitmap.getBitmapPixels(bitmap, true);
+        //long totalY = 0;
+        //for (int pixel : pixels) {
+        //    totalY += (Color.red(pixel) * 0.299f + Color.green(pixel) * 0.587f + Color.blue(pixel) * 0.114f);
+        //}
+        //return (int) (totalY / pixels.length);
+    //}
 
     /**
      *  代码实现android:fitsSystemWindows

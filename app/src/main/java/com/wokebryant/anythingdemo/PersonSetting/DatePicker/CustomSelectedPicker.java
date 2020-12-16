@@ -143,6 +143,7 @@ public class CustomSelectedPicker implements View.OnClickListener, PickerView.On
             lp.width = WindowManager.LayoutParams.MATCH_PARENT;
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
             window.setAttributes(lp);
+            window.setWindowAnimations(R.style.PickerAnimBottom);
         }
 
         mPickerDialog.findViewById(R.id.tv_cancel).setOnClickListener(this);
