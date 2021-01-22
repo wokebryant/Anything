@@ -26,8 +26,12 @@ import java.util.List;
  */
 public class SmallPhotoRecycleView extends RecyclerView {
 
+    private static final String TAG = "SmallPhotoRecycleView";
+
     public static final int ADD_STOKE = 1;
     public static final int REMOVE_STOKE = 2;
+    //用来标记是否正在向最后一个滑动
+    private boolean isSlidingToLast = false;
 
     private Context mContext;
     private SmallImageAdapter mAdapter;
@@ -53,6 +57,7 @@ public class SmallPhotoRecycleView extends RecyclerView {
         mManager = new LinearLayoutManager(mContext);
         mManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         setLayoutManager(mManager);
+        setOnScrollListener(onScrollListener);
     }
 
     public void setAdapter(List<String> imageList, int selectedPosition) {
@@ -71,6 +76,39 @@ public class SmallPhotoRecycleView extends RecyclerView {
     public void setOnSmallPicItemClickListener(NewerChannelContract.OnSmallPicItemClickListener listener) {
         mListener = listener;
     }
+
+    private RecyclerView.OnScrollListener onScrollListener = new OnScrollListener() {
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+            LinearLayoutManager manager = (LinearLayoutManager)getLayoutManager();
+            // 当不滚动时
+            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                //获取最后一个完全显示的ItemPosition
+                int lastVisibleItem = manager.findLastCompletelyVisibleItemPosition();
+                int totalItemCount = manager.getItemCount();
+
+                // 判断是否滚动到底部，并且是向右滚动
+                if (lastVisibleItem == (totalItemCount - 1) && isSlidingToLast) {
+                    //加载更多功能的代码
+                    Log.i(TAG, "isSlideBottom");
+                }
+            }
+        }
+
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+            //dx用来判断横向滑动方向，dy用来判断纵向滑动方向
+            if (dx > 0) {
+                //大于0表示正在向右滚动
+                isSlidingToLast = true;
+            } else {
+                //小于等于0表示停止或向左滚动
+                isSlidingToLast = false;
+            }
+        }
+    };
 
     /**
      *  适配器
