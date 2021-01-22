@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:background="#80000000">
+
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="21dp"
+        layout="@layout/lf_newer_channel_anchor_head_info" />
+
+    <com.wokebryant.anythingdemo.newerchannel.widget.SmallPhotoRecycleView
+        android:id="@+id/newer_channel_small_pic_rv"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="9dp"/>
+
+    <TextView
+        android:id="@+id/newer_channel_full_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="14dp"
+        tools:text="今天的不开心就止于此吧，明天依旧万丈光芒～～不开心就今天的不开心就止于此吧，明天依旧万丈光芒～～不开心就今天的不开心就止于此吧，明天依旧万丈光芒～～不开心就今天的不开心就止于此吧，明天依旧万丈光芒～～不开心就今天的不开心就止于此吧，明天依旧万丈光芒～～不开心就这样吧"/>
+
+    <TextView
+        android:id="@+id/newer_channel_pack_up_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="7dp"
+        android:textColor="#99FFFFFF"
+        android:textSize="14dp"
+        android:text="收起"
+        android:layout_marginBottom="75dp"/>
+
+
+</LinearLayout>

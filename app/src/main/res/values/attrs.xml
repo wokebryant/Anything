@@ -37,4 +37,28 @@
         <attr name="clipBorderWidth" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="lf_multi_stateview">
+        <attr name="msv_loadingView" format="reference" />
+        <attr name="msv_contentView" format="reference" />
+        <attr name="msv_emptyView" format="reference" />
+        <attr name="msv_errorView" format="reference" />
+        <attr name="msv_viewState" format="enum">
+            <enum name="content" value="0" />
+            <enum name="error" value="1" />
+            <enum name="empty" value="2" />
+            <enum name="loading" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="FoldTextView">
+        <attr name="show_max_Line" format="integer" />
+        <attr name="tip_gravity" format="integer" />
+        <attr name="tip_color" format="reference|color" />
+        <attr name="tip_clickable" format="boolean" />
+        <attr name="fold_text" format="string" />
+        <attr name="expand_text" format="string" />
+        <attr name="show_tip_after_expand" format="boolean" />
+        <attr name="is_set_parent_click" format="boolean"/>
+    </declare-styleable>
+
 </resources>

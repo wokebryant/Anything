@@ -18,18 +18,15 @@ public class SamplePresenter implements Contract.Presenter {
             return;
         }
 
-        mView.showLoading();
         mInteractor.requestRemoteData(userId, new Contract.RequestDataListener() {
             @Override
             public void requestSuc(SampleModel model) {
                 mView.onSuccess(model);
-                mView.hideLoading();
             }
 
             @Override
             public void requestFail() {
                 mView.onError();
-                mView.hideLoading();
             }
         });
     }

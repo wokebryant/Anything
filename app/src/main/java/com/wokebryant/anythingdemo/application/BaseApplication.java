@@ -8,6 +8,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.wokebryant.anythingdemo.utils.BaseUtil;
+
 public class BaseApplication extends Application {
 
     private static final String TAG = "BaseApplication";
@@ -15,6 +19,9 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        BaseUtil.init(this);
+        ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(this).build();
+        ImageLoader.getInstance().init(configuration);
     }
 
     @Override

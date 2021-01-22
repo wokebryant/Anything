@@ -30,8 +30,7 @@ import com.wokebryant.anythingdemo.Constant;
 import com.wokebryant.anythingdemo.laifeng.dynamicsitem.activity.PersonalDynamicsActivity;
 import com.wokebryant.anythingdemo.laifeng.personsetting.Activity.PersonalSettingActivity;
 import com.wokebryant.anythingdemo.R;
-import com.wokebryant.anythingdemo.test.Animal;
-import com.wokebryant.anythingdemo.test.Cat;
+import com.wokebryant.anythingdemo.newerchannel.NewerChannelTestActivity;
 import com.wokebryant.anythingdemo.widget.dialog.VoiceLiveChiefPanel;
 import com.wokebryant.anythingdemo.widget.dialog.VoiceLiveCommonDialog;
 import com.wokebryant.anythingdemo.widget.dialog.VoiceLiveFinishDialog;
@@ -202,7 +201,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                showChiefPanel();
 //                showFinishDialog();
 
-                gotoSettingActivity();
+                //gotoSettingActivity();
+
+                gotoNewerChannelActivity();
 
                 break;
             case R.id.testBtn2:
@@ -303,6 +304,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void gotoSettingActivity() {
         PersonalSettingActivity.launch(MainActivity.this, true);
+    }
+
+    private void gotoNewerChannelActivity() {
+        NewerChannelTestActivity.launch(MainActivity.this);
     }
 
     private void gotoDynamicsActivity() {

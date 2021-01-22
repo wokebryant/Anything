@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/newer_channel_nick_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:text="爆胎小粉红"/>
+
+    <LinearLayout
+        android:id="@+id/newer_channel_attention_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginLeft="6dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/lf_bg_newer_channel_attention">
+
+        <ImageView
+            android:id="@+id/newer_channel_attention_iv"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:src="@drawable/lf_newer_channel_add"/>
+
+        <TextView
+            android:id="@+id/newer_channel_attention_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-6dp"
+            android:layout_marginRight="9dp"
+            android:text="关注"
+            android:textColor="#666666"
+            android:textSize="11dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

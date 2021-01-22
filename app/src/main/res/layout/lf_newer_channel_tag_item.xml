@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="9dp"
+    android:paddingRight="6dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/newer_channel_tag_item_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:includeFontPadding="false"
+        android:textSize="12dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/lf_bg_newer_channel_tag"
+        tools:text="古灵精怪"/>
+
+</FrameLayout>

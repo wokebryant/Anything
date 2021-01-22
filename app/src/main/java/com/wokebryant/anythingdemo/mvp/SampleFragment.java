@@ -44,15 +44,6 @@ public class SampleFragment extends Fragment implements Contract.View {
         // handle model
     }
 
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
 
     @Override
     public void onError() {
