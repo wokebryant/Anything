@@ -24,6 +24,19 @@ public class UIUtil {
         return (int) (dpValue * scale + 0.5f);
     }
 
+    public static int dip2px(float dpValue) {
+        final float scale = BaseUtil.getApplicationContext().getResources().getDisplayMetrics().density;
+        Log.i("scale= ", String.valueOf(scale));
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    public static Drawable convertBitmap2Drawable(Bitmap bitmap) {
+        Resources res = BaseUtil.getApplicationContext().getResources();
+        BitmapDrawable bd = new BitmapDrawable(res, bitmap);
+        return bd;
+    }
+
+
     public static int px2dip(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);

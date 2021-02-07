@@ -7,13 +7,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.wokebryant.anythingdemo.R;
 import com.wokebryant.anythingdemo.newerchannel.NewerChannelContract;
 import com.wokebryant.anythingdemo.utils.UIUtil;
@@ -67,7 +67,6 @@ public class SmallPhotoRecycleView extends RecyclerView {
     }
 
     public void updateSelectedItem(final int position) {
-        mManager.smoothScrollToPosition(this, new RecyclerView.State(), position);
         if (mAdapter != null) {
             mAdapter.updateItem(position);
         }
@@ -110,6 +109,22 @@ public class SmallPhotoRecycleView extends RecyclerView {
         }
     };
 
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        switch (e.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                break;
+            case MotionEvent.ACTION_MOVE:
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.i(TAG, "up finger");
+                break;
+            default:
+                break;
+        }
+        return super.onTouchEvent(e);
+    }
+
     /**
      *  适配器
      */
@@ -147,7 +162,9 @@ public class SmallPhotoRecycleView extends RecyclerView {
         @Override
         public void onBindViewHolder(@NonNull SmallImageViewHolder smallImageViewHolder, int i) {
             if (smallImageViewHolder != null) {
-                DisplayImageOptions imageOptions = new DisplayImageOptions.Builder().displayer(new RoundedBitmapDisplayer(UIUtil.dip2px(getContext(), 5))).build();
+                DisplayImageOptions imageOptions = new DisplayImageOptions.Builder()
+                    .displayer(new RoundedBitmapDisPlayer(UIUtil.dip2px(getContext(), 5), RoundedBitmapDisPlayer.Type.centerCrop))
+                    .build();
                 ImageLoader.getInstance().displayImage(mSmallImageList.get(i), smallImageViewHolder.mPicView, imageOptions);
                 if (mSelectPosition == i) {
                     setItemSelectedState(smallImageViewHolder);
@@ -187,6 +204,7 @@ public class SmallPhotoRecycleView extends RecyclerView {
             mSelectPosition = position;
             notifyItemRangeChanged(mSelectPosition, 1, ADD_STOKE);
             notifyItemRangeChanged(mPreviousPosition, 1, REMOVE_STOKE);
+            mManager.smoothScrollToPosition(SmallPhotoRecycleView.this, new RecyclerView.State(), position);
         }
 
         public void setItemSelectedState(SmallImageViewHolder viewHolder) {

@@ -1,11 +1,9 @@
 package com.wokebryant.anythingdemo.newerchannel;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.wokebryant.anythingdemo.application.BaseApplication;
 import com.wokebryant.anythingdemo.newerchannel.model.ShortVideoFeedData;
 import com.wokebryant.anythingdemo.utils.BaseUtil;
 
@@ -109,9 +107,10 @@ public class NewerChannelUtil {
      */
     public List<String> getFeedContentList(List<ShortVideoFeedData.Feed> feedList) {
         List<String> contentList = new ArrayList<>();
-        if (!feedList.isEmpty()) {
+        if (feedList != null && !feedList.isEmpty()) {
             for (ShortVideoFeedData.Feed feed : feedList) {
                 if (feed != null) {
+                    //contentList.add(getStringWithExpression(feed.content));
                     contentList.add(feed.content);
                 }
             }
@@ -185,7 +184,7 @@ public class NewerChannelUtil {
         for (int i = 0 ; i < 2; i++) {
             ShortVideoFeedData.Feed feed = new ShortVideoFeedData.Feed();
             ShortVideoFeedData.Feed.ImageInfo imageInfo = new ShortVideoFeedData.Feed.ImageInfo();
-            imageInfo.url = "https://image.laifeng.com/image/9914D0B66A0B4C15B68DEDFE62E8A1D9?x-oss-process=image/crop,x_131,y_0,w_600,h_600/resize,w_600,h_600";
+            imageInfo.url = "https://image.laifeng.com/image/E5C2541332154E80B6594720464CC35F";
             feed.img = imageInfo;
             feed.dataType = 16;
             feed.content = getMockContent();
@@ -194,7 +193,7 @@ public class NewerChannelUtil {
         for (int i = 0 ; i < 2; i++) {
             ShortVideoFeedData.Feed feed = new ShortVideoFeedData.Feed();
             ShortVideoFeedData.Feed.ImageInfo imageInfo = new ShortVideoFeedData.Feed.ImageInfo();
-            imageInfo.url = "https://image.laifeng.com/image/0430A2C363634DBC96CBEB19EE6D937C?x-oss-process=image/crop,x_432,y_0,w_1728,h_1728/resize,w_600,h_600";
+            imageInfo.url = "https://image.laifeng.com/image/68E47A1705534F629BB86651544148BF";
             feed.img = imageInfo;
             feed.dataType = 1;
             feed.content = "";

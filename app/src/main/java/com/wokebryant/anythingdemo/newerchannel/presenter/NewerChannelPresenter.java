@@ -1,6 +1,5 @@
 package com.wokebryant.anythingdemo.newerchannel.presenter;
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.wokebryant.anythingdemo.newerchannel.NewerChannelContract;
@@ -86,7 +85,7 @@ public class NewerChannelPresenter implements NewerChannelContract.Presenter<Sho
         data.put("liveContent", model.extraExtend != null && 1 == model.extraExtend.liveState ? "直播中" : "去主页");
         data.put("isAttention", model.isFollow);
         data.put("contentList", NewerChannelUtil.getInstance().getFeedContentList(model.feeds));
-        data.put("sign", model.signature);
+        data.put("sign", "这是一条个性签名");
         data.put("tagList", model.tags);
         data.put("anchorMask", !model.mark.isEmpty() ? (model.mark.get(0)).androidContent : "");
         data.put("locationMask", !model.mark.isEmpty() && model.mark.size() > 1 ? (model.mark.get(1)).androidContent : "");
@@ -159,6 +158,7 @@ public class NewerChannelPresenter implements NewerChannelContract.Presenter<Sho
         int showBottomType = NewerChannelUtil.getInstance().getShowBottomType(mModel, position);
         int showType = NewerChannelUtil.getInstance().getShowTypeList(mModel.feeds).get(position);
         mView.onUpdateContentView(getBottomData(mDataMap, showBottomType), showBottomType, showType);
+        Log.i("flingPosition", position + "" + "click");
     }
 
     @Override

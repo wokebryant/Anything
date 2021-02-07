@@ -65,6 +65,11 @@
                 android:layout_height="wrap_content"
                 android:textColor="#FFFFFF"
                 android:textSize="14dp"
+                android:lineSpacingExtra="2dp"
+                android:shadowRadius="1"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowColor="#99000000"
                 app:show_max_Line="2"
                 app:tip_clickable="true"
                 app:tip_color="#99FFFFFF"
@@ -136,6 +141,7 @@
                     android:layout_marginLeft="8dp"
                     android:text="看主页"
                     android:textSize="11dp"
+                    android:textStyle="bold"
                     android:textColor="#FFFFFF"/>
 
                 <ImageView
