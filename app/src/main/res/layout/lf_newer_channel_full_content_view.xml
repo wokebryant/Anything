@@ -14,7 +14,7 @@
         android:layout_marginTop="21dp"
         layout="@layout/lf_newer_channel_anchor_head_info" />
 
-    <com.wokebryant.anythingdemo.newerchannel.widget.SmallPhotoRecycleView
+    <com.wokebryant.anythingdemo.laifeng.newerchannel.widget.SmallPhotoRecycleView
         android:id="@+id/newer_channel_small_pic_rv"
         android:layout_width="160dp"
         android:layout_height="40dp"

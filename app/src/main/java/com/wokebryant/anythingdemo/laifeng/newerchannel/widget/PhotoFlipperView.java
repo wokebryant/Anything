@@ -1,21 +1,19 @@
-package com.wokebryant.anythingdemo.newerchannel.widget;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.widget;
 
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wokebryant.anythingdemo.R;
-import com.wokebryant.anythingdemo.newerchannel.NewerChannelContract;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.NewerChannelContract;
 
 import java.util.List;
 

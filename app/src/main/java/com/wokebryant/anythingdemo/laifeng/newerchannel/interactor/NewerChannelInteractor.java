@@ -1,8 +1,8 @@
-package com.wokebryant.anythingdemo.newerchannel.interactor;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.interactor;
 
-import com.wokebryant.anythingdemo.newerchannel.NewerChannelContract;
-import com.wokebryant.anythingdemo.newerchannel.mapper.NewerChannelMapper;
-import com.wokebryant.anythingdemo.newerchannel.model.ShortVideoFeedData;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.NewerChannelContract;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.mapper.NewerChannelMapper;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.model.ShortVideoFeedData;
 
 import java.util.Map;
 

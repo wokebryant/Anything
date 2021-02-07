@@ -48,7 +48,7 @@
             android:layout_marginTop="9dp"
             layout="@layout/lf_newer_channel_anchor_head_info" />
 
-        <com.wokebryant.anythingdemo.newerchannel.widget.SmallPhotoRecycleView
+        <com.wokebryant.anythingdemo.laifeng.newerchannel.widget.SmallPhotoRecycleView
             android:id="@+id/newer_channel_small_pic_rv"
             android:layout_width="160dp"
             android:layout_height="40dp"
@@ -59,7 +59,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="9dp">
 
-            <com.wokebryant.anythingdemo.newerchannel.widget.FoldTextView
+            <com.wokebryant.anythingdemo.laifeng.newerchannel.widget.FoldTextView
                 android:id="@+id/newer_channel_short_content_tv"
                 android:layout_width="215dp"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
         </FrameLayout>
 
 
-        <com.wokebryant.anythingdemo.newerchannel.widget.TagListView
+        <com.wokebryant.anythingdemo.laifeng.newerchannel.widget.TagListView
             android:id="@+id/newer_channel_tag_list_view"
             android:layout_width="wrap_content"
             android:layout_height="40dp"

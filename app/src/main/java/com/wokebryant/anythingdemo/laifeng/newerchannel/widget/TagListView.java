@@ -1,11 +1,10 @@
-package com.wokebryant.anythingdemo.newerchannel.widget;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wokebryant.anythingdemo.R;

@@ -1,4 +1,4 @@
-package com.wokebryant.anythingdemo.newerchannel;
+package com.wokebryant.anythingdemo.laifeng.newerchannel;
 
 public interface ISmallPhotoClickCallBack {
 

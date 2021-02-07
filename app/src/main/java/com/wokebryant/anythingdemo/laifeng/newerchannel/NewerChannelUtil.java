@@ -1,10 +1,10 @@
-package com.wokebryant.anythingdemo.newerchannel;
+package com.wokebryant.anythingdemo.laifeng.newerchannel;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.wokebryant.anythingdemo.newerchannel.model.ShortVideoFeedData;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.model.ShortVideoFeedData;
 import com.wokebryant.anythingdemo.utils.BaseUtil;
 
 import java.util.ArrayList;

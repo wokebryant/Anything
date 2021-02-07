@@ -1,11 +1,11 @@
-package com.wokebryant.anythingdemo.newerchannel.presenter;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.presenter;
 
 import android.util.Log;
 
-import com.wokebryant.anythingdemo.newerchannel.NewerChannelContract;
-import com.wokebryant.anythingdemo.newerchannel.NewerChannelUtil;
-import com.wokebryant.anythingdemo.newerchannel.interactor.NewerChannelInteractor;
-import com.wokebryant.anythingdemo.newerchannel.model.ShortVideoFeedData;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.NewerChannelContract;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.NewerChannelUtil;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.interactor.NewerChannelInteractor;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.model.ShortVideoFeedData;
 
 import java.util.HashMap;
 import java.util.List;

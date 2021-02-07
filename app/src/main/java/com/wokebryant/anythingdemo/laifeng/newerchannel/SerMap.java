@@ -1,4 +1,4 @@
-package com.wokebryant.anythingdemo.newerchannel;
+package com.wokebryant.anythingdemo.laifeng.newerchannel;
 
 import java.io.Serializable;
 import java.util.HashMap;

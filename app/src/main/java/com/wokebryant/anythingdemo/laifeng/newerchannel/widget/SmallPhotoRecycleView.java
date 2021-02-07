@@ -1,4 +1,4 @@
-package com.wokebryant.anythingdemo.newerchannel.widget;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.widget;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wokebryant.anythingdemo.R;
-import com.wokebryant.anythingdemo.newerchannel.NewerChannelContract;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.NewerChannelContract;
 import com.wokebryant.anythingdemo.utils.UIUtil;
 
 import java.util.List;

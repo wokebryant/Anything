@@ -30,7 +30,7 @@ import com.wokebryant.anythingdemo.Constant;
 import com.wokebryant.anythingdemo.laifeng.dynamicsitem.activity.PersonalDynamicsActivity;
 import com.wokebryant.anythingdemo.laifeng.personsetting.Activity.PersonalSettingActivity;
 import com.wokebryant.anythingdemo.R;
-import com.wokebryant.anythingdemo.newerchannel.NewerChannelTestActivity;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.NewerChannelTestActivity;
 import com.wokebryant.anythingdemo.widget.dialog.VoiceLiveChiefPanel;
 import com.wokebryant.anythingdemo.widget.dialog.VoiceLiveCommonDialog;
 import com.wokebryant.anythingdemo.widget.dialog.VoiceLiveFinishDialog;

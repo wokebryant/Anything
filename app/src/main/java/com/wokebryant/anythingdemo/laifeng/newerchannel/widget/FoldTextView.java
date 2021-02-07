@@ -1,4 +1,4 @@
-package com.wokebryant.anythingdemo.newerchannel.widget;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

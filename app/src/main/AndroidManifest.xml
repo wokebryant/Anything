@@ -27,7 +27,7 @@
         <activity android:name=".laifeng.personsetting.Activity.ChatSettingActivity"/>
         <activity android:name=".laifeng.dynamicsitem.activity.PersonalDynamicsActivity"/>
         <service android:name=".laifeng.personsetting.Audio.SoundRecorderService"/>
-        <activity android:name=".newerchannel.NewerChannelTestActivity"/>
+        <activity android:name=".laifeng.newerchannel.NewerChannelTestActivity"/>
 
     </application>
 

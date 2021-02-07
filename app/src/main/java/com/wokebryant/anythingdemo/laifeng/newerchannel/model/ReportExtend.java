@@ -1,4 +1,4 @@
-package com.wokebryant.anythingdemo.newerchannel.model;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.model;
 
 import java.io.Serializable;
 

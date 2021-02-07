@@ -1,6 +1,6 @@
-package com.wokebryant.anythingdemo.newerchannel.mapper;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.mapper;
 
-import com.wokebryant.anythingdemo.newerchannel.model.ShortVideoFeedData;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.model.ShortVideoFeedData;
 
 /**
  * @author wb-lj589732

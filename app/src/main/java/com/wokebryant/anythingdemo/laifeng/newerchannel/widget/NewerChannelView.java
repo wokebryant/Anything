@@ -1,4 +1,4 @@
-package com.wokebryant.anythingdemo.newerchannel.widget;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.widget;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,16 +11,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wokebryant.anythingdemo.R;
-import com.wokebryant.anythingdemo.newerchannel.ISmallPhotoClickCallBack;
-import com.wokebryant.anythingdemo.newerchannel.NewerChannelContract;
-import com.wokebryant.anythingdemo.newerchannel.NewerChannelUtil;
-import com.wokebryant.anythingdemo.newerchannel.SerMap;
-import com.wokebryant.anythingdemo.newerchannel.model.ShortVideoFeedData;
-import com.wokebryant.anythingdemo.newerchannel.presenter.NewerChannelPresenter;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.ISmallPhotoClickCallBack;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.NewerChannelContract;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.SerMap;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.model.ShortVideoFeedData;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.presenter.NewerChannelPresenter;
 import com.wokebryant.anythingdemo.widget.view.MultiStateView;
 
 import java.util.HashMap;

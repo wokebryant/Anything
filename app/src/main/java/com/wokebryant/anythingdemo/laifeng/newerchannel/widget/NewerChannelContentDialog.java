@@ -1,4 +1,4 @@
-package com.wokebryant.anythingdemo.newerchannel.widget;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.widget;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 import com.wokebryant.anythingdemo.R;
 import com.wokebryant.anythingdemo.laifeng.personsetting.dialog.BaseBottomSheetDialog;
-import com.wokebryant.anythingdemo.newerchannel.NewerChannelContract;
-import com.wokebryant.anythingdemo.newerchannel.SerMap;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.NewerChannelContract;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.SerMap;
 
 import java.util.HashMap;
 import java.util.List;

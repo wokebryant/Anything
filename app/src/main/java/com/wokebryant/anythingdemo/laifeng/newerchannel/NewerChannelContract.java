@@ -1,9 +1,9 @@
-package com.wokebryant.anythingdemo.newerchannel;
+package com.wokebryant.anythingdemo.laifeng.newerchannel;
 
 
 import com.wokebryant.anythingdemo.mvp.BasePresenter;
 import com.wokebryant.anythingdemo.mvp.BaseView;
-import com.wokebryant.anythingdemo.newerchannel.model.ShortVideoFeedData;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.model.ShortVideoFeedData;
 
 import java.util.HashMap;
 import java.util.Map;

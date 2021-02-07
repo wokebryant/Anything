@@ -1,4 +1,4 @@
-package com.wokebryant.anythingdemo.newerchannel.widget;
+package com.wokebryant.anythingdemo.laifeng.newerchannel.widget;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;

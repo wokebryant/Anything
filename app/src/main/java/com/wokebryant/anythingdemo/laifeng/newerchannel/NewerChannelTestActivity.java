@@ -1,8 +1,7 @@
-package com.wokebryant.anythingdemo.newerchannel;
+package com.wokebryant.anythingdemo.laifeng.newerchannel;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.wokebryant.anythingdemo.R;
-import com.wokebryant.anythingdemo.newerchannel.model.ShortVideoFeedData;
-import com.wokebryant.anythingdemo.newerchannel.widget.NewerChannelView;
-import com.wokebryant.anythingdemo.newerchannel.widget.PhotoFlipperView;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.model.ShortVideoFeedData;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.widget.NewerChannelView;
+import com.wokebryant.anythingdemo.laifeng.newerchannel.widget.PhotoFlipperView;
 
 import java.util.List;
 
