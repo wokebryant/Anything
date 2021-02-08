@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_vertical"
+    android:paddingBottom="21dp">
+
+    <TextView
+        android:id="@+id/onlookers_item_num_tv"
+        android:layout_width="44dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textColor="#666666"
+        android:textSize="16dp"
+        tools:text="1"/>
+
+    <ImageView
+        android:id="@+id/onlookers_item_avatar_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/round_head_test"/>
+
+    <TextView
+        android:id="@+id/onlookers_item_nick_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
+        android:textColor="#333333"
+        android:textSize="14dp"
+        tools:text="会爆炸的炸炸"/>
+
+    <ImageView
+        android:id="@+id/onlookers_item_medal_iv"
+        android:layout_width="32dp"
+        android:layout_height="14dp"
+        android:layout_marginLeft="3dp"/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/onlookers_item_interactive_tv"
+        android:layout_width="60dp"
+        android:layout_height="26dp"
+        android:layout_marginRight="18dp"
+        android:gravity="center"
+        android:background="@drawable/lf_bg_voice_room_unattention"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp"
+        tools:text="关注"/>
+
+</LinearLayout>

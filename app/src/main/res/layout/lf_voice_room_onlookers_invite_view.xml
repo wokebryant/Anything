@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="255dp"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/invite_close_tv"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="right"
+        android:src="@drawable/lf_voice_room_close"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="255dp"
+            android:layout_height="311dp">
+
+            <ImageView
+                android:id="@+id/invite_bg_view"
+                android:layout_width="match_parent"
+                android:layout_height="116dp"
+                android:background="#FF8200"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="56dp"
+                android:background="@drawable/lf_bg_voice_room_onlookers_mask" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="17dp"
+                android:paddingLeft="19dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:id="@+id/invite_primary_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp"
+                    tools:text="安心er的私密空间"/>
+
+                <TextView
+                    android:id="@+id/invite_online_num_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12dp"
+                    android:layout_below="@+id/invite_primary_tv"
+                    tools:text="5人在线"/>
+
+                <ImageView
+                    android:id="@+id/invite_tag_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/lf_voice_room_tag_making_friends"/>
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/invite_avatar_bg_fl"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="85dp"
+                android:background="@drawable/lf_bg_voice_room_avatar">
+
+                <ImageView
+                    android:id="@+id/invite_avatar_iv"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/round_head_test"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/invite_nick_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:layout_below="@+id/invite_avatar_bg_fl"
+                android:textSize="15dp"
+                android:textColor="#333333"
+                tools:text="安心er"/>
+
+            <TextView
+                android:id="@+id/invite_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:textSize="15dp"
+                android:textColor="#333333"
+                android:layout_below="@+id/invite_nick_tv"
+                android:text="邀请你进入语音房聊天"/>
+
+            <TextView
+                android:id="@+id/invite_accept_tv"
+                android:layout_width="156dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="24dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/invite_content_tv"
+                android:textColor="#FFFFFF"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:text="接受邀请"
+                android:gravity="center"
+                android:background="@drawable/lf_bg_voice_room_accept_invite" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</FrameLayout>
+

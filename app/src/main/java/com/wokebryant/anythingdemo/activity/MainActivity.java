@@ -31,6 +31,8 @@ import com.wokebryant.anythingdemo.laifeng.dynamicsitem.activity.PersonalDynamic
 import com.wokebryant.anythingdemo.laifeng.personsetting.Activity.PersonalSettingActivity;
 import com.wokebryant.anythingdemo.R;
 import com.wokebryant.anythingdemo.laifeng.newerchannel.NewerChannelTestActivity;
+import com.wokebryant.anythingdemo.laifeng.voiceroom.VoiceRoomInviteDialog;
+import com.wokebryant.anythingdemo.laifeng.voiceroom.VoiceRoomOnlookersPanel;
 import com.wokebryant.anythingdemo.widget.dialog.VoiceLiveChiefPanel;
 import com.wokebryant.anythingdemo.widget.dialog.VoiceLiveCommonDialog;
 import com.wokebryant.anythingdemo.widget.dialog.VoiceLiveFinishDialog;
@@ -79,6 +81,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private VoiceLiveCommonDialog mCommonDialog;
     private VoiceLivePlacardDialog mPlacardDialog;
     private VoiceLiveFinishDialog mLiveFinishDialog;
+
+    private VoiceRoomOnlookersPanel mOnlookersPanel;
+    private VoiceRoomInviteDialog mInviteDialog;
 
     private ProgressSendView mProgressView;
 
@@ -203,11 +208,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 //gotoSettingActivity();
 
-                gotoNewerChannelActivity();
+                //gotoNewerChannelActivity();
+
+                //showInviteDialog();
+
+                showOnlookersPanel();
 
                 break;
             case R.id.testBtn2:
-                gotoDynamicsActivity();
+                showInviteDialog();
+                //gotoDynamicsActivity();
 //                showChiefPanel();
                 //showCommonDialog();
 //                showPlacardDialog();
@@ -505,6 +515,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startRealPresonOutAnim() {
         RealPersonAnimationManager.getInstance().showOutApertureAnim(mOutView);
+    }
+
+    private void showInviteDialog() {
+        mInviteDialog = new VoiceRoomInviteDialog(MainActivity.this);
+        mInviteDialog.show();
+    }
+
+    private void showOnlookersPanel() {
+        try {
+            if (mOnlookersPanel == null) {
+                mOnlookersPanel = VoiceRoomOnlookersPanel.newInstance();
+            }
+            if (!mOnlookersPanel.isAdded()) {
+                FragmentManager manager = getSupportFragmentManager();
+                mOnlookersPanel.show(manager, "VoiceRoomOnlookersPanel");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

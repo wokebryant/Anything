@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/lf_bg_voice_room_onlookers_panel">
+
+    <TextView
+        android:id="@+id/onlookers_num_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="17.5dp"
+        android:textSize="15dp"
+        android:textColor="#333333"
+        android:textStyle="bold"
+        tools:text="12人围观"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/onlookers_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginTop="54dp"/>
+
+    <View
+        android:id="@+id/onlookers_mask_view"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/lf_bg_voice_room_onlookers_mask" />
+
+</FrameLayout>
